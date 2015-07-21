@@ -238,7 +238,7 @@ public class CshFragmentActivity extends FragmentActivity {
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.setCustomAnimations(android.R.anim.fade_in,
 				android.R.anim.fade_out);
-		if(fragment!=null && manager.findFragmentByTag(tag)==null){
+		if(fragment!=null && manager.findFragmentByTag(tag)==null && !fragment.isAdded()){
 			transaction.add(R.id.simple_fragment,fragment, tag);
 		}
 		transaction.show(fragment);
