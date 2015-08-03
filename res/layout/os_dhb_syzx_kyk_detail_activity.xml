@@ -18,10 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:minHeight="45dp"
-        	android:padding="10dp"
             android:background="@drawable/os_topbar_set_selector"
-            android:gravity="center" >
+            android:gravity="center"
+            android:minHeight="45dp"
+            android:padding="10dp" >
 
             <ImageView
                 android:id="@+id/ivAppback"
@@ -68,79 +68,100 @@
             android:text="afsafsafsfsafasfsafsafsafaf" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_xxjs"
-        style="@style/app_textStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rl_topbar"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:text="详细介绍："
-        android:textStyle="bold" />
-
-    <ScrollView
+    <osprey_adphone_hn.cellcom.com.cn.widget.BounceScrollView
         android:id="@+id/sv_detail"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_xxjs"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp" >
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:layout_below="@id/rl_topbar" >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <RelativeLayout
+                android:id="@+id/adrl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/app_textStyle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/ic_launcher"
+                    android:gravity="center"
+                    android:text="图片加载中..." />
+
+                <ImageView
+                    android:id="@+id/iv_ad"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/white"
+                    android:contentDescription="@null"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_xxjs"
+                style="@style/app_textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_topbar"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="详细介绍："
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_detail"
                 style="@style/app_medium_textStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:text="暂无" />
+            
+            <Button
+                android:id="@+id/ljlqbtn"
+                style="@style/app_big_textStyle1"
+                android:textSize="20sp"
+                android:layout_marginTop="30dp"
+                android:minWidth="150dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/os_dhb_syzx_zqselector1"
+                android:text="立即领取积分" />
+            <Button
+                android:id="@+id/zqgdbtn"
+                style="@style/app_big_textStyle3"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:minWidth="150dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/os_dhb_syzx_zqselector2"
+                android:text="赚取更多积分" />
         </LinearLayout>
-    </ScrollView>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="10dp"
-        android:background="@drawable/os_dhb_adv"
-        android:layout_below="@id/sv_detail" >
-
-        <TextView
-            style="@style/app_textStyle3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:drawablePadding="10dp"
-            android:drawableTop="@drawable/ic_launcher"
-            android:gravity="center"
-            android:text="图片加载中..." />
-
-        <ImageView
-            android:id="@+id/iv_ad"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="22dp"
-            android:layout_marginRight="22dp"
-            android:background="@color/white"
-            android:contentDescription="@null"
-            android:scaleType="fitXY" />
-    </RelativeLayout>
+    </osprey_adphone_hn.cellcom.com.cn.widget.BounceScrollView>
 
     <RelativeLayout
         android:id="@+id/rl_money_anim"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/sv_detail"
+        android:layout_below="@id/rl_topbar"
         android:visibility="gone" >
 
         <LinearLayout
@@ -164,6 +185,7 @@
             android:id="@+id/iv_money_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@null"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
@@ -191,7 +213,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/app_loading"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 </RelativeLayout>

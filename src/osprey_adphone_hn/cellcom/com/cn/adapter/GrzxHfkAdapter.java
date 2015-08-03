@@ -45,7 +45,6 @@ public class GrzxHfkAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-		final int selectId = position;
 		ViewHolder viewHolder = null;
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.os_dhb_grzx_hfk_item, null);

@@ -35,7 +35,7 @@ public class CommonUtils {
 									"jifen")) + Float.parseFloat(num))
 									+ "");
 				}
-			} else if (type.equals("2")) {// 刷新本地话费
+			} else if (type.equals("2")) {// 刷新本地亮币
 				if (SharepreferenceUtil.readString(context,
 						SharepreferenceUtil.fileName, "huafei", "").equals("")) {
 					SharepreferenceUtil.write(context,
@@ -50,7 +50,7 @@ public class CommonUtils {
 									"huafei")) + Float.parseFloat(num))
 									+ "");
 				}
-			} else if (type.equals("3")) {// 刷新本地银元
+			} else if (type.equals("3")) {// 刷新本地银币
 				if (SharepreferenceUtil.readString(context,
 						SharepreferenceUtil.fileName, "yinyuan", "").equals("")) {
 					SharepreferenceUtil.write(context,

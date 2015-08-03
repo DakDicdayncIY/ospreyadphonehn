@@ -64,8 +64,7 @@
 		    <RelativeLayout
 		        android:id="@+id/advrl"
 		        android:layout_width="fill_parent"
-		        android:layout_height="fill_parent"
-		        android:layout_margin="10dp" >
+		        android:layout_height="fill_parent" >
 		
 		        <TextView
 		            style="@style/app_textStyle4"
@@ -82,10 +81,6 @@
 		            android:id="@+id/iv_ad"
 		            android:layout_width="fill_parent"
 		            android:layout_height="fill_parent"
-		            android:layout_marginTop="16dp"
-		            android:layout_marginBottom="16dp"
-		            android:layout_marginLeft="22dp"
-		            android:layout_marginRight="22dp"
 		            android:contentDescription="@null"
 		            android:scaleType="fitXY" />
 		        

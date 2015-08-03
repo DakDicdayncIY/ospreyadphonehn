@@ -113,6 +113,7 @@ public class LoginActivity extends ActivityFrame {
 	private int currentItem;
 	private ArrayList<View> view_img;
 	private FrameLayout fl_ad;
+	private LoginComm loginComm;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -545,7 +546,7 @@ public class LoginActivity extends ActivityFrame {
 					@Override
 					public void onSuccess(CellComAjaxResult arg0) {
 						// TODO Auto-generated method stub
-						LoginComm loginComm = arg0.read(LoginComm.class,
+						loginComm = arg0.read(LoginComm.class,
 								CellComAjaxResult.ParseType.GSON);
 						String state = loginComm.getReturnCode();
 						String msg = loginComm.getReturnMessage();
@@ -714,9 +715,17 @@ public class LoginActivity extends ActivityFrame {
 									LoginActivity.this, act);
 							NpcCommon.mThreeNum = AccountPersist.getInstance()
 									.getActiveAccountInfo(LoginActivity.this).three_number;
-							Intent intent = new Intent(LoginActivity.this,
-									LoginAdvActivity.class);
-							startActivity(intent);
+							if (loginComm.getBody().size() > 0) {
+							  if("Y".equalsIgnoreCase(loginComm.getBody().get(0).getIfshow())){
+							    Intent intent = new Intent(LoginActivity.this,
+                                  LoginAdvActivity.class);
+                                startActivity(intent);
+							  }else{
+							    Intent intent = new Intent(LoginActivity.this,
+                                  PreMainActivity.class);
+                                startActivity(intent);
+							  }
+							}
 							LoginActivity.this.finish();
 							break;
 						case NetManager.LOGIN_USER_UNEXIST:

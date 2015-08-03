@@ -168,7 +168,7 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 			finalBitmap.display(iv_ad, largepic);
 		}
 		BitMapUtil.getImgOpt(DhbSyzxShakeActivity.this, finalBitmap, shakeBg, R.drawable.app_shakehideimg_man);
-		BitMapUtil.getImgOpt(DhbSyzxShakeActivity.this, finalBitmap, advrl, R.drawable.os_dhb_adv);
+//		BitMapUtil.getImgOpt(DhbSyzxShakeActivity.this, finalBitmap, advrl, R.drawable.os_dhb_adv);
 //		BitMapUtil.getImgOpt(DhbSyzxShakeActivity.this, finalBitmap, iv_money_box, R.drawable.os_coins_box);
 		
 	}
@@ -232,8 +232,8 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 //									.equals("2")) {
 //								tv_add_money_num.setText("+"
 //										+ yyyPrizeComm.getBody().getMoney()
-//										+ "话费");
-//								// 刷新本地话费
+//										+ "亮币");
+//								// 刷新本地亮币
 //								CommonUtils.refreshLocalCaichan(
 //										DhbSyzxShakeActivity.this, "2",
 //										yyyPrizeComm.getBody().getMoney());
@@ -241,8 +241,8 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 //									.equals("3")) {
 //								tv_add_money_num.setText("+"
 //										+ yyyPrizeComm.getBody().getMoney()
-//										+ "银元");
-//								// 刷新本地银元
+//										+ "银币");
+//								// 刷新本地银币
 //								CommonUtils.refreshLocalCaichan(
 //										DhbSyzxShakeActivity.this, "3",
 //										yyyPrizeComm.getBody().getMoney());
@@ -289,7 +289,7 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 //														+ yyyPrizeComm
 //																.getBody()
 //																.getMoney()
-//														+ "话费", 1);
+//														+ "亮币", 1);
 //									} else if (yyyPrizeComm.getBody()
 //											.getMoneytype().equals("3")) {
 //										AlertDialogPopupWindow.showSheet(
@@ -299,7 +299,7 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 //														+ yyyPrizeComm
 //																.getBody()
 //																.getMoney()
-//														+ "银元", 1);
+//														+ "银币", 1);
 //									}
 //								}
 //							}, 1500);
@@ -465,13 +465,13 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 								CommonUtils.refreshLocalCaichan(DhbSyzxShakeActivity.this, "1", yyyPrizeNewComm.getBody().getVerynum() + "");
 							} else if (yyyPrizeNewComm.getBody().getVerytype() == 2) {
 								tv_add_money_num.setText("+"
-										+ yyyPrizeNewComm.getBody().getVerynum() + "话费");
-								// 刷新本地话费
+										+ yyyPrizeNewComm.getBody().getVerynum() + "亮币");
+								// 刷新本地亮币
 								CommonUtils.refreshLocalCaichan( DhbSyzxShakeActivity.this, "2",
 										yyyPrizeNewComm.getBody().getVerynum() + "");
 							} else if (yyyPrizeNewComm.getBody().getVerytype() == 3) {
-								tv_add_money_num.setText("+" + yyyPrizeNewComm.getBody().getVerynum() + "银元");
-								// 刷新本地银元
+								tv_add_money_num.setText("+" + yyyPrizeNewComm.getBody().getVerynum() + "银币");
+								// 刷新本地银币
 								CommonUtils.refreshLocalCaichan(DhbSyzxShakeActivity.this, "3",
 										yyyPrizeNewComm.getBody().getVerynum() + "");
 							}
@@ -501,10 +501,10 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 												"您本次摇一摇获得了" + yyyPrizeNewComm.getBody().getVerynum() + "积分", 1);
 									} else if (yyyPrizeNewComm.getBody().getVerytype() == 2) {
 										AlertDialogPopupWindow.showSheet(DhbSyzxShakeActivity.this, DhbSyzxShakeActivity.this,
-												"您本次摇一摇获得了" + yyyPrizeNewComm.getBody().getVerynum() + "话费", 1);
+												"您本次摇一摇获得了" + yyyPrizeNewComm.getBody().getVerynum() + "亮币", 1);
 									} else if (yyyPrizeNewComm.getBody().getVerytype() == 3) {
 										AlertDialogPopupWindow.showSheet(DhbSyzxShakeActivity.this, DhbSyzxShakeActivity.this,
-												"您本次摇一摇获得了" + yyyPrizeNewComm.getBody().getVerynum()+ "银元", 1);
+												"您本次摇一摇获得了" + yyyPrizeNewComm.getBody().getVerynum()+ "银币", 1);
 									}
 								}
 							}, 1500);

@@ -4,7 +4,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- * 个人财产，包括积分、话费、银元
+ * 个人财产，包括积分、亮币、银币
  * 
  * @author Administrator
  * 

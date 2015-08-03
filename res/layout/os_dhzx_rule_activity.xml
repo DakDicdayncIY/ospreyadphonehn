@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<osprey_adphone_hn.cellcom.com.cn.widget.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
@@ -12,6 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:contentDescription="@null"
             android:layout_margin="15dp"
             android:background="@drawable/ic_launcher"/>
         
@@ -30,7 +31,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="等数额银元价值大于积分，积分大于话费；"/>
+            android:text="等数额银币价值等于积分，积分等于亮币；"/>
         <TextView 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -54,7 +55,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="现金可以充值为银元；"/>
+            android:text="现金可以充值为银币；"/>
         <TextView 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -62,7 +63,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="银元可以兑换话费；"/>
+            android:text="银币可以兑换亮币；"/>
         <TextView 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -70,7 +71,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="银元可以兑换积分；"/>
+            android:text="银币可以兑换积分；"/>
         <TextView 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -79,7 +80,7 @@
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
             android:visibility="gone"
-            android:text="积分可以兑换话费。"/>
+            android:text="积分可以兑换亮币。"/>
         
         <TextView 
             android:layout_width="fill_parent"
@@ -96,7 +97,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="银元可充值获取，银元、积分、话费可从商业中心活动中获取。"/>
+            android:text="银币可充值获取，银币、积分、亮币可从商业中心活动中获取。"/>
         
         <TextView 
             android:layout_width="fill_parent"
@@ -105,7 +106,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="3、银元的作用"/>
+            android:text="3、银币的作用"/>
         <TextView 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -113,7 +114,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="银元可用于兑换指定商品、兑换积分。"/>
+            android:text="银币可用于兑换指定商品、兑换积分。"/>
         
         <TextView 
             android:layout_width="fill_parent"
@@ -139,7 +140,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="5、话费的作用"/>
+            android:text="5、亮币的作用"/>
         <TextView 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -147,7 +148,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="10dp"
             style="@style/app_textStyle"
-            android:text="话费可用于使用鱼鹰电话煲功能，拨打电话。"/>
+            android:text="亮币可用于使用鱼鹰电话煲功能，拨打电话。"/>
     </LinearLayout>
 
-</ScrollView>
+</osprey_adphone_hn.cellcom.com.cn.widget.BounceScrollView>

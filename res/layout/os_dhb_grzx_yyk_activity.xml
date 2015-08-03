@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/app_textStyle2"
-            android:text="元"/>
+            android:text="个"/>
     </LinearLayout>
     
     <LinearLayout 

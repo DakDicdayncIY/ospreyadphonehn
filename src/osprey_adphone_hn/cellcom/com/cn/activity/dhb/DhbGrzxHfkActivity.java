@@ -111,7 +111,7 @@ public class DhbGrzxHfkActivity extends ActivityFrame {
 	}
 
 	/**
-	 * 获取话费库数据
+	 * 获取亮币库数据
 	 */
 	private void getHuafeiInfos() {
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
@@ -176,9 +176,9 @@ public class DhbGrzxHfkActivity extends ActivityFrame {
 							}
 							if (grzxCaichanComm.getBody().getLeijimoney() != null) {
 								tv_hfzs.setText(grzxCaichanComm.getBody()
-										.getLeijimoney() + "元");
+										.getLeijimoney() + "个");
 							}else{
-								tv_hfzs.setText(0 + "元");
+								tv_hfzs.setText(0 + "个");
 							}
 							if (grzxCaichanComm.getBody().getLeijimoney() != null) {
 								tv_dhcs.setText(grzxCaichanComm.getBody()

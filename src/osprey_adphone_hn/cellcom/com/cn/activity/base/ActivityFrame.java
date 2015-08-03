@@ -148,11 +148,10 @@ public class ActivityFrame extends ActivityBase {
 						SharepreferenceUtil.fileName, "account", ""));
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"huafei", "").equals("")) {
-			tv_kyhf.setText("￥0");
+			tv_kyhf.setText("0个");
 		} else {
-			tv_kyhf.setText("￥"
-					+ SharepreferenceUtil.readString(this,
-							SharepreferenceUtil.fileName, "huafei", ""));
+			tv_kyhf.setText(SharepreferenceUtil.readString(this,
+							SharepreferenceUtil.fileName, "huafei", "")+"个");
 		}
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"yinyuan", "").equals("")) {
@@ -550,7 +549,7 @@ public class ActivityFrame extends ActivityBase {
 		intent.setType("image/jpeg");
 		intent.setType("text/plain");
 		intent.putExtra(Intent.EXTRA_TEXT,
-				"欢迎加入鱼鹰，看广告赚话费银元，免费兑换商品，照顾家车安全。请点击下载：http://t.cn/Rw3DqXV");
+				"欢迎加入鱼鹰，看广告赚亮币银币，免费兑换商品，照顾家车安全。请点击下载：http://t.cn/Rw3DqXV");
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(Intent.createChooser(intent, "好友分享"));
 	}

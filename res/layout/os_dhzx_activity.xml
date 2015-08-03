@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="银元" />
+                    android:text="银币" />
 
                 <LinearLayout
                     android:id="@+id/ll_1"
@@ -66,6 +66,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@null"
                         android:src="@drawable/os_dhb_grzx_dhzx_yy_icon" />
 
                     <EditText
@@ -138,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="话费" />
+                    android:text="亮币" />
 
                 <LinearLayout
                     android:id="@+id/ll_hf_title1"
@@ -151,6 +152,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@null"
                         android:src="@drawable/os_dhb_grzx_dhzx_hf_icon" />
 
                     <TextView
@@ -159,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="0元" />
+                        android:text="0个" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -218,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="银元" />
+                    android:text="银币" />
 
                 <LinearLayout
                     android:id="@+id/ll_2"
@@ -471,7 +473,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="话费" />
+                    android:text="亮币" />
 
                 <LinearLayout
                     android:id="@+id/ll_hf_title3"

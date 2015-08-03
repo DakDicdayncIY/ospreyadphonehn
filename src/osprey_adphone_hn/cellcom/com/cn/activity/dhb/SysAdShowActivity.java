@@ -121,10 +121,10 @@ public class SysAdShowActivity extends ActivityFrame implements
 							+ "积分");
 				} else if (grzxCz.getVerytype().equals("2")) {
 					tv_add_money_num.setText("+" + grzxCz.getVerynum()
-							+ "话费");
+							+ "亮币");
 				} else if (grzxCz.getVerytype().equals("3")) {
 					tv_add_money_num.setText("+" + grzxCz.getVerynum()
-							+ "银元");
+							+ "银币");
 				}
 	}
 
@@ -261,11 +261,11 @@ public class SysAdShowActivity extends ActivityFrame implements
 				} else if (grzxCz.getVerytype().equals("2")) {
 					AlertDialogPopupWindow.showSheet(SysAdShowActivity.this,
 							SysAdShowActivity.this,
-							"恭喜您获得由" +grzxCz.getCompanyname()+"提供的"+ grzxCz.getVerynum() + "话费", 1);
+							"恭喜您获得由" +grzxCz.getCompanyname()+"提供的"+ grzxCz.getVerynum() + "亮币", 1);
 				} else if (grzxCz.getVerytype().equals("3")) {
 					AlertDialogPopupWindow.showSheet(SysAdShowActivity.this,
 							SysAdShowActivity.this,
-							"恭喜您获得由" +grzxCz.getCompanyname()+"提供的"+ grzxCz.getVerynum() + "银元", 1);
+							"恭喜您获得由" +grzxCz.getCompanyname()+"提供的"+ grzxCz.getVerynum() + "银币", 1);
 				}
 				isLj = true;
 			}

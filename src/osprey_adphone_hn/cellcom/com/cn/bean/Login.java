@@ -25,7 +25,8 @@ public class Login {
 	private String token;
 	@Element(required = false)
 	private String cityname;
-
+	@Element(required = false)
+	private String ifshow;
 	public String getUid() {
 		return uid;
 	}
@@ -105,5 +106,14 @@ public class Login {
 	public void setCityname(String cityname) {
 		this.cityname = cityname;
 	}
+
+  public String getIfshow() {
+    return ifshow;
+  }
+
+  public void setIfshow(String ifshow) {
+    this.ifshow = ifshow;
+  }
+	
 	
 }

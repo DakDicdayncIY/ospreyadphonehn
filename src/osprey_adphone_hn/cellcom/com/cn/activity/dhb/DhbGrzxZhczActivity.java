@@ -173,7 +173,7 @@ public class DhbGrzxZhczActivity extends ActivityFrame {
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.vPager, mFragments.get(position)).commit();
+					.add(R.id.vPager, mFragments.get(position)).commitAllowingStateLoss();
 			// container.addView(mFragments.get(position), 0);
 			return mFragments.get(position);
 

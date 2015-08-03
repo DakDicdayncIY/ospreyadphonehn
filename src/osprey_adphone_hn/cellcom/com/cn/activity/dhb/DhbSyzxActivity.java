@@ -309,7 +309,7 @@ public class DhbSyzxActivity extends Fragment{
                     startActivity(intentQhb);
 					break;
 				case 3:
-					title = "赚话费";
+					title = "赚亮币";
 					typeid = "2";
 					Intent intentZhf = new Intent(act, DhbSyzxKykActivity.class);
 					intentZhf.putExtra("title", title);

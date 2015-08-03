@@ -141,7 +141,7 @@
                         android:layout_centerVertical="true"
                         android:layout_margin="5dp"
                         android:layout_toRightOf="@id/iv_kyhf_icon"
-                        android:text="可用话费：" />
+                        android:text="可用亮币：" />
 
                     <TextView
                         android:id="@+id/tv_kyhf"
@@ -176,7 +176,7 @@
                         android:layout_centerVertical="true"
                         android:layout_margin="5dp"
                         android:layout_toRightOf="@id/iv_kyyy_icon"
-                        android:text="可用银元：" />
+                        android:text="可用银币：" />
 
                     <TextView
                         android:id="@+id/tv_kyyy"

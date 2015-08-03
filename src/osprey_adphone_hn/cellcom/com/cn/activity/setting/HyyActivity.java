@@ -44,7 +44,7 @@ public class HyyActivity extends ActivityFrame {
 	private void initView() {
 		finalBitmap=FinalBitmap.create(HyyActivity.this);
 		viewFlow = (ViewFlow) findViewById(R.id.guide);
-		viewFlow.setmSideBuffer(5); // 实际图片张数， 我的ImageAdapter实际图片张数为3
+		viewFlow.setmSideBuffer(1); // 实际图片张数， 我的ImageAdapter实际图片张数为3
 		viewFlow.setAdapter(new AdImageAdapter(this,finalBitmap));
 
 		CircleFlowIndicator indic = (CircleFlowIndicator) findViewById(R.id.guide_dot);
@@ -66,8 +66,8 @@ public class HyyActivity extends ActivityFrame {
 		private Context mContext;
 		private LayoutInflater mInflater;
 		private FinalBitmap finalBitmap;
-		private int[] resId = { R.drawable.guide01, R.drawable.guide02,
-				R.drawable.guide03, R.drawable.guide04, R.drawable.guide05 };
+		private int[] resId = { /*R.drawable.guide01, R.drawable.guide02,
+				R.drawable.guide03, R.drawable.guide04, */R.drawable.guide05 };
 
 		public AdImageAdapter(Context context,FinalBitmap finalBitmap) {
 			mContext = context;

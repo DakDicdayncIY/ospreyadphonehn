@@ -224,7 +224,7 @@ public class DhbBhpActivity extends FragmentBase implements OnClickListener {
 						SharepreferenceUtil.fileName, "huafei", "");
 				if (TextUtils.isEmpty(huafei)
 						|| Float.parseFloat(huafei) <= 0.3) {
-					ShowAlertDialog("余额不足", "请兑换话费或参加活动",
+					ShowAlertDialog("余额不足", "请兑换亮币或参加活动",
 							new MyDialogInterface() {
 
 								@Override
@@ -681,7 +681,7 @@ public class DhbBhpActivity extends FragmentBase implements OnClickListener {
 						SharepreferenceUtil.fileName, "huafei", "");
 				if (TextUtils.isEmpty(huafei)
 						|| Float.parseFloat(huafei) <= 0.3) {
-					ShowAlertDialog("余额不足", "请兑换话费或参加活动",
+					ShowAlertDialog("余额不足", "请兑换亮币或参加活动",
 							new MyDialogInterface() {
 
 								@Override
@@ -899,7 +899,7 @@ public class DhbBhpActivity extends FragmentBase implements OnClickListener {
 				SharepreferenceUtil.fileName, "huafei", "");
 		if (TextUtils.isEmpty(huafei)
 				|| Float.parseFloat(huafei) <= 0.3) {
-			ShowAlertDialog("余额不足", "请兑换话费或参加活动",
+			ShowAlertDialog("余额不足", "请兑换亮币或参加活动",
 					new MyDialogInterface() {
 
 						@Override

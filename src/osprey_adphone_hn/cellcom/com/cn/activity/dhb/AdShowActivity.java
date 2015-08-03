@@ -151,10 +151,10 @@ public class AdShowActivity extends ActivityFrame implements OnActionSheetSelect
 				tv_add_money_num.setText("+" + kykadresult.getMoney2() + "积分");
 			} else if (kykadresult.getMoneytype().equals("2")) {
 			  iv_money_box.setBackgroundResource(R.drawable.os_coins_box);
-				tv_add_money_num.setText("+" + kykadresult.getMoney2() + "话费");
+				tv_add_money_num.setText("+" + kykadresult.getMoney2() + "亮币");
 			} else if (kykadresult.getMoneytype().equals("3")) {
 			  iv_money_box.setBackgroundResource(R.drawable.os_hb_box);
-				tv_add_money_num.setText("+" + kykadresult.getMoney2() + "银元");
+				tv_add_money_num.setText("+" + kykadresult.getMoney2() + "银币");
 			}
 		}
 	}
@@ -315,13 +315,13 @@ public class AdShowActivity extends ActivityFrame implements OnActionSheetSelect
 												kykadresult.getMoney2());
 									} else if (kykadresult.getMoneytype()
 											.equals("2")) {
-										// 刷新本地话费
+										// 刷新本地亮币
 										CommonUtils.refreshLocalCaichan(
 												AdShowActivity.this, "2",
 												kykadresult.getMoney2());
 									} else if (kykadresult.getMoneytype()
 											.equals("3")) {
-										// 刷新本地银元
+										// 刷新本地银币
 										CommonUtils.refreshLocalCaichan(
 												AdShowActivity.this, "3",
 												kykadresult.getMoney2());
@@ -339,14 +339,14 @@ public class AdShowActivity extends ActivityFrame implements OnActionSheetSelect
 											AdShowActivity.this,
 											AdShowActivity.this, "您本次看一看获得"
 													+ kykadresult.getMoney2()
-													+ "话费", 1);
+													+ "亮币", 1);
 								} else if (kykadresult.getMoneytype().equals(
 										"3")) {
 									AlertDialogPopupWindow.showSheet(
 											AdShowActivity.this,
 											AdShowActivity.this, "您本次看一看获得"
 													+ kykadresult.getMoney2()
-													+ "银元", 1);
+													+ "银币", 1);
 								}
 							}
 						}, 1500);

@@ -47,13 +47,13 @@ public class DhzxActivity extends ActivityFrame {
 	private EditText et_num3;
 	private FButton btn_dh3;
 
-	private String yongyou_yy = "0";//拥有银元
-	private String yongyou_hf = "0";//拥有话费
+	private String yongyou_yy = "0";//拥有银币
+	private String yongyou_hf = "0";//拥有亮币
 	private String yongyou_jf = "0";//拥有积分
 	
-	private String rate1 = "";//银元兑换话费 兑换率
-	private String rate2 = "";//银元兑换积分 兑换率
-	private String rate3 = "";//积分兑换话费 兑换率
+	private String rate1 = "";//银币兑换亮币 兑换率
+	private String rate2 = "";//银币兑换积分 兑换率
+	private String rate3 = "";//积分兑换亮币 兑换率
 	private String[] ratestr1;
 	private String[] ratestr2;
 	private String[] ratestr3;
@@ -124,7 +124,7 @@ public class DhzxActivity extends ActivityFrame {
 			}
 		});
 
-		// 银元-话费 确认兑换
+		// 银币-亮币 确认兑换
 		btn_dh1.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -135,19 +135,19 @@ public class DhzxActivity extends ActivityFrame {
 				} else {
 					if (Float.parseFloat(et_num1.getText().toString()) > Float
 							.parseFloat(yongyou_yy)) {
-						ShowMsg("您的银元不足以兑换" + tv_yy1.getText().toString().substring(0,
-								tv_yy1.getText().toString().indexOf("元"))
-								+ "话费");
+						ShowMsg("您的银币不足以兑换" + tv_yy1.getText().toString().substring(0,
+								tv_yy1.getText().toString().indexOf("个"))
+								+ "亮币");
 					} else {
 						dhPrize("1", /*et_num1.getText().toString()*/
 								tv_yy1.getText().toString().substring(0,
-										tv_yy1.getText().toString().indexOf("元")));
+										tv_yy1.getText().toString().indexOf("个")));
 					}
 				}
 			}
 		});
 
-		// 银元-积分 确认兑换
+		// 银币-积分 确认兑换
 		btn_dh2.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -158,7 +158,7 @@ public class DhzxActivity extends ActivityFrame {
 				} else {
 					if (Float.parseFloat(et_num2.getText().toString()) > Float
 							.parseFloat(yongyou_yy)) {
-						ShowMsg("您的银元不足以兑换" + tv_yy2.getText().toString().substring(0,
+						ShowMsg("您的银币不足以兑换" + tv_yy2.getText().toString().substring(0,
 								tv_yy2.getText().toString().indexOf("分"))
 								+ "积分");
 					} else {
@@ -170,7 +170,7 @@ public class DhzxActivity extends ActivityFrame {
 			}
 		});
 
-		// 积分-话费 确认兑换
+		// 积分-亮币 确认兑换
 		btn_dh3.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -182,12 +182,12 @@ public class DhzxActivity extends ActivityFrame {
 					if (Float.parseFloat(et_num3.getText().toString()) > Float
 							.parseFloat(yongyou_jf)) {
 						ShowMsg("您的积分不足以兑换" + tv_jf3.getText().toString().substring(0,
-								tv_jf3.getText().toString().indexOf("元"))
-								+ "话费");
+								tv_jf3.getText().toString().indexOf("个"))
+								+ "亮币");
 					} else {
 						dhPrize("3", /*et_num3.getText().toString()*/
 								tv_jf3.getText().toString().substring(0,
-										tv_jf3.getText().toString().indexOf("元")));
+										tv_jf3.getText().toString().indexOf("个")));
 					}
 				}
 			}
@@ -212,19 +212,19 @@ public class DhzxActivity extends ActivityFrame {
 				// TODO Auto-generated method stub
 				if(text.trim().equals("")){
 					tv_yongyou1.setText(yongyou_yy+"个");
-					tv_yy1.setText("0元");
+					tv_yy1.setText("0个");
 				}else{
 					if(Float.parseFloat(text)>Float.parseFloat(yongyou_yy)){
-						ShowMsg("您的银元不足~");
+						ShowMsg("您的银币不足~");
 						tv_yongyou1.setText(yongyou_yy+"个");
 						tv_yy1.setText(((Float.parseFloat(text)/Float.parseFloat(ratestr1[0].trim()))*
-								Float.parseFloat(ratestr1[1].trim()))+"元");
+								Float.parseFloat(ratestr1[1].trim()))+"个");
 					}else if((Float.parseFloat(text)%Float.parseFloat(ratestr1[0].trim()))!=0){
 						ShowMsg("请输入"+ratestr1[0]+"的倍数~");
 					}else{
 						tv_yongyou1.setText((Float.parseFloat(yongyou_yy)-Float.parseFloat(text))+"个");
 						tv_yy1.setText(((Float.parseFloat(text)/Float.parseFloat(ratestr1[0].trim()))*
-								Float.parseFloat(ratestr1[1].trim()))+"元");
+								Float.parseFloat(ratestr1[1].trim()))+"个");
 					}
 				}
 			}
@@ -254,7 +254,7 @@ public class DhzxActivity extends ActivityFrame {
 					tv_yy2.setText("0分");
 				}else{
 					if(Float.parseFloat(text)>Float.parseFloat(yongyou_yy)){
-						ShowMsg("您的银元不足~");
+						ShowMsg("您的银币不足~");
 						tv_yongyou2.setText(yongyou_yy+"个");
 						tv_yy2.setText(((Float.parseFloat(text)/Float.parseFloat(ratestr2[0].trim()))*
 								Float.parseFloat(ratestr2[1].trim()))+"分");
@@ -290,21 +290,21 @@ public class DhzxActivity extends ActivityFrame {
 				// TODO Auto-generated method stub
 				if(text.trim().equals("")){
 					tv_yongyou3.setText(yongyou_jf+"分");
-					tv_jf3.setText("0元");
+					tv_jf3.setText("0个");
 				}else{
 					if(Float.parseFloat(text)>Float.parseFloat(yongyou_jf)){
 						ShowMsg("您的积分不足~");
 						tv_yongyou3.setText(yongyou_jf+"分");
 						String temp=format.format((Float.parseFloat(text)/Float.parseFloat(ratestr3[0].trim()))*
 								Float.parseFloat(ratestr3[1].trim()));
-						tv_jf3.setText(temp+"元");
+						tv_jf3.setText(temp+"个");
 					}else if((Float.parseFloat(text)%Float.parseFloat(ratestr3[0].trim()))!=0){
 						ShowMsg("请输入"+ratestr3[0]+"的倍数~");
 					}else{
 						tv_yongyou3.setText((Float.parseFloat(yongyou_jf)-Float.parseFloat(text))+"分");
 						String temp=format.format(((Float.parseFloat(text)/Float.parseFloat(ratestr3[0].trim()))*
 								Float.parseFloat(ratestr3[1].trim())));
-						tv_jf3.setText(temp+"元");
+						tv_jf3.setText(temp+"个");
 					}
 				}
 			}
@@ -428,15 +428,15 @@ public class DhzxActivity extends ActivityFrame {
 								.equals("")) {
 							tv_ye1.setText(userInfoComm.getBody().getHuafei()
 									.trim()
-									+ "元");
+									+ "个");
 							tv_ye3.setText(userInfoComm.getBody().getHuafei()
 									.trim()
-									+ "元");
+									+ "个");
 							yongyou_hf = userInfoComm.getBody().getHuafei()
 									.trim();
 						} else {
-							tv_ye1.setText(0 + "元");
-							tv_ye3.setText(0 + "元");
+							tv_ye1.setText(0 + "个");
+							tv_ye3.setText(0 + "个");
 						}
 						if (userInfoComm.getBody().getJifen() != null
 								&& !userInfoComm.getBody().getJifen().trim()

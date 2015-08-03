@@ -73,18 +73,12 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/rl_topbar"
-        android:layout_margin="10dp"
-        android:background="@drawable/os_dhb_adv" >
+        android:layout_below="@id/rl_topbar">
 
         <osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager
             android:id="@+id/jazzy_viewpager"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginBottom="22dp"
-            android:layout_marginLeft="22dp"
-            android:layout_marginRight="22dp"
-            android:layout_marginTop="22dp"
             android:background="@color/white" >
         </osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager>
     </RelativeLayout>

@@ -12,8 +12,8 @@
         android:background="@drawable/os_view_selector1">
         <ImageView 
             android:id="@+id/iv_thumbnail"
-            android:layout_width="105dp"
-            android:layout_height="70dp"
+            android:layout_width="115dp"
+            android:layout_height="90dp"
             android:scaleType="fitXY"
             android:background="@drawable/os_img_default_icon"
             android:layout_margin="10dp"/>

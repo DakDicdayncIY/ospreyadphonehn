@@ -278,7 +278,7 @@ public class DhbGrzxActivity extends Fragment {
       }
     });
 
-    // 银元库
+    // 银币库
     tv_yyk.setOnClickListener(new OnClickListener() {
 
       @Override
@@ -300,7 +300,7 @@ public class DhbGrzxActivity extends Fragment {
       }
     });
 
-    // 话费库
+    // 亮币库
     tv_hfk.setOnClickListener(new OnClickListener() {
 
       @Override
@@ -394,7 +394,7 @@ public class DhbGrzxActivity extends Fragment {
       }
     });
 
-    // 银元库
+    // 银币库
     ll_yyk.setOnClickListener(new OnClickListener() {
 
       @Override
@@ -416,7 +416,7 @@ public class DhbGrzxActivity extends Fragment {
       }
     });
 
-    // 话费库
+    // 亮币库
     ll_hfk.setOnClickListener(new OnClickListener() {
 
       @Override
