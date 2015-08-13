@@ -1,0 +1,150 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="osprey_adphone_hn.cellcom.com.cn.activity.csh.CshPhysicalExaminationActivity" >
+
+    <LinearLayout
+        android:id="@+id/ll_osch_phycical_examination"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1.5"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="温馨提示:"
+                android:textColor="#E50012" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:text="此功能需要鱼鹰盒子支持，下载的车辆诊断程序会自动检测您的内部电子系统，检测结果将保存到您的内部电子系统，检测结果将保存到您的车辆体检报告里面" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/iv_image_os_csh_physical_examination"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/tjdf_o" />
+
+            <TextView
+                android:id="@+id/tv_number_os_csh_physical_examination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:textColor="#9DD262"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_sctjdf_os_csh_physical_examination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_number_os_csh_physical_examination"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textColor="#9DD262"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_image_os_csh_physical_examination"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="距离上次检测"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_time_os_csh_physical_examination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#E50012"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:background="#FFFFFF" >
+
+        <TextView
+            android:id="@+id/tv_tjjl_os_csh_physical_examination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="上次体检结论"
+            android:textColor="#64BCB5"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_jtjl_os_csh_physical_examination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_tjjl_os_csh_physical_examination"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_jtjl_os_csh_physical_examination"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="3"
+                android:text="您还未体检" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/icon_arrow_right" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_start_tj_os_csh_physical_examination"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ll_jtjl_os_csh_physical_examination"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_bg2_down"
+            android:text="立即检测"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+</LinearLayout>

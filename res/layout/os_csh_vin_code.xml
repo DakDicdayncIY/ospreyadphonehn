@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_os_csh_vin_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="请填写车辆识别码（vin码）" />
+
+    <EditText
+        android:id="@+id/et_os_csh_vin_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_os_csh_vin_code"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_vin"
+        android:hint="VIN码（17位车辆识别码）"
+        android:maxLength="17"
+        android:paddingBottom="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_os_csh_vin_code"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="温馨提示"
+        android:textColor="#FF8533" />
+
+    <TextView
+        android:id="@+id/tv2_os_csh_vin_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="VIN码一般在汽车挡风玻璃的左下角或者右下角，" />
+
+    <TextView
+        android:id="@+id/tv3_os_csh_vin_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv2_os_csh_vin_code"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="或车辆行驶证中查找,个别车型除外" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv3_os_csh_vin_code"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/vin" />
+
+</RelativeLayout>

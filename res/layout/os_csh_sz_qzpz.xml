@@ -1,0 +1,240 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="osprey_adphone_hn.cellcom.com.cn.activity.csh.CshAddData" >
+
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_brand_os_csh_add_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="品牌"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_brand_os_csh_sz_qzpz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="50dp"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_brand_id_os_csh_sz_qzpz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="4sp"
+                    android:src="@drawable/icon_arrow_right" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="20dp" >
+
+            <RelativeLayout
+                android:id="@+id/rl_brand_os_csh_sz_qzpz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="车型"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_type_os_csh_sz_qzpz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="50dp"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:id="@+id/iv_type_os_csh_sz_qzpz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4sp"
+                    android:src="@drawable/icon_arrow_right" />
+            </RelativeLayout>
+
+            <osprey_adphone_hn.cellcom.com.cn.view.SolutionScrollviewListView
+                android:id="@+id/lv_brand_os_csh_sz_qzpz"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:visibility="gone" >
+            </osprey_adphone_hn.cellcom.com.cn.view.SolutionScrollviewListView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_vin_os_csh_sz_qzpz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="#FFFFFF"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="vin码"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_vin_os_csh_sz_qzpz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dp"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="4sp"
+                android:src="@drawable/icon_arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="#FFFFFF"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="变速箱"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rg_os_csh_sz_qzpz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal" >
+
+                <RadioButton
+					android:id="@+id/os_csh_sz_qzpzos_csh_add_data_manual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/xz_left"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:tag="1"
+                    android:text="手动档" />
+
+                <RadioButton
+                    android:id="@+id/rb_os_csh_sz_qzpz_automatic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/xz_right"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:tag="2"
+                    android:text="自动档" />
+            </RadioGroup>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="#FFFFFF"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:text="排量"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/et_pl_os_csh_sz_qzpz"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:hint="请输入"
+                android:inputType="numberDecimal"
+                android:padding="0dp"
+                android:textSize="20dp" />
+
+            <Spinner
+                android:id="@+id/sp_pl_os_csh_sz_qzpz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true" >
+            </Spinner>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:text="年款"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/et_mj_os_csh_sz_qzpz"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:hint="请输入"
+                android:padding="0dp"
+                android:textSize="20dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

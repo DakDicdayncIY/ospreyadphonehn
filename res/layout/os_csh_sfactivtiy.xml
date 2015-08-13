@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="osprey_adphone_hn.cellcom.com.cn.activity.csh.CshSFActivtiy" >
+
+    <TextView
+        android:id="@+id/tv_os_csh_sfactivity1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="以前当前的位置为中心设防，如果车辆在设防后" />
+
+    <TextView
+        android:id="@+id/tv_os_csh_sfactivity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_os_csh_sfactivity1"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="7dp"
+        android:text="移动超过指定距离，将产生设防报警" />
+
+    <TextView
+        android:id="@+id/tv_os_csh_sfactivity3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_os_csh_sfactivity2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="预防未开启"
+        android:textColor="#CCCCCC"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tv_os_csh_sfactivity6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_os_csh_sfactivity3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_os_csh_sfactivity3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_os_csh_sfactivity3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/img_csh_sf_off" />
+
+    <Button
+        android:id="@+id/btn_start_os_csh_sfactivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_os_csh_sfactivity3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_bg_open_down"
+        android:text="开启围栏"
+        android:textColor="#FFFFFF"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_os_csh_sfactivity3"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_remove_os_csh_sfactivity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_cancel_up"
+            android:text="关闭围栏"
+            android:visibility="gone"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_look_car_os_csh_sfactivity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_ok_up"
+            android:text="查看车辆"
+            android:visibility="gone"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_os_csh_sfactivity3"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_jd_os_csh_sf_activtiy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_wd_csh_sf_activity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>
