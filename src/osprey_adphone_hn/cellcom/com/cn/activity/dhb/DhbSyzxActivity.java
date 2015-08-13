@@ -66,8 +66,6 @@ public class DhbSyzxActivity extends Fragment{
 	private JazzyViewPager mJazzy;
 	private List<View> view_img;// 装载广告图片的集合
 	private List<View> dots; // 图片标题正文的那些点
-	private int[] adimgs = { R.drawable.os_dhb_syzx_ad_icon1,
-			R.drawable.os_dhb_syzx_ad_icon2, R.drawable.os_dhb_syzx_ad_icon3 };
 	private LinearLayout dots_ll;// 装载点的布局
 	private LinearLayout.LayoutParams ll = null;
 	private int currentItem = 0;// 当前索引
@@ -88,15 +86,6 @@ public class DhbSyzxActivity extends Fragment{
 	private int totalnum = 0;
 	private List<TjspInfo> list = new ArrayList<TjspInfo>();
 
-//	private JazzyGridView mJazzyGridView;
-//	private SyzxKykTypeAdapter adapter;
-//	private List<SyzxKykType> syzxKykType = new ArrayList<SyzxKykType>();
-//	private TextView tv_empty;
-
-	// 加载框
-//	private LinearLayout ll_loading;
-//	private ImageView imageView_loading;
-//	private AnimationDrawable animationDrawable;
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -404,171 +393,6 @@ public class DhbSyzxActivity extends Fragment{
 				}
 			}
 		});
-		// 看一看
-//		ll_kyk.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//
-//			}
-//		});
-//
-//		// 扫一扫
-//		ll_sys.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent(act, CaptureActivity.class);
-//				startActivity(intent);
-//			}
-//		});
-//
-//		// 摇一摇
-//		ll_yyy.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent(act, DhbSyzxShakeListActivity.class);
-//				startActivity(intent);
-//			}
-//		});
-//
-//		// 转一转
-//		ll_zyz.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent(act, DhbSyzxZyzActivity.class);
-//				startActivity(intent);
-//			}
-//		});
-//
-//		mJazzyGridView.setOnItemClickListener(new OnItemClickListener() {
-//
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View view,
-//					int position, long id) {
-//				// TODO Auto-generated method stub
-//				syzxKykType.get(position).setIfnew("N");//将本地新数据标示修改成N已读
-//				adapter.notifyDataSetChanged();
-//				Intent intent = new Intent(act, DhbSyzxKykActivity.class);
-//				intent.putExtra("title", syzxKykType.get(position)
-//						.getTypename());
-//				intent.putExtra("typeid", syzxKykType.get(position).getTypeid());
-//				startActivity(intent);
-//			}
-//		});
-//
-//		tv_empty.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				getAdv();
-//				getKykType();
-//			}
-//		});
-
-		// //房地产
-		// ll_fdc.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intent = new Intent(act,DhbSyzxKykActivity.class);
-		// intent.putExtra("title", "看一看房地产");
-		// intent.putExtra("typeid", "1");
-		// startActivity(intent);
-		// }
-		// });
-		// //汽车
-		// ll_qc.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intent = new Intent(act,DhbSyzxKykActivity.class);
-		// intent.putExtra("title", "看一看汽车");
-		// intent.putExtra("typeid", "2");
-		// startActivity(intent);
-		// }
-		// });
-		// //食品保健
-		// ll_spbj.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intent = new Intent(act,DhbSyzxKykActivity.class);
-		// intent.putExtra("title", "看一看食品保健");
-		// intent.putExtra("typeid", "3");
-		// startActivity(intent);
-		// }
-		// });
-		// //小家电
-		// ll_xjd.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intent = new Intent(act,DhbSyzxKykActivity.class);
-		// intent.putExtra("title", "看一看小家电");
-		// intent.putExtra("typeid", "4");
-		// startActivity(intent);
-		// }
-		// });
-		// //医疗美容
-		// ll_ylmr.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intent = new Intent(act,DhbSyzxKykActivity.class);
-		// intent.putExtra("title", "看一看医疗美容");
-		// intent.putExtra("typeid", "5");
-		// startActivity(intent);
-		// }
-		// });
-		// //家居生活
-		// ll_jjsh.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intent = new Intent(act,DhbSyzxKykActivity.class);
-		// intent.putExtra("title", "看一看家居生活");
-		// intent.putExtra("typeid", "6");
-		// startActivity(intent);
-		// }
-		// });
-		// //数码产品
-		// ll_smcp.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intent = new Intent(act,DhbSyzxKykActivity.class);
-		// intent.putExtra("title", "看一看数码产品");
-		// intent.putExtra("typeid", "7");
-		// startActivity(intent);
-		// }
-		// });
-		// //旅游出行
-		// ll_lycx.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intent = new Intent(act,DhbSyzxKykActivity.class);
-		// intent.putExtra("title", "看一看旅游出行");
-		// intent.putExtra("typeid", "8");
-		// startActivity(intent);
-		// }
-		// });
 
 	}
 
@@ -576,41 +400,11 @@ public class DhbSyzxActivity extends Fragment{
 	 * 初始化数据
 	 */
 	private void initData() {
-//		if (ContextUtil.getHeith(act) <= 480) {
-//			// if(ContextUtil.getWidth(act)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 90);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 800) {
-//			// if(ContextUtil.getWidth(act)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 140);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 860) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//		  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 150);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 960) {
-//			// if(ContextUtil.getWidth(act)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 180);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 1280) {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 200);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 210);
-//			fl_ad.setLayoutParams(linearParams);
-//		}
+	  int width=ContextUtil.getWidth(act);
+	  width=width/2-ContextUtil.dip2px(act, 20);
+	  int height=width*3/4;
+	  iv_img1.setLayoutParams(new LinearLayout.LayoutParams(width,height));
+	  iv_img2.setLayoutParams(new LinearLayout.LayoutParams(width,height));
 	  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
           .getLayoutParams();
       linearParams.width=ContextUtil.getWidth(act);
@@ -775,39 +569,7 @@ public class DhbSyzxActivity extends Fragment{
 				}
 			}
 
-		} else {
-			for (int i = 0; i < adimgs.length; i++) {
-				View view = act.getLayoutInflater().inflate(
-						R.layout.app_ad_item, null);
-				ImageView img = (ImageView) view.findViewById(R.id.img);
-				img.setBackgroundResource(adimgs[i]);
-				img.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-					}
-				});
-				view_img.add(view);
-				if (i == 0) {
-					ImageView dot = new ImageView(act);
-					dot.setLayoutParams(ll);
-					dot.setBackgroundResource(R.drawable.app_dot_focused);
-					dot.setPadding(ContextUtil.dip2px(act, 1.5f), 0,
-							ContextUtil.dip2px(act, 1.5f), 0);
-					dots_ll.addView(dot);
-					dots.add(dot);
-				} else {
-					ImageView dot = new ImageView(act);
-					dot.setLayoutParams(ll);
-					dot.setPadding(ContextUtil.dip2px(act, 1.5f), 0,
-							ContextUtil.dip2px(act, 1.5f), 0);
-					dot.setBackgroundResource(R.drawable.app_dot_normal);
-					dots_ll.addView(dot);
-					dots.add(dot);
-				}
-			}
-		}
+		} 
 		if (view_img.size() > 0) {
 			mJazzy.setAdapter(new MyJazzyPagerAdapter(view_img, mJazzy));
 			mJazzy.setCurrentItem(0);
@@ -918,7 +680,6 @@ public class DhbSyzxActivity extends Fragment{
 						list.clear();
 						list.addAll(tjspInfoComm.getBody().getData());
 						initTjspView();
-						
 					}
 				});
 	}

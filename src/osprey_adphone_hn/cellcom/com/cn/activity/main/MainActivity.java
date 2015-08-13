@@ -102,13 +102,12 @@ public class MainActivity extends ActivityFrame {
 						if (SharepreferenceUtil.readString(MainActivity.this,
 								SharepreferenceUtil.fileName, "huafei", "")
 								.equals("")) {
-							tv_kyhf.setText("￥0");
+							tv_kyhf.setText("0个");
 						} else {
-							tv_kyhf.setText("￥"
-									+ SharepreferenceUtil.readString(
+							tv_kyhf.setText(SharepreferenceUtil.readString(
 											MainActivity.this,
 											SharepreferenceUtil.fileName,
-											"huafei", ""));
+											"huafei", "")+"个");
 						}
 					}
 				});
@@ -136,11 +135,10 @@ public class MainActivity extends ActivityFrame {
 		getGrzl();
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"huafei", "").equals("")) {
-			tv_kyhf.setText("￥0");
+			tv_kyhf.setText("0个");
 		} else {
-			tv_kyhf.setText("￥"
-					+ SharepreferenceUtil.readString(this,
-							SharepreferenceUtil.fileName, "huafei", ""));
+			tv_kyhf.setText(SharepreferenceUtil.readString(this,
+							SharepreferenceUtil.fileName, "huafei", "")+"个");
 		}
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"yinyuan", "").equals("")) {

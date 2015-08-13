@@ -236,9 +236,6 @@ public class ActivityFrame extends ActivityBase {
 						finish();
 					}
 					CommonUtils.setCurrentChildMenuActivity("hyy");
-//					Intent intent = new Intent(ActivityFrame.this,
-//							HyyActivity.class);
-//					startActivity(intent);
 					Intent intent = new Intent(ActivityFrame.this,
                       WebViewActivity.class);
                     intent.putExtra("url", "http://dianliangtech.com/help/app");

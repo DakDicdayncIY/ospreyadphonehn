@@ -624,7 +624,7 @@ public class CellComRsahttp implements CellComHttpInterface{
 					url+="?"+params.toString();
 				}
 				String json=Des3.encode(orginJson, desRsaKey);
-//				params.clear();
+				params.clear();
 				params.put("json", json);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

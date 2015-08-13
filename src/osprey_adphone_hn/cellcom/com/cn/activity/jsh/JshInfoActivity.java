@@ -8,12 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 import net.tsz.afinal.FinalBitmap;
 import osprey_adphone_hn.cellcom.com.cn.R;
-import osprey_adphone_hn.cellcom.com.cn.activity.main.PreMainActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.main.WebViewActivity;
 import osprey_adphone_hn.cellcom.com.cn.bean.Adv;
 import osprey_adphone_hn.cellcom.com.cn.bean.AdvComm;
 import osprey_adphone_hn.cellcom.com.cn.net.FlowConsts;
 import osprey_adphone_hn.cellcom.com.cn.net.HttpHelper;
+import osprey_adphone_hn.cellcom.com.cn.util.BitMapUtil;
 import osprey_adphone_hn.cellcom.com.cn.util.ContextUtil;
 import osprey_adphone_hn.cellcom.com.cn.util.SharepreferenceUtil;
 import osprey_adphone_hn.cellcom.com.cn.widget.Rotate3DAnimation;
@@ -40,7 +40,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 import cellcom.com.cn.net.CellComAjaxHttp;
 import cellcom.com.cn.net.CellComAjaxParams;
@@ -260,45 +259,12 @@ public class JshInfoActivity extends Fragment {
 	 */
 	private void initData() {
 		finalBitmap = FinalBitmap.create(act);
-//		if (ContextUtil.getHeith(act) <= 480) {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 60);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 800) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 140);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 860) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//		  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 150);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 960) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 180);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 1280) {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 200);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 210);
-//			fl_ad.setLayoutParams(linearParams);
-//		}
 		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
             .getLayoutParams();
         linearParams.width=ContextUtil.getWidth(act);
         linearParams.height = linearParams.width/2;
         fl_ad.setLayoutParams(linearParams);
+        BitMapUtil.getImgOpt(act, finalBitmap, mJazzy, R.drawable.os_login_topicon);
 		getAdv();
 	}
 	

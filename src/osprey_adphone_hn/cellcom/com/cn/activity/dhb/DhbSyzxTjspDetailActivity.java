@@ -21,6 +21,7 @@ import osprey_adphone_hn.cellcom.com.cn.bean.JfscSpListDetailComm;
 import osprey_adphone_hn.cellcom.com.cn.bean.TjspInfo;
 import osprey_adphone_hn.cellcom.com.cn.net.FlowConsts;
 import osprey_adphone_hn.cellcom.com.cn.net.HttpHelper;
+import osprey_adphone_hn.cellcom.com.cn.util.BitMapUtil;
 import osprey_adphone_hn.cellcom.com.cn.util.ContextUtil;
 import osprey_adphone_hn.cellcom.com.cn.util.SharepreferenceUtil;
 import osprey_adphone_hn.cellcom.com.cn.widget.AutoGridView;
@@ -54,8 +55,6 @@ public class DhbSyzxTjspDetailActivity extends ActivityFrame implements
 	private JazzyViewPager mJazzy;
 	private List<View> view_img;// 装载广告图片的集合
 	private List<View> dots; // 图片标题正文的那些点
-	private int[] adimgs = { R.drawable.os_dhb_syzx_ad_icon1,
-			R.drawable.os_dhb_syzx_ad_icon2, R.drawable.os_dhb_syzx_ad_icon3 };
 	private LinearLayout dots_ll;// 装载点的布局
 	private LinearLayout.LayoutParams ll = null;
 	private int currentItem = 0;// 当前索引
@@ -106,6 +105,7 @@ public class DhbSyzxTjspDetailActivity extends ActivityFrame implements
 
 	private void initView() {
 		finalBitmap = FinalBitmap.create(this);
+		mJazzy = (JazzyViewPager) findViewById(R.id.jazzy_viewpager);
 		tv_yhjf=(TextView)findViewById(R.id.tv_yhjf);
 		tv_sp_name = (TextView) findViewById(R.id.tv_sp_name);
 		tv_sp_describe = (TextView) findViewById(R.id.tv_sp_describe);
@@ -204,57 +204,12 @@ public class DhbSyzxTjspDetailActivity extends ActivityFrame implements
 	 * 初始化数据
 	 */
 	private void initData() {
-//		if (ContextUtil.getHeith(this) <= 480) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbSyzxTjspDetailActivity.this, 150);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(this) <= 800) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbSyzxTjspDetailActivity.this, 140);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(this) <= 860) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//		  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(this, 150);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(this) <= 960) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbSyzxTjspDetailActivity.this, 180);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(this) <= 1280) {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbSyzxTjspDetailActivity.this, 220);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbSyzxTjspDetailActivity.this, 240);
-//			fl_ad.setLayoutParams(linearParams);
-//		}
 	  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
           .getLayoutParams();
       linearParams.width=ContextUtil.getWidth(DhbSyzxTjspDetailActivity.this);
       linearParams.height = linearParams.width/2;
       fl_ad.setLayoutParams(linearParams);
-//		if (jfscSpListBean != null) {
-//			tv_sp_name.setText(jfscSpListBean.getTitle());
-//			tv_sp_describe.setText(jfscSpListBean.getSimpleinfo());
-//			tv_jf.setText(jfscSpListBean.getJifen());
-//			tv_kc_num.setText(jfscSpListBean.getLeftnum() + "件");
-//		}
+      BitMapUtil.getImgOpt(DhbSyzxTjspDetailActivity.this, finalBitmap, mJazzy, R.drawable.os_login_topicon);
 		
 		if (tjspInfo != null) {
 			tv_sp_name.setText(tjspInfo.getTitle());
@@ -292,7 +247,7 @@ public class DhbSyzxTjspDetailActivity extends ActivityFrame implements
 		if (dots_ll != null) {
 			dots_ll.removeAllViews();
 		}
-		mJazzy = (JazzyViewPager) findViewById(R.id.jazzy_viewpager);
+		
 		mJazzy.setTransitionEffect(TransitionEffect.Standard);
 		view_img = new ArrayList<View>();
 		dots = new ArrayList<View>();
@@ -309,44 +264,6 @@ public class DhbSyzxTjspDetailActivity extends ActivityFrame implements
 					finalBitmap.display(img, jfscSpListDetailList.get(i)
 							.getPicurl());
 				}
-				img.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-					}
-				});
-				view_img.add(view);
-				if (i == 0) {
-					ImageView dot = new ImageView(
-							DhbSyzxTjspDetailActivity.this);
-					dot.setLayoutParams(ll);
-					dot.setBackgroundResource(R.drawable.app_dot_focused);
-					dot.setPadding(ContextUtil.dip2px(
-							DhbSyzxTjspDetailActivity.this, 1.5f), 0,
-							ContextUtil.dip2px(DhbSyzxTjspDetailActivity.this,
-									1.5f), 0);
-					dots_ll.addView(dot);
-					dots.add(dot);
-				} else {
-					ImageView dot = new ImageView(
-							DhbSyzxTjspDetailActivity.this);
-					dot.setLayoutParams(ll);
-					dot.setPadding(ContextUtil.dip2px(
-							DhbSyzxTjspDetailActivity.this, 1.5f), 0,
-							ContextUtil.dip2px(DhbSyzxTjspDetailActivity.this,
-									1.5f), 0);
-					dot.setBackgroundResource(R.drawable.app_dot_normal);
-					dots_ll.addView(dot);
-					dots.add(dot);
-				}
-			}
-		} else {
-			for (int i = 0; i < adimgs.length; i++) {
-				View view = DhbSyzxTjspDetailActivity.this.getLayoutInflater()
-						.inflate(R.layout.app_ad_item, null);
-				ImageView img = (ImageView) view.findViewById(R.id.img);
-				img.setBackgroundResource(adimgs[i]);
 				img.setOnClickListener(new OnClickListener() {
 
 					@Override
@@ -417,7 +334,6 @@ public class DhbSyzxTjspDetailActivity extends ActivityFrame implements
 		@Override
 		public void onPageSelected(int position) {
 			// TODO Auto-generated method stub
-			System.out.println("路口图片位置------>" + position);
 			mJazzy.setCurrentItem(position);
 			currentItem = position;
 			// tv_name.setText(titles[position]);

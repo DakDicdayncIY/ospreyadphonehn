@@ -538,10 +538,9 @@ public class JshWdjActivity extends FragmentBase {
 	 * 更新广告图片
 	 */
 	private Handler handler = new Handler() {
-		public void handleMessage(Message msg) {
-			// 根据viewpager里图片的 角标设置当前要显示的图片
-			mJazzy.setCurrentItem(currentItem);
-		}
+		public void handleMessage(android.os.Message msg) {
+		  mJazzy.setCurrentItem(currentItem);
+		};
 	};
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -32,7 +32,7 @@
             android:singleLine="true"
             style="@style/app_medium_textStyle2" />
 
-        <ImageButton
+        <!-- <ImageButton
             android:id="@+id/queryCityExit"
             android:layout_width="18.0dip"
             android:layout_height="18.0dip"
@@ -51,7 +51,7 @@
             android:background="@drawable/os_dhb_searchdelete"
             android:contentDescription="@null"
             android:gravity="center_vertical"
-            android:visibility="invisible" />
+            android:visibility="invisible" /> -->
     </RelativeLayout>
     <osprey_adphone_hn.cellcom.com.cn.widget.SlidingLinearLayout
         android:id="@+id/slidingview"

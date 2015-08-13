@@ -66,7 +66,7 @@ import com.p2p.core.network.RegisterResult;
 public class RegisterActivity extends ActivityFrame {
 	private EditText countet;
 	private EditText pwdet;
-	private EditText pwdconfirmet;
+//	private EditText pwdconfirmet;
 	private EditText yzmet;
 	private Button subbtn;
 	private Button yzmbtn;
@@ -84,6 +84,7 @@ public class RegisterActivity extends ActivityFrame {
 	private ArrayList<View> view_img;
 	private FrameLayout fl_ad;
 	private MyCount myCount;
+	private boolean registerDirect=false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -152,10 +153,16 @@ public class RegisterActivity extends ActivityFrame {
 		@Override
 		public void onTick(long millisUntilFinished) {
 			int second=(int)(millisUntilFinished / 1000);
-			if(second<=9){				
+			/*if(second<=9){				
 				yzmbtn.setText("0" + second+"秒");
+			}else */if(second<=30){
+			  registerDirect=true;
+			  yzmbtn.setBackgroundResource(R.drawable.app_forgetpwd_btnbg);
+			  yzmbtn.setText("未收到？");
+			  yzmbtn.setEnabled(true); 
 			}else{
-				yzmbtn.setText(""+second+"秒");
+			  registerDirect=false;
+			  yzmbtn.setText(second+"秒");
 			}
 		}
 	}
@@ -238,16 +245,48 @@ public class RegisterActivity extends ActivityFrame {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String countettxt = countet.getText().toString();
-				if (TextUtils.isEmpty(countettxt)) {
-					ShowMsg("请输入手机号码");
-					return;
-				}
-				if (!RegExpValidator.IsHandset(countettxt)) {
-					ShowMsg("手机号码格式错误");
-					return;
-				}
-				getYzm(countettxt);
+			  if(registerDirect){
+			    String countettxt = countet.getText().toString();
+                String pwdettxt = pwdet.getText().toString();
+                String yamettxt = yzmet.getText().toString();
+
+                if (TextUtils.isEmpty(countettxt)) {
+                    ShowMsg("请输入手机号码");
+                    return;
+                }
+                if (!RegExpValidator.IsHandset(countettxt)) {
+                    ShowMsg("手机号码格式错误");
+                    return;
+                }
+//                if (TextUtils.isEmpty(yamettxt)) {
+//                    ShowMsg("请输入验证码");
+//                    return;
+//                }
+                if (TextUtils.isEmpty(pwdettxt)) {
+                    ShowMsg("请输入新密码");
+                    return;
+                }
+                if (TextUtils.isEmpty(countettxt)) {
+                    ShowMsg("请输入验证码");
+                    return;
+                }
+                if (!xieyiCheck) {
+                    ShowMsg("请先阅读使用规则，并同意");
+                    return;
+                }
+                register(countettxt, pwdettxt, "","3");
+			  }else{
+			    String countettxt = countet.getText().toString();
+                if (TextUtils.isEmpty(countettxt)) {
+                    ShowMsg("请输入手机号码");
+                    return;
+                }
+                if (!RegExpValidator.IsHandset(countettxt)) {
+                    ShowMsg("手机号码格式错误");
+                    return;
+                }
+                getYzm(countettxt);
+			  }
 			}
 		});
 		subbtn.setOnClickListener(new OnClickListener() {
@@ -257,7 +296,7 @@ public class RegisterActivity extends ActivityFrame {
 				// TODO Auto-generated method stub
 				String countettxt = countet.getText().toString();
 				String pwdettxt = pwdet.getText().toString();
-				String pwdconfirmettxt = pwdconfirmet.getText().toString();
+//				String pwdconfirmettxt = pwdconfirmet.getText().toString();
 				String yamettxt = yzmet.getText().toString();
 
 				if (TextUtils.isEmpty(countettxt)) {
@@ -276,14 +315,14 @@ public class RegisterActivity extends ActivityFrame {
 					ShowMsg("请输入新密码");
 					return;
 				}
-				if (TextUtils.isEmpty(pwdconfirmettxt)) {
-					ShowMsg("请再次输入密码");
-					return;
-				}
-				if (!pwdettxt.equals(pwdconfirmettxt)) {
-					ShowMsg("两次输入密码不一致");
-					return;
-				}
+//				if (TextUtils.isEmpty(pwdconfirmettxt)) {
+//					ShowMsg("请再次输入密码");
+//					return;
+//				}
+//				if (!pwdettxt.equals(pwdconfirmettxt)) {
+//					ShowMsg("两次输入密码不一致");
+//					return;
+//				}
 				if (TextUtils.isEmpty(countettxt)) {
 					ShowMsg("请输入验证码");
 					return;
@@ -292,7 +331,7 @@ public class RegisterActivity extends ActivityFrame {
 					ShowMsg("请先阅读使用规则，并同意");
 					return;
 				}
-				register(countettxt, pwdettxt, yamettxt);
+				register(countettxt, pwdettxt, yamettxt,"1");
 			}
 		});
 	}
@@ -301,7 +340,7 @@ public class RegisterActivity extends ActivityFrame {
 		// TODO Auto-generated method stub
 		countet = (EditText) findViewById(R.id.countet);
 		pwdet = (EditText) findViewById(R.id.pwdet);
-		pwdconfirmet = (EditText) findViewById(R.id.pwdconfirmet);
+//		pwdconfirmet = (EditText) findViewById(R.id.pwdconfirmet);
 		yzmet = (EditText) findViewById(R.id.yzmet);
 		xytv = (TextView) findViewById(R.id.xytv);
 		subbtn = (Button) findViewById(R.id.subbtn);
@@ -507,12 +546,12 @@ public class RegisterActivity extends ActivityFrame {
 	}
 
 	public void register(final String countettxt, final String pwdettxt,
-			final String yamettxt) {
+			final String yamettxt,String method) {
 		CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
 		cellComAjaxParams.put("phone", countettxt);
 		cellComAjaxParams.put("passwd", ContextUtil.encodeMD5(pwdettxt));
 		cellComAjaxParams.put("verifysms", yamettxt);
-		cellComAjaxParams.put("method", "1");
+		cellComAjaxParams.put("method", method);
 		HttpHelper.getInstances(RegisterActivity.this).send(
 				FlowConsts.YYW_REGISTER, cellComAjaxParams,
 				CellComAjaxHttp.HttpWayMode.POST,

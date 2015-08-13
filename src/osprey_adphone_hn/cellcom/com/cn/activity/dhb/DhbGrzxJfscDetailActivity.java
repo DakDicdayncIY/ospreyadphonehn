@@ -8,26 +8,19 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import net.tsz.afinal.FinalBitmap;
-
-import cellcom.com.cn.net.CellComAjaxHttp;
-import cellcom.com.cn.net.CellComAjaxParams;
-import cellcom.com.cn.net.CellComAjaxResult;
-import cellcom.com.cn.net.base.CellComHttpInterface;
-
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.base.ActivityFrame;
-import osprey_adphone_hn.cellcom.com.cn.activity.main.PreMainActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.setting.GwcActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.welcome.LoginActivity;
 import osprey_adphone_hn.cellcom.com.cn.adapter.GrzxJfscSpTypeAdapter;
 import osprey_adphone_hn.cellcom.com.cn.adapter.GrzxJfscSpTypeAdapter.SelectCallBack;
 import osprey_adphone_hn.cellcom.com.cn.bean.DescribeComm;
 import osprey_adphone_hn.cellcom.com.cn.bean.JfscSpList;
-import osprey_adphone_hn.cellcom.com.cn.bean.JfscSpListComm;
 import osprey_adphone_hn.cellcom.com.cn.bean.JfscSpListDetail;
 import osprey_adphone_hn.cellcom.com.cn.bean.JfscSpListDetailComm;
 import osprey_adphone_hn.cellcom.com.cn.net.FlowConsts;
 import osprey_adphone_hn.cellcom.com.cn.net.HttpHelper;
+import osprey_adphone_hn.cellcom.com.cn.util.BitMapUtil;
 import osprey_adphone_hn.cellcom.com.cn.util.ContextUtil;
 import osprey_adphone_hn.cellcom.com.cn.util.SharepreferenceUtil;
 import osprey_adphone_hn.cellcom.com.cn.widget.AutoGridView;
@@ -41,26 +34,24 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import cellcom.com.cn.net.CellComAjaxHttp;
+import cellcom.com.cn.net.CellComAjaxParams;
+import cellcom.com.cn.net.CellComAjaxResult;
+import cellcom.com.cn.net.base.CellComHttpInterface;
 
 public class DhbGrzxJfscDetailActivity extends ActivityFrame implements
 		OnActionSheetSelected {
 	private JazzyViewPager mJazzy;
 	private List<View> view_img;// 装载广告图片的集合
 	private List<View> dots; // 图片标题正文的那些点
-	private String[] titles = { "时尚优雅，魅力无法挡", "给生活多一个空间", "家生活" };
-	private int[] adimgs = { R.drawable.os_dhb_syzx_ad_icon1,
-			R.drawable.os_dhb_syzx_ad_icon2, R.drawable.os_dhb_syzx_ad_icon3 };
 	private LinearLayout dots_ll;// 装载点的布局
 	private LinearLayout.LayoutParams ll = null;
 	private int currentItem = 0;// 当前索引
@@ -109,6 +100,7 @@ public class DhbGrzxJfscDetailActivity extends ActivityFrame implements
 
 	private void initView() {
 		finalBitmap = FinalBitmap.create(this);
+		mJazzy = (JazzyViewPager) findViewById(R.id.jazzy_viewpager);
 		tv_sp_name = (TextView) findViewById(R.id.tv_sp_name);
 		tv_sp_describe = (TextView) findViewById(R.id.tv_sp_describe);
 		tv_jf = (TextView) findViewById(R.id.tv_jf);
@@ -206,51 +198,12 @@ public class DhbGrzxJfscDetailActivity extends ActivityFrame implements
 	 * 初始化数据
 	 */
 	private void initData() {
-//		if (ContextUtil.getHeith(this) <= 480) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbGrzxJfscDetailActivity.this, 150);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(this) <= 800) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbGrzxJfscDetailActivity.this, 140);
-//			fl_ad.setLayoutParams(linearParams);
-//		}else if (ContextUtil.getHeith(this) <= 860) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//		  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(this, 150);
-//			fl_ad.setLayoutParams(linearParams);
-//		}  else if (ContextUtil.getHeith(this) <= 960) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbGrzxJfscDetailActivity.this, 180);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(this) <= 1280) {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbGrzxJfscDetailActivity.this, 220);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(
-//					DhbGrzxJfscDetailActivity.this, 240);
-//			fl_ad.setLayoutParams(linearParams);
-//		}
 	  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
           .getLayoutParams();
       linearParams.width=ContextUtil.getWidth(DhbGrzxJfscDetailActivity.this);
       linearParams.height = linearParams.width/2;
       fl_ad.setLayoutParams(linearParams);
+      BitMapUtil.getImgOpt(DhbGrzxJfscDetailActivity.this, finalBitmap, mJazzy, R.drawable.os_login_topicon);
 		if (jfscSpListBean != null) {
 			tv_sp_name.setText(jfscSpListBean.getTitle());
 			tv_sp_describe.setText(jfscSpListBean.getSimpleinfo());
@@ -279,7 +232,6 @@ public class DhbGrzxJfscDetailActivity extends ActivityFrame implements
 		if (dots_ll != null) {
 			dots_ll.removeAllViews();
 		}
-		mJazzy = (JazzyViewPager) findViewById(R.id.jazzy_viewpager);
 		mJazzy.setTransitionEffect(TransitionEffect.Standard);
 		view_img = new ArrayList<View>();
 		dots = new ArrayList<View>();
@@ -328,45 +280,7 @@ public class DhbGrzxJfscDetailActivity extends ActivityFrame implements
 					dots.add(dot);
 				}
 			}
-		} else {
-			for (int i = 0; i < adimgs.length; i++) {
-				View view = DhbGrzxJfscDetailActivity.this.getLayoutInflater()
-						.inflate(R.layout.app_ad_item, null);
-				ImageView img = (ImageView) view.findViewById(R.id.img);
-				img.setBackgroundResource(adimgs[i]);
-				img.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-					}
-				});
-				view_img.add(view);
-				if (i == 0) {
-					ImageView dot = new ImageView(
-							DhbGrzxJfscDetailActivity.this);
-					dot.setLayoutParams(ll);
-					dot.setBackgroundResource(R.drawable.app_dot_focused);
-					dot.setPadding(ContextUtil.dip2px(
-							DhbGrzxJfscDetailActivity.this, 1.5f), 0,
-							ContextUtil.dip2px(DhbGrzxJfscDetailActivity.this,
-									1.5f), 0);
-					dots_ll.addView(dot);
-					dots.add(dot);
-				} else {
-					ImageView dot = new ImageView(
-							DhbGrzxJfscDetailActivity.this);
-					dot.setLayoutParams(ll);
-					dot.setPadding(ContextUtil.dip2px(
-							DhbGrzxJfscDetailActivity.this, 1.5f), 0,
-							ContextUtil.dip2px(DhbGrzxJfscDetailActivity.this,
-									1.5f), 0);
-					dot.setBackgroundResource(R.drawable.app_dot_normal);
-					dots_ll.addView(dot);
-					dots.add(dot);
-				}
-			}
-		}
+		} 
 		if (view_img.size() > 0) {
 			mJazzy.setAdapter(new MyJazzyPagerAdapter(view_img, mJazzy));
 			mJazzy.setCurrentItem(0);
@@ -438,9 +352,8 @@ public class DhbGrzxJfscDetailActivity extends ActivityFrame implements
 	 */
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
-			// 根据viewpager里图片的 角标设置当前要显示的图片
-			mJazzy.setCurrentItem(currentItem);
-		}
+		  mJazzy.setCurrentItem(currentItem);
+		};
 	};
 
 	protected void onRestart() {

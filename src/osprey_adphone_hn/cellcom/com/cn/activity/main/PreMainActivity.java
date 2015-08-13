@@ -24,7 +24,6 @@ import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager;
 import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager.TransitionEffect;
 import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.MyJazzyPagerAdapter;
 import p2p.cellcom.com.cn.bean.Account;
-import p2p.cellcom.com.cn.bean.Message;
 import p2p.cellcom.com.cn.db.DataManager;
 import p2p.cellcom.com.cn.db.SharedPreferencesManager;
 import p2p.cellcom.com.cn.global.AccountPersist;
@@ -111,6 +110,7 @@ public class PreMainActivity extends ActivityFrame {
 		getAdv();
 		getCompanyAdv();
 	}
+	
 
 	private void initUM() {
 		// TODO Auto-generated method stub
@@ -768,10 +768,9 @@ public class PreMainActivity extends ActivityFrame {
 	 * 更新广告图片
 	 */
 	private Handler handler = new Handler() {
-		public void handleMessage(Message msg) {
-			// 根据viewpager里图片的 角标设置当前要显示的图片
-			mJazzy.setCurrentItem(currentItem);
-		}
+		public void handleMessage(android.os.Message msg) {
+		  mJazzy.setCurrentItem(currentItem);
+		};
 	};
 
 	@Override
@@ -802,6 +801,9 @@ public class PreMainActivity extends ActivityFrame {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		if (scheduledExecutor != null) {
+          scheduledExecutor.shutdown();
+        }
 		if (finalBitmap != null) {
 			finalBitmap.onDestroy();
 		}

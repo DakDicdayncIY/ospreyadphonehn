@@ -69,10 +69,10 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 	public int getCount() {
 		// TODO Auto-generated method stub
 		int count=list.size();
-		if(count%6==0){
-			return count/6;
+		if(count%8==0){
+			return count/8;
 		}else{
-			return count/6+1;
+			return count/8+1;
 		}
 	}
 
@@ -98,12 +98,16 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 		holder.iv4 = (ImageView) view.findViewById(R.id.iv4);
 		holder.iv5 = (ImageView) view.findViewById(R.id.iv5);
 		holder.iv6 = (ImageView) view.findViewById(R.id.iv6);
+		holder.iv7 = (ImageView) view.findViewById(R.id.iv7);
+		holder.iv8 = (ImageView) view.findViewById(R.id.iv8);
 		holder.tv1=(TextView)view.findViewById(R.id.tv1);
 		holder.tv2=(TextView)view.findViewById(R.id.tv2);
 		holder.tv3=(TextView)view.findViewById(R.id.tv3);
 		holder.tv4=(TextView)view.findViewById(R.id.tv4);
 		holder.tv5=(TextView)view.findViewById(R.id.tv5);
 		holder.tv6=(TextView)view.findViewById(R.id.tv6);
+		holder.tv7=(TextView)view.findViewById(R.id.tv7);
+		holder.tv8=(TextView)view.findViewById(R.id.tv8);
 		
 		holder.ll1=(LinearLayout)view.findViewById(R.id.ll1);
 		holder.ll2=(LinearLayout)view.findViewById(R.id.ll2);
@@ -111,12 +115,17 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 		holder.ll4=(LinearLayout)view.findViewById(R.id.ll4);
 		holder.ll5=(LinearLayout)view.findViewById(R.id.ll5);
 		holder.ll6=(LinearLayout)view.findViewById(R.id.ll6);
+		holder.ll7=(LinearLayout)view.findViewById(R.id.ll7);
+		holder.ll8=(LinearLayout)view.findViewById(R.id.ll8);
 		
-		holder.tvline1=(TextView)view.findViewById(R.id.tvline1);
-		holder.tvline2=(TextView)view.findViewById(R.id.tvline2);
+//		holder.tvline1=(TextView)view.findViewById(R.id.tvline1);
 		holder.vlinetv=(TextView)view.findViewById(R.id.vlinetv);
+		holder.tvline2=(TextView)view.findViewById(R.id.tvline2);
+		holder.tvline3=(TextView)view.findViewById(R.id.tvline3);
 		holder.tvline4=(TextView)view.findViewById(R.id.tvline4);
 		holder.tvline5=(TextView)view.findViewById(R.id.tvline5);
+		holder.tvline6=(TextView)view.findViewById(R.id.tvline6);
+		holder.tvline7=(TextView)view.findViewById(R.id.tvline7);
 		view.setTag(holder);
 		
 		if (ContextUtil.getHeith(context) <= 480) {
@@ -129,6 +138,8 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			holder.iv4.setLayoutParams(linearParams);
 			holder.iv5.setLayoutParams(linearParams);
 			holder.iv6.setLayoutParams(linearParams);
+			holder.iv7.setLayoutParams(linearParams);
+			holder.iv8.setLayoutParams(linearParams);
 		} else if (ContextUtil.getHeith(context) <= 800) {
 			// if(ContextUtil.getWidth(this)<=480)
 			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) holder.iv1
@@ -140,6 +151,8 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			holder.iv4.setLayoutParams(linearParams);
 			holder.iv5.setLayoutParams(linearParams);
 			holder.iv6.setLayoutParams(linearParams);
+			holder.iv7.setLayoutParams(linearParams);
+            holder.iv8.setLayoutParams(linearParams);
 		} else if (ContextUtil.getHeith(context) <= 960) {
 			// if(ContextUtil.getWidth(this)<=480)
 			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) holder.iv1
@@ -151,6 +164,8 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			holder.iv4.setLayoutParams(linearParams);
 			holder.iv5.setLayoutParams(linearParams);
 			holder.iv6.setLayoutParams(linearParams);
+			holder.iv7.setLayoutParams(linearParams);
+            holder.iv8.setLayoutParams(linearParams);
 		} else if (ContextUtil.getHeith(context) <= 1280) {
 			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) holder.iv1
 					.getLayoutParams();
@@ -161,6 +176,8 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			holder.iv4.setLayoutParams(linearParams);
 			holder.iv5.setLayoutParams(linearParams);
 			holder.iv6.setLayoutParams(linearParams);
+			holder.iv7.setLayoutParams(linearParams);
+            holder.iv8.setLayoutParams(linearParams);
 		} else {
 			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) holder.iv1
 					.getLayoutParams();
@@ -171,6 +188,8 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			holder.iv4.setLayoutParams(linearParams);
 			holder.iv5.setLayoutParams(linearParams);
 			holder.iv6.setLayoutParams(linearParams);
+			holder.iv7.setLayoutParams(linearParams);
+            holder.iv8.setLayoutParams(linearParams);
 		}
 		return view;
 	}
@@ -184,7 +203,7 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(context,WebViewActivity.class);
-				intent.putExtra("url", list.get(position*6).getSiteurl());
+				intent.putExtra("url", list.get(position*8).getSiteurl());
 				context.startActivity(intent);
 			}
 		});
@@ -193,9 +212,9 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(list.size()>position*6+1){		
+				if(list.size()>position*8+1){		
 					Intent intent=new Intent(context,WebViewActivity.class);
-					intent.putExtra("url", list.get(position*6+1).getSiteurl());	
+					intent.putExtra("url", list.get(position*8+1).getSiteurl());	
 					context.startActivity(intent);
 				}
 			}
@@ -205,9 +224,9 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(list.size()>position*6+2){	
+				if(list.size()>position*8+2){	
 					Intent intent=new Intent(context,WebViewActivity.class);
-					intent.putExtra("url", list.get(position*6+2).getSiteurl());
+					intent.putExtra("url", list.get(position*8+2).getSiteurl());
 					context.startActivity(intent);
 				}
 			}
@@ -217,9 +236,9 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(list.size()>position*6+3){	
+				if(list.size()>position*8+3){	
 					Intent intent=new Intent(context,WebViewActivity.class);
-					intent.putExtra("url", list.get(position*6+3).getSiteurl());
+					intent.putExtra("url", list.get(position*8+3).getSiteurl());
 					context.startActivity(intent);
 				}
 			}
@@ -229,9 +248,9 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(list.size()>position*6+4){	
+				if(list.size()>position*8+4){	
 					Intent intent=new Intent(context,WebViewActivity.class);
-					intent.putExtra("url", list.get(position*6+4).getSiteurl());
+					intent.putExtra("url", list.get(position*8+4).getSiteurl());
 					context.startActivity(intent);
 				}
 			}
@@ -241,29 +260,56 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(list.size()>position*6+5){	
+				if(list.size()>position*8+5){	
 					Intent intent=new Intent(context,WebViewActivity.class);
-					intent.putExtra("url", list.get(position*6+5).getSiteurl());
+					intent.putExtra("url", list.get(position*8+5).getSiteurl());
 					context.startActivity(intent);
 				}
 			}
 		});
+		holder.ll7.setOnClickListener(new OnClickListener() {
+
+          @Override
+          public void onClick(View v) {
+              // TODO Auto-generated method stub
+              if(list.size()>position*8+6){   
+                  Intent intent=new Intent(context,WebViewActivity.class);
+                  intent.putExtra("url", list.get(position*8+6).getSiteurl());
+                  context.startActivity(intent);
+              }
+          }
+      });
+		holder.ll8.setOnClickListener(new OnClickListener() {
+
+          @Override
+          public void onClick(View v) {
+              // TODO Auto-generated method stub
+              if(list.size()>position*8+7){   
+                  Intent intent=new Intent(context,WebViewActivity.class);
+                  intent.putExtra("url", list.get(position*8+7).getSiteurl());
+                  context.startActivity(intent);
+              }
+          }
+      });
 	}
 
 	public void initData(View view, final int position) {
 		// TODO Auto-generated method stub
 		final Holder holder = (Holder) view.getTag();
-		fb.display(holder.iv1, list.get(position*6).getLogourl());
-		holder.tv1.setText(list.get(position*6).getTitle());
-		holder.tvline1.setVisibility(View.GONE);
+		fb.display(holder.iv1, list.get(position*8).getLogourl());
+		holder.tv1.setText(list.get(position*8).getTitle());
+//		holder.tvline1.setVisibility(View.GONE);
 		holder.tvline2.setVisibility(View.GONE);
+		holder.tvline3.setVisibility(View.GONE);
 		holder.vlinetv.setVisibility(View.GONE);
 		holder.tvline4.setVisibility(View.GONE);
 		holder.tvline5.setVisibility(View.GONE);
-		if(list.size()>position*6+1){			
-			fb.display(holder.iv2, list.get(position*6+1).getLogourl());
-			holder.tv2.setText(list.get(position*6+1).getTitle());
-			holder.tvline1.setVisibility(View.VISIBLE);
+		holder.tvline6.setVisibility(View.GONE);
+		holder.tvline7.setVisibility(View.GONE);
+		if(list.size()>position*8+1){			
+			fb.display(holder.iv2, list.get(position*8+1).getLogourl());
+			holder.tv2.setText(list.get(position*8+1).getTitle());
+			holder.tvline2.setVisibility(View.VISIBLE);
 			holder.ll2.setBackgroundResource(R.drawable.app_base_selector1);
 		}else{
 			holder.tvline2.setVisibility(View.GONE);
@@ -272,10 +318,10 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			holder.tvline5.setVisibility(View.GONE);
 			holder.ll2.setBackgroundResource(R.color.transparent);
 		}
-		if(list.size()>position*6+2){			
-			fb.display(holder.iv3, list.get(position*6+2).getLogourl());
-			holder.tv3.setText(list.get(position*6+2).getTitle());
-			holder.tvline1.setVisibility(View.VISIBLE);
+		if(list.size()>position*8+2){			
+			fb.display(holder.iv3, list.get(position*8+2).getLogourl());
+			holder.tv3.setText(list.get(position*8+2).getTitle());
+			holder.tvline3.setVisibility(View.VISIBLE);
 			holder.tvline2.setVisibility(View.VISIBLE);
 			holder.ll3.setBackgroundResource(R.drawable.app_base_selector1);
 		}else{
@@ -284,10 +330,10 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			holder.tvline5.setVisibility(View.GONE);
 			holder.ll3.setBackgroundResource(R.color.transparent);
 		}
-		if(list.size()>position*6+3){
-			fb.display(holder.iv4, list.get(position*6+3).getLogourl());
-			holder.tv4.setText(list.get(position*6+3).getTitle());
-			holder.tvline1.setVisibility(View.VISIBLE);
+		if(list.size()>position*8+3){
+			fb.display(holder.iv4, list.get(position*8+3).getLogourl());
+			holder.tv4.setText(list.get(position*8+3).getTitle());
+			holder.tvline3.setVisibility(View.VISIBLE);
 			holder.tvline2.setVisibility(View.VISIBLE);
 			holder.vlinetv.setVisibility(View.VISIBLE);
 			holder.ll4.setBackgroundResource(R.drawable.app_base_selector1);
@@ -296,22 +342,22 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 			holder.tvline5.setVisibility(View.GONE);
 			holder.ll4.setBackgroundResource(R.color.transparent);
 		}
-		if(list.size()>position*6+4){
-			fb.display(holder.iv5, list.get(position*6+4).getLogourl());
-			holder.tv5.setText(list.get(position*6+4).getTitle());
-			holder.tvline1.setVisibility(View.VISIBLE);
+		if(list.size()>position*8+4){
+			fb.display(holder.iv5, list.get(position*8+4).getLogourl());
+			holder.tv5.setText(list.get(position*8+4).getTitle());
+			holder.tvline3.setVisibility(View.VISIBLE);
 			holder.tvline2.setVisibility(View.VISIBLE);
-			holder.vlinetv.setVisibility(View.VISIBLE);
 			holder.tvline4.setVisibility(View.VISIBLE);
+			holder.vlinetv.setVisibility(View.VISIBLE);
 			holder.ll5.setBackgroundResource(R.drawable.app_base_selector1);
 		}else{
 			holder.tvline5.setVisibility(View.GONE);
 			holder.ll5.setBackgroundResource(R.color.transparent);
 		}
-		if(list.size()>position*6+5){
-			fb.display(holder.iv6, list.get(position*6+5).getLogourl());
-			holder.tv6.setText(list.get(position*6+5).getTitle());
-			holder.tvline1.setVisibility(View.VISIBLE);
+		if(list.size()>position*8+5){
+			fb.display(holder.iv6, list.get(position*8+5).getLogourl());
+			holder.tv6.setText(list.get(position*8+5).getTitle());
+			holder.tvline3.setVisibility(View.VISIBLE);
 			holder.tvline2.setVisibility(View.VISIBLE);
 			holder.vlinetv.setVisibility(View.VISIBLE);
 			holder.tvline4.setVisibility(View.VISIBLE);
@@ -320,12 +366,39 @@ public class MainAdvPagerAdapter extends PagerAdapter {
 		}else{
 			holder.ll6.setBackgroundResource(R.color.transparent);
 		}
+		if(list.size()>position*8+6){
+          fb.display(holder.iv7, list.get(position*8+6).getLogourl());
+          holder.tv7.setText(list.get(position*8+6).getTitle());
+          holder.tvline3.setVisibility(View.VISIBLE);
+          holder.tvline2.setVisibility(View.VISIBLE);
+          holder.vlinetv.setVisibility(View.VISIBLE);
+          holder.tvline4.setVisibility(View.VISIBLE);
+          holder.tvline5.setVisibility(View.VISIBLE);
+          holder.tvline6.setVisibility(View.VISIBLE);
+          holder.ll7.setBackgroundResource(R.drawable.app_base_selector1);
+      }else{
+          holder.ll7.setBackgroundResource(R.color.transparent);
+      }
+		if(list.size()>position*8+7){
+          fb.display(holder.iv7, list.get(position*8+7).getLogourl());
+          holder.tv8.setText(list.get(position*8+7).getTitle());
+          holder.tvline3.setVisibility(View.VISIBLE);
+          holder.tvline2.setVisibility(View.VISIBLE);
+          holder.vlinetv.setVisibility(View.VISIBLE);
+          holder.tvline4.setVisibility(View.VISIBLE);
+          holder.tvline5.setVisibility(View.VISIBLE);
+          holder.tvline6.setVisibility(View.VISIBLE);
+          holder.tvline7.setVisibility(View.VISIBLE);
+          holder.ll8.setBackgroundResource(R.drawable.app_base_selector1);
+      }else{
+          holder.ll8.setBackgroundResource(R.color.transparent);
+      }
 	}
 
 	public class Holder {
-		TextView tv1,tv2,tv3,tv4,tv5,tv6;
-		ImageView iv1, iv2, iv3, iv4, iv5, iv6;
-		LinearLayout ll1,ll2,ll3,ll4,ll5,ll6;
-		TextView tvline1,tvline2,vlinetv,tvline4,tvline5;
+		TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8;
+		ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8;
+		LinearLayout ll1,ll2,ll3,ll4,ll5,ll6,ll7,ll8;
+		TextView tvline2,tvline3,vlinetv,tvline4,tvline5,tvline6,tvline7;
 	}
 }

@@ -151,7 +151,7 @@
                         android:layout_centerVertical="true"
                         android:layout_margin="5dp"
                         android:layout_toRightOf="@id/tv_hf"
-                        android:text="￥0"
+                        android:text="0"
                         android:textColor="@color/green" />
                 </RelativeLayout>
 

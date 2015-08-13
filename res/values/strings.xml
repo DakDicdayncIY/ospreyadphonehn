@@ -124,7 +124,7 @@
     <!-- welcome -->
     <string name="hsc_welcom_login">登录</string>
     <string name="hsc_welcom_loginrememberpwdtext">记住密码</string>
-    <string name="hsc_welcom_reg">免费注册</string>
+    <string name="hsc_welcom_reg">新用户注册</string>
     <string name="hsc_welcom_register">新用户注册</string>
     <string name="hsc_welcom_registeryzm">请输入你手机收到的6位数验证码</string>
     <string name="hsc_welcom_registersubmit">确认登录</string>

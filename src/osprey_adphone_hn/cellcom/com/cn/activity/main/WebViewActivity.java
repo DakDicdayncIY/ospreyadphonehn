@@ -2,6 +2,7 @@ package osprey_adphone_hn.cellcom.com.cn.activity.main;
 
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.base.ActivityFrame;
+import osprey_adphone_hn.cellcom.com.cn.util.CommonUtils;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -180,6 +181,9 @@ public class WebViewActivity extends ActivityFrame {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		if (CommonUtils.getCurrentChildMenuActivity().equals("hyy")) {
+          CommonUtils.setCurrentChildMenuActivity("");
+        }
 		if(animationDrawable!=null){
 			animationDrawable.stop();
 		}

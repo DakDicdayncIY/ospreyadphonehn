@@ -91,7 +91,8 @@
                 android:id="@+id/iv_af_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/os_jsh_af_info_selector"
+                android:contentDescription="@null"
+                android:background="@drawable/os_jsh_yh_info_selector"
                 android:scaleType="fitCenter" />
 
             <TextView
@@ -100,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:text="安防商城"
+                android:text="优惠信息"
                 android:textSize="13dp" />
         </LinearLayout>
         

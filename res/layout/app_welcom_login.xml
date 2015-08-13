@@ -138,31 +138,26 @@
                 android:orientation="vertical" >
 
                 <Button
-                    android:id="@+id/loginbtn"
-                    style="@style/app_big_textStyle1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/app_login_btnbg"
-                    android:gravity="center"
-                    android:minHeight="45dp"
-                    android:text="@string/hsc_welcom_login" />
-
-                <Button
                     android:id="@+id/registerbtn"
                     style="@style/app_big_textStyle4"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/app_register_btnbg"
                     android:gravity="center"
                     android:minHeight="45dp"
                     android:text="@string/hsc_welcom_reg" />
+                <Button
+                    android:id="@+id/loginbtn"
+                    style="@style/app_big_textStyle4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/app_register_btnbg"
+                    android:gravity="center"
+                    android:minHeight="45dp"
+                    android:text="@string/hsc_welcom_login" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

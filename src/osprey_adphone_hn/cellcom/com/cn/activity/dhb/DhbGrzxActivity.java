@@ -44,7 +44,6 @@ import cellcom.com.cn.net.base.CellComHttpInterface;
  */
 public class DhbGrzxActivity extends Fragment {
   private Activity act;
-  private RelativeLayout rl_content;
   private ImageView video_img;
   private TextView nametv;
   private TextView idtv;
@@ -71,17 +70,6 @@ public class DhbGrzxActivity extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View v = null;
-    // if (android.os.Build.VERSION.SDK_INT < 14) {
-    // v = inflater.inflate(R.layout.os_dhb_grzx_activity, container,
-    // false);
-    // initView(v, savedInstanceState);
-    // initListener();
-    // } else {
-    // v = inflater.inflate(R.layout.os_dhb_grzx_activity1, container,
-    // false);
-    // initView1(v, savedInstanceState);
-    // initListener1();
-    // }
     v = inflater.inflate(R.layout.os_dhb_grzx_activity1, container, false);
     initView1(v, savedInstanceState);
     initViewData();
@@ -123,8 +111,6 @@ public class DhbGrzxActivity extends Fragment {
    * 初始化控件
    */
   private void initView(View v, Bundle savedInstanceState) {
-    rl_content = (RelativeLayout) v.findViewById(R.id.rl_content);
-    // rl_content.setBackgroundColor(getResources().getColor(R.color.white));
     tv_fgg = (TextView) v.findViewById(R.id.tv_fgg);
     tv_yyk = (TextView) v.findViewById(R.id.tv_yyk);
     tv_jfk = (TextView) v.findViewById(R.id.tv_jfk);

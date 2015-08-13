@@ -53,7 +53,7 @@ public class DhbContactActivity extends FragmentBase {
 	private AsyncQueryHandler asyncQueryHandler; // 异步查询数据库类对象
 	private QuickAlphabeticBar alphabeticBar; // 快速索引条
 	private EditText querycontacet;
-	private ImageButton queryCityExit;
+//	private ImageButton queryCityExit;
 	private Filter mFilter;
 	private Map<Integer, ContactBean> contactIdMap = null;
 	private boolean addData = false;
@@ -96,7 +96,7 @@ public class DhbContactActivity extends FragmentBase {
 		contactList = (ListView) v.findViewById(R.id.contact_list);
 		alphabeticBar = (QuickAlphabeticBar) v.findViewById(R.id.fast_scroller);
 		querycontacet = (EditText) v.findViewById(R.id.querycontacet);
-		queryCityExit = (ImageButton) v.findViewById(R.id.queryCityExit);
+//		queryCityExit = (ImageButton) v.findViewById(R.id.queryCityExit);
 	}
 
 	/**
@@ -196,11 +196,11 @@ public class DhbContactActivity extends FragmentBase {
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 				// TODO Auto-generated method stub
-				if (TextUtils.isEmpty(s)) {
-					queryCityExit.setVisibility(View.GONE);
-				} else {
-					queryCityExit.setVisibility(View.VISIBLE);
-				}
+//				if (TextUtils.isEmpty(s)) {
+//					queryCityExit.setVisibility(View.GONE);
+//				} else {
+//					queryCityExit.setVisibility(View.VISIBLE);
+//				}
 				doAfterTextChanged();
 			}
 

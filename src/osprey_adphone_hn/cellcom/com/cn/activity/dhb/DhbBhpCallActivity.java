@@ -317,9 +317,8 @@ public class DhbBhpCallActivity extends Activity {
 	 */
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
-			// 根据viewpager里图片的 角标设置当前要显示的图片
-			mJazzy.setCurrentItem(currentItem);
-		}
+		  mJazzy.setCurrentItem(currentItem);
+		};
 	};
 
 	protected void onPause() {

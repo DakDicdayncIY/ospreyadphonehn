@@ -73,8 +73,8 @@ public class DhbGrzxZhczActivity extends ActivityFrame {
 	 */
 	private void initView() {
 		((TextView) findViewById(R.id.tvTopTitle)).setText(getResources().getString(R.string.os_dhb_grzx_zhcz));
-		tv_title1 = (TextView) findViewById(R.id.tv_title1);
-		tv_title4 = (TextView) findViewById(R.id.tv_title4);
+		tv_title1 = (TextView) findViewById(R.id.tv_title4);
+		tv_title4 = (TextView) findViewById(R.id.tv_title1);
 		llAppSys=(LinearLayout)findViewById(R.id.llAppSys);
 	}
 
@@ -141,8 +141,8 @@ public class DhbGrzxZhczActivity extends ActivityFrame {
 		cursor.setImageMatrix(matrix);// 设置动画初始位置
 		dhbGrzxXjczFragment = new DhbGrzxXjczFragment();
 		dhbGrzxTykczFragment = new DhbGrzxTykczFragment();
-		mFragments.add(dhbGrzxXjczFragment);
 		mFragments.add(dhbGrzxTykczFragment);
+		mFragments.add(dhbGrzxXjczFragment);
 		mPager = (ViewPager) findViewById(R.id.vPager);
 		mPager.setOffscreenPageLimit(3);
 		mPager.setAdapter(new MyFragmentPagerAdapter(

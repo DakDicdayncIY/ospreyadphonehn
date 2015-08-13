@@ -74,7 +74,7 @@
          >
         <meta-data
             android:name="service"
-            android:value="hn" />
+            android:value="hn_release" />
         <meta-data
             android:name="flow"
             android:resource="@array/flowset" />
