@@ -5,9 +5,11 @@ import p2p.cellcom.com.cn.db.SharedPreferencesManager;
 import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.widget.RemoteViews;
+
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
+import com.baidu.mapapi.SDKInitializer;
 
 public class MyApp extends Application {
 	public static final String MAIN_SERVICE_START = "p2p.cellcom.com.cn.service.MAINSERVICE";
@@ -21,9 +23,14 @@ public class MyApp extends Application {
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
+		// 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
+		SDKInitializer.initialize(this);
 		app = this;
 		super.onCreate();
 		isActive = true;
+
+		PushManager.startWork(getApplicationContext(),
+				PushConstants.LOGIN_TYPE_API_KEY, "TGBGeiev9mNRlWno7K2QhdXr");
 	}
 
 	public NotificationManager getNotificationManager() {
@@ -39,39 +46,39 @@ public class MyApp extends Application {
 	public void showNotification() {
 		boolean isShowNotify = SharedPreferencesManager.getInstance()
 				.getIsShowNotify(this);
-//		if (isShowNotify) {
-//			mNotificationManager = getNotificationManager();
-//			mNotification = new Notification();
-//
-//			long when = System.currentTimeMillis();
-//			mNotification = new Notification(R.drawable.ic_launcher, this
-//					.getResources().getString(R.string.app_name), when);
-//
-//			// 放置在"正在运行"栏目中
-//			mNotification.flags = Notification.FLAG_ONGOING_EVENT;
-//
-//			RemoteViews contentView = new RemoteViews(getPackageName(),
-//					R.layout.notify_status_bar);
-//			contentView.setImageViewResource(R.id.icon, R.drawable.ic_launcher);
-//			contentView.setTextViewText(
-//					R.id.title,
-//					this.getResources().getString(R.string.app_name)
-//							+ " "
-//							+ this.getResources().getString(
-//									R.string.running_in_the_background));
-//			// contentView.setTextViewText(R.id.text, "");
-//			// contentView.setLong(R.id.time, "setTime", when);
-//			// 指定个性化视图
-//			mNotification.contentView = contentView;
-//
-//			Intent intent = new Intent(this, ForwardActivity.class);
-//			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//			PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-//					intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//			// 指定内容意图
-//			mNotification.contentIntent = contentIntent;
-//			mNotificationManager.notify(R.string.app_name, mNotification);
-//		}
+		// if (isShowNotify) {
+		// mNotificationManager = getNotificationManager();
+		// mNotification = new Notification();
+		//
+		// long when = System.currentTimeMillis();
+		// mNotification = new Notification(R.drawable.ic_launcher, this
+		// .getResources().getString(R.string.app_name), when);
+		//
+		// // 放置在"正在运行"栏目中
+		// mNotification.flags = Notification.FLAG_ONGOING_EVENT;
+		//
+		// RemoteViews contentView = new RemoteViews(getPackageName(),
+		// R.layout.notify_status_bar);
+		// contentView.setImageViewResource(R.id.icon, R.drawable.ic_launcher);
+		// contentView.setTextViewText(
+		// R.id.title,
+		// this.getResources().getString(R.string.app_name)
+		// + " "
+		// + this.getResources().getString(
+		// R.string.running_in_the_background));
+		// // contentView.setTextViewText(R.id.text, "");
+		// // contentView.setLong(R.id.time, "setTime", when);
+		// // 指定个性化视图
+		// mNotification.contentView = contentView;
+		//
+		// Intent intent = new Intent(this, ForwardActivity.class);
+		// intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		// PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+		// intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		// // 指定内容意图
+		// mNotification.contentIntent = contentIntent;
+		// mNotificationManager.notify(R.string.app_name, mNotification);
+		// }
 	}
 
 	public void hideNotification() {

@@ -2,13 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="osprey_adphone_hn.cellcom.com.cn"
     android:installLocation="preferExternal"
-    android:versionCode="1"
-    android:versionName="1.1" >
+    android:versionCode="3"
+    android:versionName="3.1" >
 
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="19" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -30,7 +30,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -40,24 +40,25 @@
     <!-- 获取手机设备号权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <!-- 获取手机摄像头权限-->
+    <!-- 获取手机摄像头权限 -->
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <!-- 读联系人权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
-	<uses-permission android:name="android.permission.READ_CALL_LOG"/>
-	<uses-permission android:name="android.permission.WRITE_CONTACTS"/>
-	<!-- 视频 -->	
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- 视频 -->
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-	<uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" /> 
-	<!-- <uses-permission android:name="android.permission.CALL_PRIVILEGED" />    -->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <!-- <uses-permission android:name="android.permission.CALL_PRIVILEGED" /> -->
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -66,12 +67,21 @@
         android:smallScreens="true" />
 
     <application
+        android:name="p2p.cellcom.com.cn.global.MyApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:name="p2p.cellcom.com.cn.global.MyApp"
-        android:theme="@style/AppTheme"
-         >
+        android:theme="@style/AppTheme" >
+
+        <!-- 在百度开发者中心查询应用的API Key -->
+        <meta-data
+            android:name="api_key"
+            android:value="TGBGeiev9mNRlWno7K2QhdXr" />
+
+        <!-- 百度地图api_key -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="kwBKXhAdG0p2NXmPAG78uHG0" />
         <meta-data
             android:name="service"
             android:value="hn_release" />
@@ -81,7 +91,7 @@
         <meta-data
             android:name="sysparamflow"
             android:value="yyw_getsysdata" />
-        
+
         <!-- Caution! Do not change this app key. It is only for demo usage. -->
         <meta-data
             android:name="UMENG_APPKEY"
@@ -91,16 +101,17 @@
             android:name="UMENG_CHANNEL"
             android:value="Umeng" >
         </meta-data>
+
         <service android:name="osprey_adphone_hn.cellcom.com.cn.service.IndexService" >
         </service>
+
         <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.welcome.WelcomeActivity"
-            android:label="@string/app_name" 
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/AppMainTheme"
-            >
+            android:windowSoftInputMode="adjustPan|stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -115,7 +126,7 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
-        
+
         <!-- welcome -->
         <activity
             android:name="osprey.cellcom.com.cn.activity.welcome.ForgetPwdActivity"
@@ -189,473 +200,573 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbFragmentActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbBhpActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbBhpCallActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbContactActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
+
         <!-- 商业中心 -->
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxKykActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxQhbActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxQhbLsActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxQhbDetailActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxKykDetailActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.AdShowActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.SysAdShowActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.zxing.activity.CaptureActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.zxing.activity.CaptureAddActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxShakeListActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxShakeActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.YyyAdShowActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxZyzActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxTjspDetailActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
+
         <!-- 个人中心 -->
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbGrzxActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbGrzxZhczActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbGrzxHfkActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbGrzxYykActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbGrzxJfkActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbGrzxJfscActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbGrzxJfscDetailActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
+
         <!-- 家生活 -->
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshFragmentActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshInfoActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjAddOnlineActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjAddDeviceActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjSetActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjBjSetActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshModifyYxActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjLxSetActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjAreaSetActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjTimeSetActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjNetSetActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
-            android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshMonitorPlayActivity"            
-            android:windowSoftInputMode="adjustPan|stateHidden"
+        <activity
+            android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshMonitorPlayActivity"
+            android:configChanges="locale|orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="sensor"
-            android:configChanges="locale|orientation|keyboardHidden|navigation|screenSize" >            
-			<intent-filter>
-				<category android:name="android.intent.category.DEFAULT" />
-			</intent-filter>
+            android:windowSoftInputMode="adjustPan|stateHidden" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshSafetyInfoActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.SafetyInfoAlarmPicShow"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWgInfoActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.CallActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshPlayBackListActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="locale|orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshPlayBackListDayActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="locale|orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjEditActivity"
             android:configChanges="locale|orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.PlayBackActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="locale|orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjWifiAddActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjScanWifisActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjEwmActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
-        </activity> 
-        <activity 
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
+        </activity>
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjSearchDevicesActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshInfoZpjFragmentActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshInfoZpxxGallery"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-		<activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshInfoSnapShotListActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-		<activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshInfoRecordVideoListActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.AlarmActivity" 
-            android:windowSoftInputMode="stateHidden"
-			android:screenOrientation="portrait"
-			android:configChanges="locale|orientation"
-			android:theme="@android:style/Theme.Translucent.NoTitleBar"
-			android:label="@string/app_name">
-			<intent-filter>
-				<category android:name="android.intent.category.DEFAULT" />
-			</intent-filter>
-		</activity>		
-		<activity 
+        <activity
+            android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.AlarmActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjLdssIntroduceActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
-        </activity>	
-		<activity 
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
+        </activity>
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjLdssSetActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshWdjLdssSendActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-		
-		<activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshModifyPwdActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-		
+
         <!-- 车生活 -->
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.csh.CshFragmentActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.csh.CshWdcActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.csh.CshFwxxActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.csh.ClxxActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 个人设置 -->
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.setting.AboutActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.setting.DhzxActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.setting.DhzxRuleActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.setting.GrzlActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.setting.GwcActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.setting.WdddActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.setting.HyyActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        <activity 
+        <activity
             android:name="osprey_adphone_hn.cellcom.com.cn.activity.setting.ModifyPwdActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
-        
-		<service android:name="p2p.cellcom.com.cn.service.MainService">
-		    <intent-filter>
-		        <action android:name="p2p.cellcom.com.cn.service.MAINSERVICE"/>
-		    </intent-filter>
-		</service>
-         <service
+        <activity
+            android:name=".activity.csh.CshAddData"
+            android:label="@string/title_activity_csh_add_data"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".activity.csh.CshAddDataVehicleDefault"
+            android:label="@string/title_activity_csh_add_data" >
+        </activity>
+        <activity
+            android:name=".activity.csh.CshAddVINDistinguish"
+            android:label="@string/title_activity_csh_add_vindistinguish" >
+        </activity>
+        <activity
+            android:name=".activity.csh.CshVINCode"
+            android:label="@string/title_activity_csh_vincode" >
+        </activity>
+        <activity
+            android:name=".activity.csh.CshSzActivity"
+            android:label="@string/title_activity_csh_sz" >
+        </activity>
+        <activity
+            android:name=".activity.csh.CshSzQZPZActivity"
+            android:label="@string/title_activity_csh_sz_qzpz" >
+        </activity>
+        <activity
+            android:name=".activity.csh.CshPhysicalExaminationActivity"
+            android:label="@string/title_activity_csh_physical_examination" >
+        </activity>
+        <activity
+            android:name="com.cnlaunch.golo.bluetooth.activity.DeviceListActivity"
+            android:label="蓝牙列表界面" />
+        <activity
+            android:name=".activity.csh.CshExaminationReport"
+            android:label="@string/title_activity_csh_examination_report" >
+        </activity>
+        <activity
+            android:name=".activity.csh.CshElectronicFenceActivity"
+            android:label="@string/title_activity_csh_electronic_fence" >
+        </activity>
+        <activity android:name=".activity.csh.CshExaminationReportActivity" >
+        </activity>
+        <activity
+            android:name=".activity.csh.CshDHActivity"
+            android:label="@string/title_activity_csh_dh" >
+        </activity>
+        <activity
+            android:name="osprey_adphone_hn.cellcom.com.cn.activity.csh.CshSFActivtiy"
+            android:label="@string/title_activity_csh_sfactivtiy" >
+        </activity>
+
+        <service
+            android:name="com.baidu.android.pushservice.PushService"
+            android:exported="true"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
+            </intent-filter>
+        </service>
+        <!-- 4.4版本新增的CommandService声明，提升小米和魅族手机上的实际推送到达率 -->
+        <!-- 用于接收系统消息以保证PushService正常运行 -->
+        <receiver
+            android:name="com.baidu.android.pushservice.PushServiceReceiver"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+                <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+                <!-- 以下四项为可选的action声明，可大大提高service存活率和消息到达速度 -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <!-- Push服务接收客户端发送的各种请求 -->
+        <receiver
+            android:name="com.baidu.android.pushservice.RegistrationReceiver"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.METHOD" />
+                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="osprey_adphone_hn.cellcom.com.cn.activity.csh.MyPushMessageReceiver" >
+            <intent-filter>
+
+                <!-- 接收push消息 -->
+                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
+                <!-- 接收bind、setTags等method的返回结果 -->
+                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+                <!-- 接收通知点击事件，和通知自定义内容 -->
+                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.baidu.android.pushservice.PushService"
+            android:exported="true"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
+            </intent-filter>
+        </service>
+        <!-- 4.4版本新增的CommandService声明，提升小米和魅族手机上的实际推送到达率 -->
+        <service
+            android:name="com.baidu.android.pushservice.CommandService"
+            android:exported="true" />
+        <service android:name="p2p.cellcom.com.cn.service.MainService" >
+            <intent-filter>
+                <action android:name="p2p.cellcom.com.cn.service.MAINSERVICE" />
+            </intent-filter>
+        </service>
+        <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" >
         </service>
     </application>
+
 </manifest>

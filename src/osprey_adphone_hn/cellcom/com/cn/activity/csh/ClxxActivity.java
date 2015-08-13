@@ -97,6 +97,7 @@ public class ClxxActivity extends ActivityFrame implements
 	private JfscSpTypeAdapter sptype_adapter;
 	private List<JfscSpType> jfscSpTypeList = new ArrayList<JfscSpType>();
 	private CitySheet citySheet;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -180,7 +181,7 @@ public class ClxxActivity extends ActivityFrame implements
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(!isEdit){					
+				if (!isEdit) {
 					xb_popup.showAsDropDown(xbet, 0, 1, xbet.getWidth(),
 							LayoutParams.WRAP_CONTENT);
 				}
@@ -192,10 +193,10 @@ public class ClxxActivity extends ActivityFrame implements
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(!isEdit){						
+				if (!isEdit) {
 					citySheet.showSheet(ClxxActivity.this, sfdqet);
 					citySheet.setSheetCallBack(new SheetCallBack() {
-						
+
 						@Override
 						public void callback(String addr) {
 							// TODO Auto-generated method stub
@@ -233,10 +234,10 @@ public class ClxxActivity extends ActivityFrame implements
 					ncet.setBackgroundColor(getResources().getColor(
 							R.color.grzlinput));
 
-//					zhet.setFocusable(true);
-//					zhet.setFocusableInTouchMode(true);
-//					zhet.setBackgroundColor(getResources().getColor(
-//							R.color.grzlinput));
+					// zhet.setFocusable(true);
+					// zhet.setFocusableInTouchMode(true);
+					// zhet.setBackgroundColor(getResources().getColor(
+					// R.color.grzlinput));
 					xbet.setClickable(true);
 					xbet.setFocusable(true);
 					xbet.setFocusableInTouchMode(true);
@@ -278,6 +279,7 @@ public class ClxxActivity extends ActivityFrame implements
 			}
 		});
 	}
+
 	private void xgGrzlTj() {
 		String ncettxt = ncet.getText().toString();
 		String xbettxt = xbet.getText().toString();
@@ -290,39 +292,40 @@ public class ClxxActivity extends ActivityFrame implements
 			ShowMsg("请输入昵称");
 			return;
 		}
-//		if (TextUtils.isEmpty(xbettxt)) {
-//			ShowMsg("请输入昵称");
-//			return;
-//		}
+		// if (TextUtils.isEmpty(xbettxt)) {
+		// ShowMsg("请输入昵称");
+		// return;
+		// }
 		if (TextUtils.isEmpty(shrettxt)) {
-//			ShowMsg("请输入收货人");
-//			return;
-			shrettxt="";
+			// ShowMsg("请输入收货人");
+			// return;
+			shrettxt = "";
 		}
 		if (TextUtils.isEmpty(lxdhettxt)) {
-//			ShowMsg("请输入联系电话");
-//			return;
-			lxdhettxt="";
+			// ShowMsg("请输入联系电话");
+			// return;
+			lxdhettxt = "";
 		}
-		if (!TextUtils.isEmpty(lxdhettxt)&&
-				!RegExpValidator.IsHandset(lxdhettxt)&&!RegExpValidator.IsTelephone(lxdhettxt)) {
+		if (!TextUtils.isEmpty(lxdhettxt)
+				&& !RegExpValidator.IsHandset(lxdhettxt)
+				&& !RegExpValidator.IsTelephone(lxdhettxt)) {
 			ShowMsg("联系号码格式错误");
 			return;
 		}
 		if (TextUtils.isEmpty(sfdqettxt)) {
-//			ShowMsg("请输入省份地区");
-//			return;
-			sfdqettxt="";
+			// ShowMsg("请输入省份地区");
+			// return;
+			sfdqettxt = "";
 		}
 		if (TextUtils.isEmpty(xxdzettxt)) {
-//			ShowMsg("请输入详细地址");
-//			return;
-			xxdzettxt="";
+			// ShowMsg("请输入详细地址");
+			// return;
+			xxdzettxt = "";
 		}
 		if (TextUtils.isEmpty(yzbmettxt)) {
-//			ShowMsg("请输入邮政编码");
-//			return;
-			yzbmettxt="";
+			// ShowMsg("请输入邮政编码");
+			// return;
+			yzbmettxt = "";
 		}
 		xgGrzl(ncettxt.trim(), xbettxt.trim(), shrettxt.trim(),
 				lxdhettxt.trim(), sfdqettxt.trim(), xxdzettxt.trim(),
@@ -419,10 +422,12 @@ public class ClxxActivity extends ActivityFrame implements
 							return;
 						}
 						ShowMsg("修改成功");
-						if (file.exists()) {							
+						if (file.exists()) {
 							file.delete();
 						}
-						SharepreferenceUtil.write(ClxxActivity.this, SharepreferenceUtil.fileName, "username", username);
+						SharepreferenceUtil.write(ClxxActivity.this,
+								SharepreferenceUtil.fileName, "username",
+								username);
 						setResult(RESULT_OK, getIntent());
 						ClxxActivity.this.finish();
 					}
@@ -728,7 +733,7 @@ public class ClxxActivity extends ActivityFrame implements
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
-		if (keyCode == KeyEvent.KEYCODE_BACK&&!isEdit) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && !isEdit) {
 			ShowAlertDialog(
 					this.getResources().getString(R.string.os_dhb_grzx_wxts),
 					this.getResources().getString(R.string.os_dhb_grzx_sfbcxg),
@@ -739,8 +744,8 @@ public class ClxxActivity extends ActivityFrame implements
 							// TODO Auto-generated method stub
 							xgGrzlTj();
 						}
-					},new MyDialogInterface() {
-						
+					}, new MyDialogInterface() {
+
 						@Override
 						public void onClick(DialogInterface dialog) {
 							// TODO Auto-generated method stub

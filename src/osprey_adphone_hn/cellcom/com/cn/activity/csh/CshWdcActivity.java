@@ -1,12 +1,17 @@
 package osprey_adphone_hn.cellcom.com.cn.activity.csh;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONObject;
+
 import net.tsz.afinal.FinalBitmap;
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.base.ActivityBase.MyDialogInterface;
 import osprey_adphone_hn.cellcom.com.cn.activity.base.FragmentBase;
@@ -25,8 +30,12 @@ import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager.Tra
 import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.MyJazzyPagerAdapter;
 import p2p.cellcom.com.cn.bean.Message;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -49,6 +58,7 @@ import cellcom.com.cn.net.CellComAjaxHttp;
 import cellcom.com.cn.net.CellComAjaxParams;
 import cellcom.com.cn.net.CellComAjaxResult;
 import cellcom.com.cn.net.base.CellComHttpInterface;
+import cellcom.com.cn.util.MD5;
 
 /**
  * 我的车
@@ -127,18 +137,26 @@ public class CshWdcActivity extends FragmentBase {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-//				ShowAlertDialog("温馨提示", "此功能需要添加车辆数据支持，是否立即添加",
-//						new MyDialogInterface() {
-//
-//							@Override
-//							public void onClick(DialogInterface dialog) {
-//								// TODO Auto-generated method stub
-//								dialog.dismiss();
-////								OpenActivity(ClxxActivity.class);
-//							}
-//						});
-			  ShowMsg(R.string.app_base_ts);
+				SharedPreferences sp = CshWdcActivity.this.getActivity()
+						.getSharedPreferences("vehicleInformation",
+								Context.MODE_PRIVATE);
+
+				String serial_no = sp.getString("serial_no", "");
+				if (!"".equals(serial_no)) {
+					OpenActivity(CshPhysicalExaminationActivity.class);
+				} else {
+					ShowAlertDialog("温馨提示", "此功能需要添加车辆数据支持，是否立即添加",
+							new MyDialogInterface() {
+
+								@Override
+								public void onClick(DialogInterface dialog) {
+									// TODO Auto-generated method stub
+									OpenActivity(CshAddData.class);
+
+									dialog.dismiss();
+								}
+							});
+				}
 			}
 		});
 		ll_gj.setOnClickListener(new OnClickListener() {
@@ -146,25 +164,89 @@ public class CshWdcActivity extends FragmentBase {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-			  ShowMsg(R.string.app_base_ts);
+				ShowMsg(R.string.app_base_ts);
 			}
 		});
 		ll_dzwl.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-			  ShowMsg(R.string.app_base_ts);
+				startActivity(new Intent(CshWdcActivity.this.getActivity(),
+						CshSFActivtiy.class));
 			}
 		});
+
 		ll_dh.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-			  ShowMsg(R.string.app_base_ts);
+				if (isAvilible(CshWdcActivity.this.getActivity(),
+						"com.baidu.BaiduMap")) {// 传入指定应用包名
+					SharedPreferences sp = CshWdcActivity.this
+							.getActivity()
+							.getSharedPreferences(
+									"vehicleInformation",
+									CshWdcActivity.this.getActivity().MODE_PRIVATE);
+					// String serial_no = sp.getString("serial_no", "");
+					String serial_no = "967790128161";
+					if (!"".equals(serial_no)) {
+						String time = Long.toString((System.currentTimeMillis() / 1000));
+						String sign = "action=gps_service.get_current_gps_info&develop_id=10094&devicesn="
+								+ serial_no
+								+ "&time="
+								+ time
+								+ "34n4y22u6a1bfe7f4774651jgf8gfc";
+
+						String path = null;
+						try {
+							path = "develop_id=10094&devicesn=" + serial_no
+									+ "&time=" + time + "&sign="
+									+ MD5.MD5Encode(sign);
+						} catch (NoSuchAlgorithmException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						FinalHttp http = new FinalHttp();
+						// 得到鱼鹰盒子的经纬度（车子的经纬度）
+						http.get(FlowConsts.CSH_GOLOG_PLACE_PATH + path,
+								new AjaxCallBack<String>() {
+									@Override
+									public void onSuccess(String t) {
+										Intent intent = null;
+										try {
+											JSONObject obj = new JSONObject(t);
+
+											JSONObject jsonObject = obj
+													.getJSONObject("data");
+											String latitude = jsonObject
+													.getString("latitude");
+											String longitude = jsonObject
+													.getString("longitude");
+											Intent intent1 = Intent
+													.getIntent("intent://map/marker?location="
+															+ latitude
+															+ ","
+															+ longitude
+															+ "&title=我的位置&src=yourCompanyName|yourAppName#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end");
+											startActivity(intent1);
+										} catch (Exception e1) {
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+									}
+								});
+
+					} else {
+						Toast.makeText(CshWdcActivity.this.getActivity(),
+								"请先将鱼鹰盒子激活", Toast.LENGTH_SHORT).show();
+					}
+				} else {// 未安装
+					Toast.makeText(CshWdcActivity.this.getActivity(),
+							"请先安装百度地图,在使用本功能", Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
+
 		ll_wyzx.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -193,10 +275,34 @@ public class CshWdcActivity extends FragmentBase {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				ShowMsg(R.string.app_base_ts);
+				OpenActivity(CshSzActivity.class);
 			}
 		});
+	}
+
+	/**
+	 * 判断是否安装 某某包
+	 * 
+	 * @param context
+	 * @param packageName
+	 * @return
+	 */
+	private boolean isAvilible(Context context, String packageName) {
+		// 获取packagemanager
+		final PackageManager packageManager = context.getPackageManager();
+		// 获取所有已安装程序的包信息
+		List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
+		// 用于存储所有已安装程序的包名
+		List<String> packageNames = new ArrayList<String>();
+		// 从pinfo中将包名字逐一取出，压入pName list中
+		if (packageInfos != null) {
+			for (int i = 0; i < packageInfos.size(); i++) {
+				String packName = packageInfos.get(i).packageName;
+				packageNames.add(packName);
+			}
+		}
+		// 判断packageNames中是否有目标程序的包名，有TRUE，没有FALSE
+		return packageNames.contains(packageName);
 	}
 
 	/**
@@ -204,46 +310,53 @@ public class CshWdcActivity extends FragmentBase {
 	 */
 	private void initData() {
 		finalBitmap = FinalBitmap.create(act);
-//		if (ContextUtil.getHeith(act) <= 480) {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 60);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 800) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 140);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 860) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//		  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 150);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 960) {
-//			// if(ContextUtil.getWidth(this)<=480)
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 180);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else if (ContextUtil.getHeith(act) <= 1280) {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 200);
-//			fl_ad.setLayoutParams(linearParams);
-//		} else {
-//			LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(act, 210);
-//			fl_ad.setLayoutParams(linearParams);
-//		}
+		// if (ContextUtil.getHeith(act) <= 480) {
+		// LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)
+		// fl_ad
+		// .getLayoutParams();
+		// linearParams.height = ContextUtil.dip2px(act, 60);
+		// fl_ad.setLayoutParams(linearParams);
+		// } else if (ContextUtil.getHeith(act) <= 800) {
+		// // if(ContextUtil.getWidth(this)<=480)
+		// LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)
+		// fl_ad
+		// .getLayoutParams();
+		// linearParams.height = ContextUtil.dip2px(act, 140);
+		// fl_ad.setLayoutParams(linearParams);
+		// } else if (ContextUtil.getHeith(act) <= 860) {
+		// // if(ContextUtil.getWidth(this)<=480)
+		// LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)
+		// fl_ad
+		// .getLayoutParams();
+		// linearParams.height = ContextUtil.dip2px(act, 150);
+		// fl_ad.setLayoutParams(linearParams);
+		// } else if (ContextUtil.getHeith(act) <= 960) {
+		// // if(ContextUtil.getWidth(this)<=480)
+		// LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)
+		// fl_ad
+		// .getLayoutParams();
+		// linearParams.height = ContextUtil.dip2px(act, 180);
+		// fl_ad.setLayoutParams(linearParams);
+		// } else if (ContextUtil.getHeith(act) <= 1280) {
+		// LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)
+		// fl_ad
+		// .getLayoutParams();
+		// linearParams.height = ContextUtil.dip2px(act, 200);
+		// fl_ad.setLayoutParams(linearParams);
+		// } else {
+		// LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)
+		// fl_ad
+		// .getLayoutParams();
+		// linearParams.height = ContextUtil.dip2px(act, 210);
+		// fl_ad.setLayoutParams(linearParams);
+		// }
 		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-            .getLayoutParams();
-        linearParams.width=ContextUtil.getWidth(act);
-        linearParams.height = linearParams.width/2;
-        fl_ad.setLayoutParams(linearParams);
-		BitMapUtil.getImgOpt(act, finalBitmap, mJazzy, R.drawable.os_login_topicon);
+				.getLayoutParams();
+		linearParams.width = ContextUtil.getWidth(act);
+		linearParams.height = linearParams.width / 2;
+		fl_ad.setLayoutParams(linearParams);
+		BitMapUtil.getImgOpt(act, finalBitmap, mJazzy,
+				R.drawable.os_login_topicon);
 		getAdv();
 		ll_cltj.post(new Runnable() {
 
@@ -340,7 +453,6 @@ public class CshWdcActivity extends FragmentBase {
 		});
 	}
 
-	
 	private void getAdv() {
 		CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
 		cellComAjaxParams.put("uid", SharepreferenceUtil.readString(act,
@@ -454,7 +566,7 @@ public class CshWdcActivity extends FragmentBase {
 	 */
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
-		  mJazzy.setCurrentItem(currentItem);
+			mJazzy.setCurrentItem(currentItem);
 		};
 	};
 
@@ -489,7 +601,7 @@ public class CshWdcActivity extends FragmentBase {
 			oldPosition = position;
 		}
 	}
-	
+
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		act.onKeyDown(keyCode, event);

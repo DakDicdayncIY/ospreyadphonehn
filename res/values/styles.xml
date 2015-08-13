@@ -1,62 +1,63 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
-<style name="dialog_normal" parent="android:Animation">
+
+    <style name="dialog_normal" parent="android:Animation">
         <item name="@android:windowEnterAnimation">@anim/scale_in</item>
         <item name="@android:windowExitAnimation">@anim/scale_out</item>
     </style>
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
+
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowNoTitle">true</item>
     </style>
-    
+
     <style name="AppMainTheme" parent="AppBaseTheme">
+
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
-    
-    <style name="GnEmptyTheme">
-        
-    </style>
-   
+
+    <style name="GnEmptyTheme"></style>
+
     <!-- app title text文本样式 -->
     <style name="app_titleStyle">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">22sp</item>
     </style>
-    
+
     <style name="app_titleStyle1">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">22sp</item>
     </style>
-    
+
     <style name="app_titleStyle2">
         <item name="android:textColor">@color/gray</item>
         <item name="android:textSize">22sp</item>
     </style>
-    
+
     <style name="app_titleStyle3">
         <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">22sp</item>
     </style>
-    
+
     <style name="app_titleStyle4">
         <item name="android:textColor">@color/orange</item>
         <item name="android:textSize">22sp</item>
     </style>
-    
+
     <!-- app content text big文本样式 -->
     <style name="app_big_textStyle">
         <item name="android:textColor">@color/black</item>
@@ -77,15 +78,14 @@
         <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">18sp</item>
     </style>
-    
+
     <style name="app_big_textStyle4">
         <item name="android:textColor">@color/orange</item>
         <item name="android:textSize">18sp</item>
     </style>
-    
 
     <!-- app content text namal文本样式 -->
-    
+
     <style name="app_textStyle">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
@@ -106,12 +106,12 @@
         <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">16sp</item>
     </style>
-    
+
     <style name="app_textStyle4">
         <item name="android:textColor">@color/orange</item>
         <item name="android:textSize">16sp</item>
     </style>
-    
+
     <style name="app_textStyle5">
         <item name="android:textColor">@color/blackmain</item>
         <item name="android:textSize">16sp</item>
@@ -137,13 +137,11 @@
         <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">14sp</item>
     </style>
-    
+
     <style name="app_medium_textStyle4">
         <item name="android:textColor">@color/orange</item>
         <item name="android:textSize">14sp</item>
     </style>
-    
-    
 
     <!-- app content text small 文本样式 -->
     <style name="app_small_textStyle">
@@ -165,46 +163,51 @@
         <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">12sp</item>
     </style>
-    
+
     <style name="app_small_textStyle4">
         <item name="android:textColor">@color/orange</item>
         <item name="android:textSize">12sp</item>
     </style>
-    
+
     <style name="app_text_selector">
         <item name="android:textColor">@color/app_tab_indicator_text</item>
         <item name="android:textSize">16sp</item>
         <item name="android:duplicateParentState">true</item>
     </style>
-    
+
     <!-- 自定义ratingbar -->
-    <style name="app_ratingbar_style" parent="@android:style/Widget.Holo.RatingBar">  
-       <item name="android:progressDrawable">@drawable/app_rating_drawable_selector</item>  
-       <item name="android:numStars">5</item>  
-   </style> 
-   
+    <style name="app_ratingbar_style" parent="@android:style/Widget.Holo.RatingBar" tools:ignore="NewApi">
+        <item name="android:progressDrawable">@drawable/app_rating_drawable_selector</item>
+        <item name="android:numStars">5</item>
+    </style>
+
     <style name="PopupwindowAnimation" parent="@android:style/Animation.Dialog">
         <item name="android:windowEnterAnimation">@anim/popupwindow_enter</item>
         <item name="android:windowExitAnimation">@anim/popupwindow_exit</item>
     </style>
     <!-- 自定义半透明无背景dialog主题 -->
     <style name="helpDialog" parent="@android:style/Theme.Dialog">
-		<item name="android:windowFrame">@null</item><!--边框-->
-		<item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
-		<item name="android:windowIsTranslucent">true</item><!--半透明-->
-		<item name="android:windowNoTitle">true</item>
-		<item name="android:background">@android:color/transparent</item>
-		<item name="android:windowBackground">@android:color/transparent</item>
-		<item name="android:backgroundDimAmount">0.7</item>
-	</style>
-    
-    <style name="Transparent">  
-	    <item name="android:windowBackground">@android:color/transparent</item>  
-	    <item name="android:windowNoTitle">true</item>  
-	    <item name="android:windowIsTranslucent">true</item>    
-	    <item name="android:windowAnimationStyle">@+android:style/Animation.Translucent</item>  
-  	</style>
-  	<style name="CaldroidBaseTheme" parent="android:Theme.Light"/>
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+    </style>
+
+    <style name="Transparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@+android:style/Animation.Translucent</item>
+    </style>
+
+    <style name="CaldroidBaseTheme" parent="android:Theme.Light" />
+
     <style name="CaldroidDefault" parent="CaldroidBaseTheme">
         <item name="styleCaldroidViewLayout">@style/CaldroidDefaultCalendarViewLayout</item>
         <item name="styleCaldroidLeftArrow">@style/CaldroidDefaultLeftButton</item>
@@ -303,5 +306,21 @@
     </style>
 
     <style name="CaldroidDefaultDarkSquareCell" parent="CaldroidDefaultDarkCell" />
-</resources>
 
+    <!-- 车生活 -->
+    <style name="CshDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_out</item>
+    </style>
+
+    <style name="CshDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/gray</item>
+        <!-- 除去title -->
+    </style>
+    <!-- 车生活 -->
+
+</resources>

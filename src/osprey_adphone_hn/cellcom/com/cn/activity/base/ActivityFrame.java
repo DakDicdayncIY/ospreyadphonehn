@@ -5,6 +5,8 @@ import java.io.File;
 import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.http.HttpHandler;
 import osprey_adphone_hn.cellcom.com.cn.R;
+import osprey_adphone_hn.cellcom.com.cn.activity.csh.CshAddData;
+import osprey_adphone_hn.cellcom.com.cn.activity.csh.CshExaminationReportActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.main.WebViewActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.setting.AboutActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.setting.DhzxActivity;
@@ -42,6 +44,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -151,7 +154,7 @@ public class ActivityFrame extends ActivityBase {
 			tv_kyhf.setText("0个");
 		} else {
 			tv_kyhf.setText(SharepreferenceUtil.readString(this,
-							SharepreferenceUtil.fileName, "huafei", "")+"个");
+					SharepreferenceUtil.fileName, "huafei", "") + "个");
 		}
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"yinyuan", "").equals("")) {
@@ -237,9 +240,9 @@ public class ActivityFrame extends ActivityBase {
 					}
 					CommonUtils.setCurrentChildMenuActivity("hyy");
 					Intent intent = new Intent(ActivityFrame.this,
-                      WebViewActivity.class);
-                    intent.putExtra("url", "http://dianliangtech.com/help/app");
-                     startActivity(intent);
+							WebViewActivity.class);
+					intent.putExtra("url", "http://dianliangtech.com/help/app");
+					startActivity(intent);
 				} else {
 					mMenu.toggle();
 				}
@@ -310,15 +313,15 @@ public class ActivityFrame extends ActivityBase {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				 Intent intent = new Intent(ActivityFrame.this,
-				 LoginActivity.class);
-				 startActivity(intent);
+				Intent intent = new Intent(ActivityFrame.this,
+						LoginActivity.class);
+				startActivity(intent);
 
-//				Intent mIntent = new Intent();
-//				mIntent.setClass(ActivityFrame.this, LoginActivity.class);
-//				// 这里设置flag还是比较 重要的
-//				mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//				startActivity(mIntent);
+				// Intent mIntent = new Intent();
+				// mIntent.setClass(ActivityFrame.this, LoginActivity.class);
+				// // 这里设置flag还是比较 重要的
+				// mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				// startActivity(mIntent);
 				ActivityFrame.this.finish();
 			}
 		});
@@ -540,8 +543,8 @@ public class ActivityFrame extends ActivityBase {
 	 */
 	private void showShare() {
 		// TODO Auto-generated method stub
-		String downloadurl=SharepreferenceUtil.readString(ActivityFrame.this,SharepreferenceUtil.fileName,
-				"downloadurl");
+		String downloadurl = SharepreferenceUtil.readString(ActivityFrame.this,
+				SharepreferenceUtil.fileName, "downloadurl");
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType("image/jpeg");
 		intent.setType("text/plain");
@@ -663,6 +666,156 @@ public class ActivityFrame extends ActivityBase {
 	// // TODO Auto-generated method stub
 	// ivicon.setVisibility(View.VISIBLE);
 	// }
+	// 布局设置
+	private void AppendTitle() {
+		View _View = LayoutInflater.from(this).inflate(R.layout.app_base_top7,
+				null);
+		RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.FILL_PARENT);
+		topll.addView(_View, _LayoutParams);
+		findViewById(R.id.llAppBack).setOnClickListener(new OnBackListener());
+	}
+
+	/**
+	 * 包含返回和确认操作顶部栏(设置vin码)--周子健
+	 */
+	protected void AppendTitleBody7() {
+		topll.removeAllViews();
+		topll.setVisibility(View.VISIBLE);
+		AppendTitle();
+		findViewById(R.id.llAppShare).setOnClickListener(new onSaveListener());
+	}
+
+	// vin码保存监听
+	public class onSaveListener implements OnClickListener {
+		@Override
+		public void onClick(View arg0) {
+			EditText etView = (EditText) ActivityFrame.this
+					.findViewById(R.id.et_os_csh_vin_code);
+
+			String string = etView.getText().toString();
+			Intent intent = new Intent();
+			intent.putExtra("code", string);
+			// 设置返回数据
+			ActivityFrame.this.setResult(1, intent);
+
+			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+			ActivityFrame.this.finish();
+		}
+	}
+
+	/**
+	 * 包含返回和确认操作顶部栏(激活golog)--周子健
+	 */
+	protected void AppendTitleBody8() {
+		topll.removeAllViews();
+		topll.setVisibility(View.VISIBLE);
+		AppendTitle();
+		findViewById(R.id.llAppShare).setOnClickListener(
+				new onActivateListener());
+	}
+
+	// 激活监听
+	public class onActivateListener implements OnClickListener {
+		@Override
+		public void onClick(View arg0) {
+			Intent intent2 = new Intent();
+			intent2.setAction("osprey_adphone_hn.cellcom.com.cn.activity.csh.CshAddData");
+			sendBroadcast(intent2);
+		}
+	}
+
+	/**
+	 * 包含返回和确认操作顶部栏(激活golog)--周子健
+	 */
+	protected void AppendTitleBody8_1() {
+		topll.removeAllViews();
+		topll.setVisibility(View.VISIBLE);
+		View _View = LayoutInflater.from(this).inflate(
+				R.layout.app_base_top8_1, null);
+		RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.FILL_PARENT);
+		topll.addView(_View, _LayoutParams);
+		findViewById(R.id.llAppBack).setOnClickListener(new OnBackListener());
+		findViewById(R.id.llAppShare).setOnClickListener(new onAddCar());
+	}
+
+	// 添加车辆
+	private class onAddCar implements OnClickListener {
+		@Override
+		public void onClick(View arg0) {
+			OpenActivity(CshAddData.class);
+		}
+	}
+
+	/**
+	 * 包含返回和报告操作顶部栏(显示体检报告)--周子健
+	 */
+	protected void AppendTitleBody8_2() {
+		topll.removeAllViews();
+		topll.setVisibility(View.VISIBLE);
+		View _View = LayoutInflater.from(this).inflate(
+				R.layout.app_base_top8_2, null);
+		RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.FILL_PARENT);
+		topll.addView(_View, _LayoutParams);
+		findViewById(R.id.llAppBack).setOnClickListener(new OnBackListener());
+		findViewById(R.id.llAppShare).setOnClickListener(new onReport());
+	}
+
+	// 报告
+	private class onReport implements OnClickListener {
+		@Override
+		public void onClick(View arg0) {
+			OpenActivity(CshExaminationReportActivity.class);
+		}
+	}
+
+	/**
+	 * 只有返回--周子健
+	 */
+	protected void AppendTitleBody8_3() {
+		topll.removeAllViews();
+		topll.setVisibility(View.VISIBLE);
+		View _View = LayoutInflater.from(this).inflate(
+				R.layout.app_base_top8_3, null);
+		RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.FILL_PARENT);
+		topll.addView(_View, _LayoutParams);
+		findViewById(R.id.llAppBack).setOnClickListener(new OnBackListener());
+	}
+
+	/**
+	 * 包含返回,查看地图--周子健
+	 */
+	protected void AppendTitleBody8_4() {
+		topll.removeAllViews();
+		topll.setVisibility(View.VISIBLE);
+		View _View = LayoutInflater.from(this).inflate(R.layout.app_base_to8_4,
+				null);
+		RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.FILL_PARENT);
+		topll.addView(_View, _LayoutParams);
+		findViewById(R.id.llAppBack).setOnClickListener(new OnBackListener());
+		findViewById(R.id.llAppShare).setOnClickListener(
+				new onOpenMapListener());
+	}
+
+	// 查看地图
+	public class onOpenMapListener implements OnClickListener {
+		@Override
+		public void onClick(View arg0) {
+			sendBroadcast(new Intent(
+					"osprey_adphone_hn.cellcom.com.cn.activity.csh.CshSFActivtiy"));
+		}
+
+	}
 
 	protected void HideupdateSet() {
 		// TODO Auto-generated method stub
