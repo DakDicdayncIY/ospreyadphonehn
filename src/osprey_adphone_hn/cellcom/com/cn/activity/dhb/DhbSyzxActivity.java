@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
 import net.tsz.afinal.FinalBitmap;
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.csh.CshFragmentActivity;
@@ -28,6 +27,7 @@ import osprey_adphone_hn.cellcom.com.cn.widget.ArcMenu.OnMenuItemClickListener;
 import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager;
 import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager.TransitionEffect;
 import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.MyJazzyPagerAdapter;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -719,6 +719,7 @@ public class DhbSyzxActivity extends Fragment{
 		}
 	}
 	
+	@SuppressLint("NewApi")
 	private void addPreDraw() {
 		// TODO Auto-generated method stub
 		iv_bg.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
