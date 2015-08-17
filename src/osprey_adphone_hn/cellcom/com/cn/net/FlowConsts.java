@@ -177,6 +177,8 @@ public class FlowConsts {
 	public static String CSH_GOLOG_PLACE_PATH = "http://open.api.dbscar.com/?action=gps_service.get_current_gps_info&";
 	// 添加电子围栏
 	public static String CSH_DZWL_PATH = "http://open.api.dbscar.com/?";
+	// 个人中心的广告
+	public static String GRZX_GG_PATH = "http://183.6.172.138:8081/yywapp/yyw_getgg_new.flow?uid=40&pos=12";
 
 	public static void refleshIp(String urlString) {
 		// // 获取系统参数

@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager
+        android:id="@+id/jazzy_viewpager_os_dhb_grzx"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5" >
+    </osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager>
+
     <RelativeLayout
         android:id="@+id/toprl"
         android:layout_width="match_parent"
@@ -220,8 +227,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="1.0"
+        android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 

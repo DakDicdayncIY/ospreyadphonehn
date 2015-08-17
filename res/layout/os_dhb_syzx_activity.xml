@@ -93,94 +93,59 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="@string/os_dhb_syzx_tjsp" />
+                    android:text="@string/os_dhb_syzx_tjsp"
+                    android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/tv_hyp"
-                    style="@style/app_medium_textStyle2"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/rg_dhb_syzx"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/os_dhb_syzx_hyp" />
+                    android:layout_weight="2.0"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/rb_bs_os_dhb_syzx"
+                        style="@style/app_medium_textStyle2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/app_dhb_syzx_textview_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="本市"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_bshen_os_dhb_syzx"
+                        style="@style/app_medium_textStyle2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/app_dhb_syzx_textview_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="本省"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_qg_os_dhb_syzx"
+                        style="@style/app_medium_textStyle2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/app_dhb_syzx_textview_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="全国"
+                        android:textSize="20sp" />
+                </RadioGroup>
             </LinearLayout>
 
-            <ScrollView
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_os_dhb_syzx"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:overScrollMode="ifContentScrolls" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp" >
-
-                    <LinearLayout
-                        android:id="@+id/ll_sp1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="2dp"
-                        android:layout_weight="1.0"
-                    	android:background="@drawable/os_white_gray_selector"
-                        android:orientation="vertical"
-                        android:padding="10dp" >
-
-                        <ImageView
-                            android:id="@+id/iv_img1"
-                            android:contentDescription="@null"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/tv_name1"
-                            style="@style/app_small_textStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:layout_marginTop="3dp" />
-
-                        <TextView
-                            android:id="@+id/tv_jf1"
-                            style="@style/app_small_textStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_sp2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_weight="1.0"
-                    	android:background="@drawable/os_white_gray_selector"
-                        android:orientation="vertical"
-                        android:padding="10dp" >
-
-                        <ImageView
-                            android:id="@+id/iv_img2"
-                            android:contentDescription="@null"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/tv_name2"
-                            style="@style/app_small_textStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:layout_marginTop="3dp" />
-
-                        <TextView
-                            android:id="@+id/tv_jf2"
-                            style="@style/app_small_textStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </ScrollView>
+                android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
         </LinearLayout>
 
         <ImageView
@@ -190,7 +155,7 @@
             android:scaleType="fitXY"
             android:src="@color/translucent_8"
             android:visibility="gone" />
-        
+
         <ImageView
             android:id="@+id/iv_bg"
             android:layout_width="match_parent"

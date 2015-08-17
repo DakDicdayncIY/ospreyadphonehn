@@ -12,7 +12,7 @@
     <color name="light_gray2">#9a9999</color>
     <color name="light_gray3">#7a7978</color>
     <color name="light_gray4">#c2c2c2</color>
-    <color name="white">#FFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="gray_white">#f3f3f3</color>
     <color name="blue">#4aaaf0</color>
     <color name="light_blue">#ADD8E6</color>
@@ -48,13 +48,13 @@
     <color name="translucent_9">#90000000</color>
     <color name="grzlinput">#f3f3f3</color>
     <color name="qunqing">#4e72b8</color>
- <!-- 群青色 -->
+    <!-- 群青色 -->
     <color name="Translucent_black">#50000000</color>
- <!-- 半透明黑色 -->
+    <!-- 半透明黑色 -->
     <color name="Translucent_gray">#f0a4a4a4</color>
- <!-- 半透明灰色 -->
+    <!-- 半透明灰色 -->
 
-
+    <color name="color_default_1">#F0F0F0</color>
     <!-- 2.0 -->
     <color name="blackmain">#4A4A4A</color>
     <color name="newmainbar">#F0F0F0</color>

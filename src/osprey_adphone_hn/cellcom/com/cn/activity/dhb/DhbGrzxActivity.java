@@ -11,13 +11,16 @@ import osprey_adphone_hn.cellcom.com.cn.bean.UserInfo;
 import osprey_adphone_hn.cellcom.com.cn.bean.UserInfoComm;
 import osprey_adphone_hn.cellcom.com.cn.net.FlowConsts;
 import osprey_adphone_hn.cellcom.com.cn.net.HttpHelper;
+import osprey_adphone_hn.cellcom.com.cn.util.BitMapUtil;
 import osprey_adphone_hn.cellcom.com.cn.util.SharepreferenceUtil;
 import osprey_adphone_hn.cellcom.com.cn.widget.Rotate3DAnimation;
+import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -53,6 +56,8 @@ public class DhbGrzxActivity extends Fragment {
 			tv_zxgw, tv_no_level, tv_level;
 	private LinearLayout ll_zhcz, ll_fgg, ll_yyk, ll_jfk, ll_hfk, ll_cxzs,
 			ll_zbsh, ll_gwc, levelll;
+	FinalBitmap bitmap;
+	JazzyViewPager jvp;
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -79,6 +84,7 @@ public class DhbGrzxActivity extends Fragment {
 	}
 
 	private void initViewData() {
+
 		String uid = SharepreferenceUtil.readString(act,
 				SharepreferenceUtil.fileName, "uid", "");
 		String viplevel = SharepreferenceUtil.readString(act,
@@ -122,6 +128,7 @@ public class DhbGrzxActivity extends Fragment {
 		tv_zbsh = (TextView) v.findViewById(R.id.tv_zbsh);
 		tv_shjf = (TextView) v.findViewById(R.id.tv_shjf);
 		tv_zxgw = (TextView) v.findViewById(R.id.tv_zxgw);
+
 	}
 
 	private void initView1(View v, Bundle savedInstanceState) {
@@ -140,6 +147,7 @@ public class DhbGrzxActivity extends Fragment {
 		nametv = (TextView) v.findViewById(R.id.nametv);
 		idtv = (TextView) v.findViewById(R.id.idtv);
 		tv_no_level = (TextView) v.findViewById(R.id.tv_no_level);
+		jvp = (JazzyViewPager) v.findViewById(R.id.jazzy_viewpager_os_dhb_grzx);
 		new Handler().postDelayed(new Runnable() {
 
 			@Override
@@ -429,7 +437,9 @@ public class DhbGrzxActivity extends Fragment {
 	 */
 	private void initData() {
 		finalBitmap = FinalBitmap.create(act);
+		bitmap = FinalBitmap.create(act);
 		getGrzl();
+
 	}
 
 	// 获取个人资料
@@ -493,8 +503,10 @@ public class DhbGrzxActivity extends Fragment {
 						act, SharepreferenceUtil.fileName, "headpicurl", "")
 						.contains(".png"))) {
 
-			finalBitmap.display(video_img, SharepreferenceUtil.readString(act,
-					SharepreferenceUtil.fileName, "headpicurl", ""));
+			finalBitmap.display(
+					new ImageView(DhbGrzxActivity.this.getActivity()),
+					SharepreferenceUtil.readString(act,
+							SharepreferenceUtil.fileName, "headpicurl", ""));
 		}
 		if (userInfo.getViplevel() != null
 				&& !userInfo.getViplevel().trim().equals("")
@@ -508,6 +520,11 @@ public class DhbGrzxActivity extends Fragment {
 				SharepreferenceUtil.fileName, "username", ""));
 		idtv.setText(SharepreferenceUtil.readString(act,
 				SharepreferenceUtil.fileName, "account", ""));
+
+		bitmap.display(new ImageView(DhbGrzxActivity.this.getActivity()),
+				FlowConsts.GRZX_GG_PATH);
+
+		BitMapUtil.getImgOpt(act, bitmap, jvp, R.drawable.os_login_topicon);
 	}
 
 	public void reflesh() {

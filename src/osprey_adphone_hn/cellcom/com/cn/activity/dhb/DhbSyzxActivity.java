@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
 import net.tsz.afinal.FinalBitmap;
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.csh.CshFragmentActivity;
@@ -49,6 +50,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,12 +59,14 @@ import cellcom.com.cn.net.CellComAjaxHttp;
 import cellcom.com.cn.net.CellComAjaxParams;
 import cellcom.com.cn.net.CellComAjaxResult;
 import cellcom.com.cn.net.base.CellComHttpInterface;
+
 /**
  * 商业中心
+ * 
  * @author Administrator
  *
  */
-public class DhbSyzxActivity extends Fragment{
+public class DhbSyzxActivity extends Fragment {
 	private Activity act;
 	private JazzyViewPager mJazzy;
 	private List<View> view_img;// 装载广告图片的集合
@@ -72,20 +77,17 @@ public class DhbSyzxActivity extends Fragment{
 	private ScheduledExecutorService scheduledExecutor;// 定时器，定时轮播广告图片
 	private FrameLayout fl_ad;
 	private List<Adv> advs = new ArrayList<Adv>();
-
-//	private RelativeLayout ll_kyk, ll_sys, ll_yyy, ll_zyz;
+	private RadioButton rb_bs, rb_bshen, rb_qg;
+	// private RelativeLayout ll_kyk, ll_sys, ll_yyy, ll_zyz;
 
 	private FinalBitmap finalBitmap;
-	
-	private ImageView iv_push, iv_bg, iv_img1, iv_img2;
+	private RadioGroup rg_group;
+	private ImageView iv_push, iv_bg;
 	private ArcMenu arcMenu;
 	private Button btn_cs, btn_zq, btn_yq, btn_cj;
-	private TextView tv_hyp, tv_name1, tv_jf1, tv_name2, tv_jf2;
-	private LinearLayout ll_sp1, ll_sp2;
 	private int pageid = 1;
 	private int totalnum = 0;
 	private List<TjspInfo> list = new ArrayList<TjspInfo>();
-
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -103,7 +105,8 @@ public class DhbSyzxActivity extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.os_dhb_syzx_activity, container,	false);
+		View v = inflater.inflate(R.layout.os_dhb_syzx_activity, container,
+				false);
 		initView(v, savedInstanceState);
 		initAd(v);
 		return v;
@@ -116,7 +119,6 @@ public class DhbSyzxActivity extends Fragment{
 		initListener();
 		initData();
 	}
-	
 
 	/**
 	 * 初始化控件
@@ -125,46 +127,41 @@ public class DhbSyzxActivity extends Fragment{
 		finalBitmap = FinalBitmap.create(act);
 		iv_push = (ImageView) v.findViewById(R.id.iv_push);
 		iv_bg = (ImageView) v.findViewById(R.id.iv_bg);
-		iv_img1 = (ImageView) v.findViewById(R.id.iv_img1);
-		iv_img2 = (ImageView) v.findViewById(R.id.iv_img2);
 		arcMenu = (ArcMenu) v.findViewById(R.id.id_arcmenu);
 		btn_zq = (Button) v.findViewById(R.id.btn_zq);
 		btn_cs = (Button) v.findViewById(R.id.btn_cs);
 		btn_yq = (Button) v.findViewById(R.id.btn_yq);
 		btn_cj = (Button) v.findViewById(R.id.btn_cj);
-		tv_hyp = (TextView) v.findViewById(R.id.tv_hyp);
-		tv_name1 = (TextView) v.findViewById(R.id.tv_name1);
-		tv_name2 = (TextView) v.findViewById(R.id.tv_name2);
-		tv_jf1 = (TextView) v.findViewById(R.id.tv_jf1);
-		tv_jf2 = (TextView) v.findViewById(R.id.tv_jf2);
-		ll_sp1 = (LinearLayout) v.findViewById(R.id.ll_sp1);
-		ll_sp2 = (LinearLayout) v.findViewById(R.id.ll_sp2);
 		mJazzy = (JazzyViewPager) v.findViewById(R.id.jazzy_viewpager);
-
+		rg_group = (RadioGroup) v.findViewById(R.id.rg_dhb_syzx);
+		rb_bs = (RadioButton) v.findViewById(R.id.rb_bs_os_dhb_syzx);
+		rb_bshen = (RadioButton) v.findViewById(R.id.rb_bshen_os_dhb_syzx);
+		rb_qg = (RadioButton) v.findViewById(R.id.rb_qg_os_dhb_syzx);
 		setArMemuPosition();
-//		addPreDraw();
-		
+		// addPreDraw();
+
 		// loadingBitmap = BitmapFactory.decodeResource(getResources(),
 		// R.drawable.os_img_default_icon);
-//		// 看一看
-//		ll_kyk = (RelativeLayout) v.findViewById(R.id.ll_kyk);
-//		// 扫一扫
-//		ll_sys = (RelativeLayout) v.findViewById(R.id.ll_sys);
-//		// 摇一摇
-//		ll_yyy = (RelativeLayout) v.findViewById(R.id.ll_yyy);
-//		// 转一转
-//		ll_zyz = (RelativeLayout) v.findViewById(R.id.ll_zyz);
-//
-//		tv_empty = (TextView) v.findViewById(R.id.tv_empty);
-//		mJazzyGridView = (JazzyGridView) v.findViewById(android.R.id.list);
-//		mJazzyGridView.setTransitionEffect(JazzyHelper.HELIX);
-//		adapter = new SyzxKykTypeAdapter(act, syzxKykType);
-//		mJazzyGridView.setAdapter(adapter);
-//
-//		ll_loading = (LinearLayout) v.findViewById(R.id.ll_loading);
-//		imageView_loading = (ImageView) v.findViewById(R.id.loadingImageView);
-//		animationDrawable = (AnimationDrawable) imageView_loading
-//				.getBackground();
+		// // 看一看
+		// ll_kyk = (RelativeLayout) v.findViewById(R.id.ll_kyk);
+		// // 扫一扫
+		// ll_sys = (RelativeLayout) v.findViewById(R.id.ll_sys);
+		// // 摇一摇
+		// ll_yyy = (RelativeLayout) v.findViewById(R.id.ll_yyy);
+		// // 转一转
+		// ll_zyz = (RelativeLayout) v.findViewById(R.id.ll_zyz);
+		//
+		// tv_empty = (TextView) v.findViewById(R.id.tv_empty);
+		// mJazzyGridView = (JazzyGridView) v.findViewById(android.R.id.list);
+		// mJazzyGridView.setTransitionEffect(JazzyHelper.HELIX);
+		// adapter = new SyzxKykTypeAdapter(act, syzxKykType);
+		// mJazzyGridView.setAdapter(adapter);
+		//
+		// ll_loading = (LinearLayout) v.findViewById(R.id.ll_loading);
+		// imageView_loading = (ImageView)
+		// v.findViewById(R.id.loadingImageView);
+		// animationDrawable = (AnimationDrawable) imageView_loading
+		// .getBackground();
 		// ll_fdc = (LinearLayout)findViewById(R.id.ll_fdc);
 		// ll_qc = (LinearLayout)findViewById(R.id.ll_qc);
 		// ll_spbj = (LinearLayout)findViewById(R.id.ll_spbj);
@@ -266,16 +263,16 @@ public class DhbSyzxActivity extends Fragment{
 	 * 初始化监听
 	 */
 	private void initListener() {
-		//赚钱
+		// 赚钱
 		arcMenu.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-			
+
 			@Override
 			public void onClick(View view, int pos) {
 				// TODO Auto-generated method stub
 				LogMgr.showLog("arcMenu is menu item click! pos------->" + pos);
-				if(arcMenu.isOpen()){
+				if (arcMenu.isOpen()) {
 					iv_push.setVisibility(View.GONE);
-				}else{
+				} else {
 					iv_push.setVisibility(View.VISIBLE);
 				}
 				String title = "";
@@ -287,15 +284,15 @@ public class DhbSyzxActivity extends Fragment{
 					Intent intentZjf = new Intent(act, DhbSyzxKykActivity.class);
 					intentZjf.putExtra("title", title);
 					intentZjf.putExtra("typeid", typeid);
-	                startActivity(intentZjf);
+					startActivity(intentZjf);
 					break;
 				case 2:
 					title = "抢红包";
 					typeid = "3";
 					Intent intentQhb = new Intent(act, DhbSyzxQhbActivity.class);
-                    intentQhb.putExtra("title", title);
-                    intentQhb.putExtra("typeid", typeid);
-                    startActivity(intentQhb);
+					intentQhb.putExtra("title", title);
+					intentQhb.putExtra("typeid", typeid);
+					startActivity(intentQhb);
 					break;
 				case 3:
 					title = "赚亮币";
@@ -303,41 +300,41 @@ public class DhbSyzxActivity extends Fragment{
 					Intent intentZhf = new Intent(act, DhbSyzxKykActivity.class);
 					intentZhf.putExtra("title", title);
 					intentZhf.putExtra("typeid", typeid);
-	                startActivity(intentZhf);
+					startActivity(intentZhf);
 					break;
 				default:
 					break;
 				}
-				
+
 			}
 		});
 		arcMenu.setOnMenuButtonClickListener(new OnMenuButtonClickListener() {
-			
+
 			@Override
 			public void onClick(View view) {
 				// TODO Auto-generated method stub
 				LogMgr.showLog("arcMenu is menu button click!");
-				if(arcMenu.isOpen()){
+				if (arcMenu.isOpen()) {
 					iv_push.setVisibility(View.VISIBLE);
-				}else{
+				} else {
 					iv_push.setVisibility(View.GONE);
 				}
 			}
 		});
 		iv_push.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(arcMenu.isOpen()){
+				if (arcMenu.isOpen()) {
 					iv_push.setVisibility(View.GONE);
 					arcMenu.toggleMenu(300);
 				}
 			}
 		});
-		
+
 		btn_yq.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -346,51 +343,12 @@ public class DhbSyzxActivity extends Fragment{
 			}
 		});
 		btn_cj.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(act, DhbSyzxZyzActivity.class);
 				startActivity(intent);
-			}
-		});
-		tv_hyp.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if((totalnum - 2 * pageid) <= 0){
-//					Toast.makeText(act, "已经是最后一批特价商品了！", Toast.LENGTH_SHORT).show();
-//					return;
-					pageid = 1;
-				}else{
-					pageid++;
-				}
-				getTjspInfo();
-			}
-		});
-		ll_sp1.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if (list.size() > 0) {
-					Intent intent = new Intent(act, DhbSyzxTjspDetailActivity.class);
-					intent.putExtra("tjspInfo", list.get(0));
-					startActivity(intent);
-				}
-			}
-		});
-		ll_sp2.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if (list.size() > 1) {
-					Intent intent = new Intent(act, DhbSyzxTjspDetailActivity.class);
-					intent.putExtra("tjspInfo", list.get(1));
-					startActivity(intent);
-				}
 			}
 		});
 
@@ -400,78 +358,77 @@ public class DhbSyzxActivity extends Fragment{
 	 * 初始化数据
 	 */
 	private void initData() {
-	  int width=ContextUtil.getWidth(act);
-	  width=width/2-ContextUtil.dip2px(act, 20);
-	  int height=width*3/4;
-	  iv_img1.setLayoutParams(new LinearLayout.LayoutParams(width,height));
-	  iv_img2.setLayoutParams(new LinearLayout.LayoutParams(width,height));
-	  LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
-          .getLayoutParams();
-      linearParams.width=ContextUtil.getWidth(act);
-      linearParams.height = linearParams.width/2;
-      fl_ad.setLayoutParams(linearParams);
-		BitMapUtil.getImgOpt(act, finalBitmap, mJazzy, R.drawable.os_login_topicon);
+		int width = ContextUtil.getWidth(act);
+		width = width / 2 - ContextUtil.dip2px(act, 20);
+		int height = width * 3 / 4;
+		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) fl_ad
+				.getLayoutParams();
+		linearParams.width = ContextUtil.getWidth(act);
+		linearParams.height = linearParams.width / 2;
+		fl_ad.setLayoutParams(linearParams);
+		BitMapUtil.getImgOpt(act, finalBitmap, mJazzy,
+				R.drawable.os_login_topicon);
 		getTjspInfo();
 		getAdv();
-//		getKykType();
+		// getKykType();
 	}
 
-//	/**
-//	 * 获取看一看类型
-//	 */
-//	private void getKykType() {
-//		CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
-//		cellComAjaxParams.put("uid", SharepreferenceUtil.readString(act,
-//				SharepreferenceUtil.fileName, "uid", ""));
-//		HttpHelper.getInstances(act).send(FlowConsts.YYW_GETKYKTYPE,
-//				cellComAjaxParams, CellComAjaxHttp.HttpWayMode.POST,
-//				new CellComHttpInterface.NetCallBack<CellComAjaxResult>() {
-//
-//					@Override
-//					public void onSuccess(CellComAjaxResult cellComAjaxResult) {
-//						// TODO Auto-generated method stub
-//						SyzxKykTypeComm syzxKykTypeComm = cellComAjaxResult
-//								.read(SyzxKykTypeComm.class,
-//										CellComAjaxResult.ParseType.GSON);
-//						if (!FlowConsts.STATUE_1.equals(syzxKykTypeComm
-//								.getReturnCode())) {
-//							Toast.makeText(act,
-//									syzxKykTypeComm.getReturnMessage(),
-//									Toast.LENGTH_SHORT).show();
-//							return;
-//						}
-//						tv_empty.setVisibility(View.GONE);
-//						ll_loading.setVisibility(View.GONE);
-//						mJazzyGridView.setVisibility(View.VISIBLE);
-//						syzxKykType.clear();
-//						syzxKykType.addAll(syzxKykTypeComm.getBody());
-//						// adapter.setInfos(syzxKykType);
-//						adapter.notifyDataSetChanged();
-//					}
-//
-//					@Override
-//					public void onStart() {
-//						// TODO Auto-generated method stub
-//						super.onStart();
-//						if (animationDrawable != null) {
-//							ll_loading.setVisibility(View.VISIBLE);
-//							tv_empty.setVisibility(View.GONE);
-//							mJazzyGridView.setVisibility(View.GONE);
-//							animationDrawable.start();
-//						}
-//					}
-//
-//					@Override
-//					public void onFailure(Throwable t, String strMsg) {
-//						// TODO Auto-generated method stub
-//						super.onFailure(t, strMsg);
-//
-//						tv_empty.setVisibility(View.VISIBLE);
-//						mJazzyGridView.setVisibility(View.GONE);
-//						ll_loading.setVisibility(View.GONE);
-//					}
-//				});
-//	}
+	// /**
+	// * 获取看一看类型
+	// */
+	// private void getKykType() {
+	// CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
+	// cellComAjaxParams.put("uid", SharepreferenceUtil.readString(act,
+	// SharepreferenceUtil.fileName, "uid", ""));
+	// HttpHelper.getInstances(act).send(FlowConsts.YYW_GETKYKTYPE,
+	// cellComAjaxParams, CellComAjaxHttp.HttpWayMode.POST,
+	// new CellComHttpInterface.NetCallBack<CellComAjaxResult>() {
+	//
+	// @Override
+	// public void onSuccess(CellComAjaxResult cellComAjaxResult) {
+	// // TODO Auto-generated method stub
+	// SyzxKykTypeComm syzxKykTypeComm = cellComAjaxResult
+	// .read(SyzxKykTypeComm.class,
+	// CellComAjaxResult.ParseType.GSON);
+	// if (!FlowConsts.STATUE_1.equals(syzxKykTypeComm
+	// .getReturnCode())) {
+	// Toast.makeText(act,
+	// syzxKykTypeComm.getReturnMessage(),
+	// Toast.LENGTH_SHORT).show();
+	// return;
+	// }
+	// tv_empty.setVisibility(View.GONE);
+	// ll_loading.setVisibility(View.GONE);
+	// mJazzyGridView.setVisibility(View.VISIBLE);
+	// syzxKykType.clear();
+	// syzxKykType.addAll(syzxKykTypeComm.getBody());
+	// // adapter.setInfos(syzxKykType);
+	// adapter.notifyDataSetChanged();
+	// }
+	//
+	// @Override
+	// public void onStart() {
+	// // TODO Auto-generated method stub
+	// super.onStart();
+	// if (animationDrawable != null) {
+	// ll_loading.setVisibility(View.VISIBLE);
+	// tv_empty.setVisibility(View.GONE);
+	// mJazzyGridView.setVisibility(View.GONE);
+	// animationDrawable.start();
+	// }
+	// }
+	//
+	// @Override
+	// public void onFailure(Throwable t, String strMsg) {
+	// // TODO Auto-generated method stub
+	// super.onFailure(t, strMsg);
+	//
+	// tv_empty.setVisibility(View.VISIBLE);
+	// mJazzyGridView.setVisibility(View.GONE);
+	// ll_loading.setVisibility(View.GONE);
+	// }
+	// });
+	// }
 
 	/**
 	 * 获取广告数据
@@ -500,12 +457,13 @@ public class DhbSyzxActivity extends Fragment{
 					}
 				});
 	}
-	
+
 	private void setArMemuPosition() {
 		// TODO Auto-generated method stub
 		DisplayMetrics dm = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT);
 		lp.setMargins(dm.widthPixels / 15, ContextUtil.dip2px(act, 15), 0, 0);
 		arcMenu.setLayoutParams(lp);
 	}
@@ -536,15 +494,17 @@ public class DhbSyzxActivity extends Fragment{
 				ImageView img = (ImageView) view.findViewById(R.id.img);
 				img.setScaleType(ScaleType.FIT_XY);
 				finalBitmap.display(img, advs.get(i).getMeitiurl());
-				final int tempPos=i;
+				final int tempPos = i;
 				img.setOnClickListener(new OnClickListener() {
 
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						if(!TextUtils.isEmpty(advs.get(tempPos).getLinkurl())){
-							Intent intent = new Intent(act, WebViewActivity.class);
-							intent.putExtra("url", advs.get(tempPos).getLinkurl());
+						if (!TextUtils.isEmpty(advs.get(tempPos).getLinkurl())) {
+							Intent intent = new Intent(act,
+									WebViewActivity.class);
+							intent.putExtra("url", advs.get(tempPos)
+									.getLinkurl());
 							startActivity(intent);
 						}
 					}
@@ -569,7 +529,7 @@ public class DhbSyzxActivity extends Fragment{
 				}
 			}
 
-		} 
+		}
 		if (view_img.size() > 0) {
 			mJazzy.setAdapter(new MyJazzyPagerAdapter(view_img, mJazzy));
 			mJazzy.setCurrentItem(0);
@@ -653,7 +613,6 @@ public class DhbSyzxActivity extends Fragment{
 		super.onPause();
 	}
 
-	
 	/**
 	 * 获取特价商品
 	 */
@@ -669,10 +628,13 @@ public class DhbSyzxActivity extends Fragment{
 					@Override
 					public void onSuccess(CellComAjaxResult cellComAjaxResult) {
 						// TODO Auto-generated method stub
-						TjspInfoResultComm tjspInfoComm = cellComAjaxResult.read(TjspInfoResultComm.class,
-								CellComAjaxResult.ParseType.GSON);
-						if (!FlowConsts.STATUE_1.equals(tjspInfoComm.getReturnCode())) {
-							Toast.makeText(act, tjspInfoComm.getReturnMessage(),
+						TjspInfoResultComm tjspInfoComm = cellComAjaxResult
+								.read(TjspInfoResultComm.class,
+										CellComAjaxResult.ParseType.GSON);
+						if (!FlowConsts.STATUE_1.equals(tjspInfoComm
+								.getReturnCode())) {
+							Toast.makeText(act,
+									tjspInfoComm.getReturnMessage(),
 									Toast.LENGTH_SHORT).show();
 							return;
 						}
@@ -683,90 +645,62 @@ public class DhbSyzxActivity extends Fragment{
 					}
 				});
 	}
-	
+
 	private void initTjspView() {
 		// TODO Auto-generated method stub
-		ll_sp1.setVisibility(View.INVISIBLE);
-		ll_sp2.setVisibility(View.INVISIBLE);
-		switch (list.size()) {
-		case 2:
-			finalBitmap.display(iv_img2, list.get(1).getSmallpic());
-			tv_name2.setText(list.get(1).getTitle());
-			String price2;
-			if("0".equals(list.get(1).getDiscountprice())){
-				price2=list.get(1).getJifen();
-			}else{
-				price2=list.get(1).getDiscountprice();
-			}
-			tv_jf2.setText("需要：" + price2 + "积分");
-			ll_sp2.setVisibility(View.VISIBLE);
-		case 1:
-			finalBitmap.display(iv_img1, list.get(0).getSmallpic());
-			tv_name1.setText(list.get(0).getTitle());
-			String price;
-			if("0".equals(list.get(0).getDiscountprice())){
-				price=list.get(0).getJifen();
-			}else{
-				price=list.get(0).getDiscountprice();
-			}
-			tv_jf1.setText("需要：" + price + "积分");
-			ll_sp1.setVisibility(View.VISIBLE);
-		case 0:			
-			break;
 
-		default:
-			break;
-		}
 	}
-	
+
 	@SuppressLint("NewApi")
 	private void addPreDraw() {
 		// TODO Auto-generated method stub
-		iv_bg.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-			
-			@Override
-			public void onGlobalLayout() {
-				// TODO Auto-generated method stub
-				LogMgr.showLog("执行了吗？");
-                Drawable drawable = ImageUtil.blur(act, iv_bg);
-                iv_push.setBackground(drawable);				
-			}
-		});
-//		iv_bg.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-//			
-//			@Override
-//			public boolean onPreDraw() {
-//				// TODO Auto-generated method stub
-////				iv_bg.getViewTreeObserver().removeOnPreDrawListener(this);
-////				if(iv_push.getVisibility() == View.VISIBLE){					
-////					iv_bg.buildDrawingCache();	
-////	                Bitmap bmp = iv_bg.getDrawingCache();
-//	                Drawable drawable = ImageUtil.blur(act, iv_bg);
-//	                iv_push.setBackground(drawable);
-////				}
-//                return true;
-//			}
-//		});
+		iv_bg.getViewTreeObserver().addOnGlobalLayoutListener(
+				new OnGlobalLayoutListener() {
+
+					@Override
+					public void onGlobalLayout() {
+						// TODO Auto-generated method stub
+						LogMgr.showLog("执行了吗？");
+						Drawable drawable = ImageUtil.blur(act, iv_bg);
+						iv_push.setBackground(drawable);
+					}
+				});
+		// iv_bg.getViewTreeObserver().addOnPreDrawListener(new
+		// ViewTreeObserver.OnPreDrawListener() {
+		//
+		// @Override
+		// public boolean onPreDraw() {
+		// // TODO Auto-generated method stub
+		// // iv_bg.getViewTreeObserver().removeOnPreDrawListener(this);
+		// // if(iv_push.getVisibility() == View.VISIBLE){
+		// // iv_bg.buildDrawingCache();
+		// // Bitmap bmp = iv_bg.getDrawingCache();
+		// Drawable drawable = ImageUtil.blur(act, iv_bg);
+		// iv_push.setBackground(drawable);
+		// // }
+		// return true;
+		// }
+		// });
 	}
 
-//	@Override
-//	public boolean onTouch(View v, MotionEvent event) {
-//		// TODO Auto-generated method stub
-//		LogMgr.showLog("------------onTouch----------");
-//		if(v.getId() == arcMenu.getId() && !arcMenu.isOpen()){
-//			iv_push.setVisibility(View.VISIBLE);
-//		}else{
-//			arcMenu.toggleMenu(300);
-//			iv_push.setVisibility(View.GONE);
-//		}
-//		return false;
-//	}
+	// @Override
+	// public boolean onTouch(View v, MotionEvent event) {
+	// // TODO Auto-generated method stub
+	// LogMgr.showLog("------------onTouch----------");
+	// if(v.getId() == arcMenu.getId() && !arcMenu.isOpen()){
+	// iv_push.setVisibility(View.VISIBLE);
+	// }else{
+	// arcMenu.toggleMenu(300);
+	// iv_push.setVisibility(View.GONE);
+	// }
+	// return false;
+	// }
 
-//	public void reflesh() {
-//		// TODO Auto-generated method stub
-//		getKykType();
-//	}
-	
+	// public void reflesh() {
+	// // TODO Auto-generated method stub
+	// getKykType();
+	// }
+
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		act.onKeyDown(keyCode, event);
