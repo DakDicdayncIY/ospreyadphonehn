@@ -111,6 +111,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/app_dhb_syzx_textview_selector"
                         android:button="@null"
+                        android:checked="true"
                         android:gravity="center"
                         android:text="本市"
                         android:textSize="20sp" />
@@ -141,11 +142,11 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <android.support.v4.view.ViewPager
+            <osprey_adphone_hn.cellcom.com.cn.activity.dhb.ViewPagerCompat
                 android:id="@+id/vp_os_dhb_syzx"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-            </android.support.v4.view.ViewPager>
+            </osprey_adphone_hn.cellcom.com.cn.activity.dhb.ViewPagerCompat>
         </LinearLayout>
 
         <ImageView
@@ -177,14 +178,15 @@
                 android:background="@drawable/os_dhb_syzx_green_selector"
                 android:text="赚钱" />
 
-            <Button
+            <ImageView
                 android:id="@+id/btn_zjf"
                 style="@style/app_medium_textStyle2"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:background="@drawable/os_dhb_syzx_item_bg_selector"
                 android:tag="ZJF"
-                android:text="@string/os_dhb_syzx_zjf" />
+                android:text="@string/os_dhb_syzx_zjf"
+                android:visibility="gone" />
+           <!-- android:background="@drawable/os_dhb_syzx_item_bg_selector" -->
 
             <Button
                 android:id="@+id/btn_qhb"

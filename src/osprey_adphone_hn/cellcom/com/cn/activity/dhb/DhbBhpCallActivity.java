@@ -58,11 +58,11 @@ public class DhbBhpCallActivity extends Activity {
 	private List<Adv> advs;
 	private TextView phonetv;
 	private TextView nametv;
-//	private boolean iscall = true;
+	// private boolean iscall = true;
 	private String phone;
 	private String cname;
 	private FinalBitmap finalBitmap;
-//	private MyCount myCount;
+	// private MyCount myCount;
 	private LoopJazzyPagerAdapter jazzyPagerAdapter;
 	private MyPhoneBroadcastReceiver myPhoneBroadcastReceiver;
 	private MediaPlayer player;
@@ -100,8 +100,8 @@ public class DhbBhpCallActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onWindowFocusChanged(hasFocus);
 		if (hasFocus) {
-//			myCount = new MyCount(3000, 1000);
-//			myCount.start();
+			// myCount = new MyCount(3000, 1000);
+			// myCount.start();
 			startMediaPlayer(R.raw.calling);
 		}
 	}
@@ -132,9 +132,9 @@ public class DhbBhpCallActivity extends Activity {
 
 		@Override
 		public void onFinish() {
-//			if (iscall) {
-//				callphone();
-//			}
+			// if (iscall) {
+			// callphone();
+			// }
 		}
 
 		@Override
@@ -147,11 +147,11 @@ public class DhbBhpCallActivity extends Activity {
 	 */
 	private void initView() {
 		phonetv = (TextView) findViewById(R.id.phonetv);
-		nametv=(TextView)findViewById(R.id.nametv);
+		nametv = (TextView) findViewById(R.id.nametv);
 		mJazzy = (JazzyViewPager) findViewById(R.id.jazzy_pager);
 		// mJazzy.setFadeEnabled(true);
 		mJazzy.setTransitionEffect(TransitionEffect.Standard);
-		returniv=(ImageView)findViewById(R.id.returniv);
+		returniv = (ImageView) findViewById(R.id.returniv);
 	}
 
 	/**
@@ -159,13 +159,13 @@ public class DhbBhpCallActivity extends Activity {
 	 */
 	private void initListener() {
 		returniv.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-//				if (myCount != null) {					
-//					myCount.cancel();
-//				}
+				// if (myCount != null) {
+				// myCount.cancel();
+				// }
 				DhbBhpCallActivity.this.finish();
 			}
 		});
@@ -238,7 +238,7 @@ public class DhbBhpCallActivity extends Activity {
 					public void onFailure(Throwable t, String strMsg) {
 						// TODO Auto-generated method stub
 						super.onFailure(t, strMsg);
-//						stopMediaPlayer();
+						// stopMediaPlayer();
 					}
 
 					@Override
@@ -246,7 +246,7 @@ public class DhbBhpCallActivity extends Activity {
 						// TODO Auto-generated method stub
 						AdvComm advComm = cellComAjaxResult.read(AdvComm.class,
 								CellComAjaxResult.ParseType.GSON);
-//						stopMediaPlayer();
+						// stopMediaPlayer();
 						if (!FlowConsts.STATUE_1.equals(advComm.getReturnCode())) {
 							Toast.makeText(DhbBhpCallActivity.this,
 									advComm.getReturnMessage(),
@@ -270,8 +270,10 @@ public class DhbBhpCallActivity extends Activity {
 				img.setLayoutParams(new RelativeLayout.LayoutParams(
 						LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 				img.setImageResource(R.drawable.os_dhb_callbg);
-				finalBitmap.display(img, advs.get(i).getMeitiurl(), BitmapFactory.decodeResource(getResources(), R.drawable.os_dhb_callbg));
-//				finalBitmap.display(img, advs.get(i).getMeitiurl());
+				finalBitmap.display(img, advs.get(i).getMeitiurl(),
+						BitmapFactory.decodeResource(getResources(),
+								R.drawable.os_dhb_callbg));
+				// finalBitmap.display(img, advs.get(i).getMeitiurl());
 				view_img.add(view);
 			}
 		}
@@ -317,15 +319,15 @@ public class DhbBhpCallActivity extends Activity {
 	 */
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
-		  mJazzy.setCurrentItem(currentItem);
+			mJazzy.setCurrentItem(currentItem);
 		};
 	};
 
 	protected void onPause() {
 		super.onPause();
-//		if (myCount != null) {
-//			myCount.cancel();
-//		}
+		// if (myCount != null) {
+		// myCount.cancel();
+		// }
 	}
 
 	@Override

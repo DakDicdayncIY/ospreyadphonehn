@@ -1,6 +1,12 @@
 package osprey_adphone_hn.cellcom.com.cn.activity.dhb;
 
 import net.tsz.afinal.FinalBitmap;
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.csh.CshFragmentActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshFragmentActivity;
@@ -20,7 +26,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -39,6 +44,7 @@ import cellcom.com.cn.net.CellComAjaxHttp;
 import cellcom.com.cn.net.CellComAjaxParams;
 import cellcom.com.cn.net.CellComAjaxResult;
 import cellcom.com.cn.net.base.CellComHttpInterface;
+import cellcom.com.cn.util.Des3;
 
 /**
  * 
@@ -348,8 +354,10 @@ public class DhbGrzxActivity extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(act, GwcActivity.class);
-				startActivity(intent);
+				// Intent intent = new Intent(act, GwcActivity.class);
+				// startActivity(intent);
+				Toast.makeText(DhbGrzxActivity.this.getActivity(), "功能正在开发中",
+						Toast.LENGTH_SHORT).show();
 			}
 		});
 		// 账号充值
@@ -368,8 +376,10 @@ public class DhbGrzxActivity extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(act, DhbGrzxJfscActivity.class);
-				startActivity(intent);
+				// Intent intent = new Intent(act, DhbGrzxJfscActivity.class);
+				// startActivity(intent);
+				Toast.makeText(DhbGrzxActivity.this.getActivity(), "功能正在开发中",
+						Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -390,8 +400,10 @@ public class DhbGrzxActivity extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(act, DhbGrzxJfkActivity.class);
-				startActivity(intent);
+				// Intent intent = new Intent(act, DhbGrzxJfkActivity.class);
+				// startActivity(intent);
+				Toast.makeText(DhbGrzxActivity.this.getActivity(), "功能正在开发中",
+						Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -522,9 +534,11 @@ public class DhbGrzxActivity extends Fragment {
 				SharepreferenceUtil.fileName, "account", ""));
 
 		bitmap.display(new ImageView(DhbGrzxActivity.this.getActivity()),
-				FlowConsts.GRZX_GG_PATH);
+				CshFragmentActivity.meiti);
 
-		BitMapUtil.getImgOpt(act, bitmap, jvp, R.drawable.os_login_topicon);
+		BitMapUtil.getImgOpt(DhbGrzxActivity.this.getActivity(), bitmap, jvp,
+				R.drawable.os_login_topicon);
+
 	}
 
 	public void reflesh() {

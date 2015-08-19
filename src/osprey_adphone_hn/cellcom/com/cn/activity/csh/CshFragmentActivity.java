@@ -1,14 +1,20 @@
 package osprey_adphone_hn.cellcom.com.cn.activity.csh;
 
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbGrzxActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.dhb.DhbSyzxActivity;
+import osprey_adphone_hn.cellcom.com.cn.net.FlowConsts;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import cellcom.com.cn.util.Des3;
 
 public class CshFragmentActivity extends FragmentActivity {
 	private RelativeLayout wdcTab;// 我的车选项卡
@@ -38,21 +45,43 @@ public class CshFragmentActivity extends FragmentActivity {
 	private DhbSyzxActivity dhbSyzxActivity;
 	private DhbGrzxActivity dhbGrzxActivity;
 
-	private String csh="CSH";
-	private String fwxx="FWXX";
-	private String syzx="SYZX";
-	private String grzx="GRZX";
-	
-	
+	private String csh = "CSH";
+	private String fwxx = "FWXX";
+	private String syzx = "SYZX";
+	private String grzx = "GRZX";
+
+	public static String meiti = null;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.app_csh_fragment);
+		initGRZXGG();
 		initView();
 		initData();
 		wdcActivity = new CshWdcActivity();
 		showFragment(wdcActivity, csh);
 		initListener();
+	}
+
+	private void initGRZXGG() {
+		FinalHttp http = new FinalHttp();
+		http.get(FlowConsts.GRZX_GG_PATH, new AjaxCallBack<String>() {
+			@Override
+			public void onSuccess(String t) {
+				try {
+					String jmh = Des3.decode(t, FlowConsts.DES3_KEY);
+					JSONObject obj = new JSONObject(jmh);
+					// JSONObject obj = new JSONObject(decode3);
+					JSONArray jsonArray = obj.getJSONArray("body");
+					meiti = jsonArray.getJSONObject(0).getString("meitiurl");
+
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	private void initListener() {
@@ -63,7 +92,7 @@ public class CshFragmentActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(wdcActivity==null){					
+				if (wdcActivity == null) {
 					wdcActivity = new CshWdcActivity();
 				}
 				// replaceFragment(wdcActivity, "wdc");
@@ -80,7 +109,8 @@ public class CshFragmentActivity extends FragmentActivity {
 				grzxTabIcon
 						.setBackgroundResource(R.drawable.os_dhb_bottom_grzx_icon_unselected);
 
-				wdcTabLabel.setTextColor(getResources().getColor(R.color.orange));
+				wdcTabLabel.setTextColor(getResources()
+						.getColor(R.color.orange));
 				fwxxTabLabel
 						.setTextColor(getResources().getColor(R.color.gray));
 				syzxTabLabel
@@ -95,13 +125,13 @@ public class CshFragmentActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(cshFwxxActivity==null){					
+				if (cshFwxxActivity == null) {
 					cshFwxxActivity = new CshFwxxActivity();
 				}
 				hiddleFragment(wdcActivity, csh);
 				hiddleFragment(dhbSyzxActivity, syzx);
 				hiddleFragment(dhbGrzxActivity, grzx);
-				showFragment(cshFwxxActivity,fwxx);
+				showFragment(cshFwxxActivity, fwxx);
 				wdcTabIcon
 						.setBackgroundResource(R.drawable.os_csh_bottom_wdc_icon_unselected);
 				fwxxTabIcon
@@ -112,8 +142,8 @@ public class CshFragmentActivity extends FragmentActivity {
 						.setBackgroundResource(R.drawable.os_dhb_bottom_grzx_icon_unselected);
 
 				wdcTabLabel.setTextColor(getResources().getColor(R.color.gray));
-				fwxxTabLabel
-						.setTextColor(getResources().getColor(R.color.orange));
+				fwxxTabLabel.setTextColor(getResources().getColor(
+						R.color.orange));
 				syzxTabLabel
 						.setTextColor(getResources().getColor(R.color.gray));
 				grzxTabLabel
@@ -128,13 +158,13 @@ public class CshFragmentActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(dhbSyzxActivity==null){					
+				if (dhbSyzxActivity == null) {
 					dhbSyzxActivity = new DhbSyzxActivity();
 				}
 				hiddleFragment(wdcActivity, csh);
 				hiddleFragment(cshFwxxActivity, fwxx);
 				hiddleFragment(dhbGrzxActivity, grzx);
-				showFragment(dhbSyzxActivity,syzx);
+				showFragment(dhbSyzxActivity, syzx);
 				wdcTabIcon
 						.setBackgroundResource(R.drawable.os_csh_bottom_wdc_icon_unselected);
 				fwxxTabIcon
@@ -147,8 +177,8 @@ public class CshFragmentActivity extends FragmentActivity {
 				wdcTabLabel.setTextColor(getResources().getColor(R.color.gray));
 				fwxxTabLabel
 						.setTextColor(getResources().getColor(R.color.gray));
-				syzxTabLabel
-						.setTextColor(getResources().getColor(R.color.orange));
+				syzxTabLabel.setTextColor(getResources().getColor(
+						R.color.orange));
 				grzxTabLabel
 						.setTextColor(getResources().getColor(R.color.gray));
 			}
@@ -159,13 +189,15 @@ public class CshFragmentActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(dhbGrzxActivity==null){					
+				if (dhbGrzxActivity == null) {
 					dhbGrzxActivity = new DhbGrzxActivity();
 				}
 				hiddleFragment(wdcActivity, csh);
 				hiddleFragment(cshFwxxActivity, fwxx);
 				hiddleFragment(dhbSyzxActivity, syzx);
-				showFragment(dhbGrzxActivity,grzx);
+
+				showFragment(dhbGrzxActivity, grzx);
+
 				wdcTabIcon
 						.setBackgroundResource(R.drawable.os_csh_bottom_wdc_icon_unselected);
 				fwxxTabIcon
@@ -180,8 +212,8 @@ public class CshFragmentActivity extends FragmentActivity {
 						.setTextColor(getResources().getColor(R.color.gray));
 				syzxTabLabel
 						.setTextColor(getResources().getColor(R.color.gray));
-				grzxTabLabel
-						.setTextColor(getResources().getColor(R.color.orange));
+				grzxTabLabel.setTextColor(getResources().getColor(
+						R.color.orange));
 			}
 		});
 	}
@@ -226,29 +258,28 @@ public class CshFragmentActivity extends FragmentActivity {
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.setCustomAnimations(android.R.anim.fade_in,
 				android.R.anim.fade_out);
-		if(fragment!=null && manager.findFragmentByTag(tag)!=null){			
+		if (fragment != null && manager.findFragmentByTag(tag) != null) {
 			transaction.hide(fragment);
 			transaction.commitAllowingStateLoss();
 		}
-		
+
 	}
-	
+
 	private void showFragment(Fragment fragment, String tag) {
 		FragmentManager manager = getSupportFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.setCustomAnimations(android.R.anim.fade_in,
 				android.R.anim.fade_out);
-		if(fragment!=null && manager.findFragmentByTag(tag)==null && !fragment.isAdded()){
-			transaction.add(R.id.simple_fragment,fragment, tag);
+		if (fragment != null && manager.findFragmentByTag(tag) == null
+				&& !fragment.isAdded()) {
+			transaction.add(R.id.simple_fragment, fragment, tag);
 		}
 		transaction.show(fragment);
-		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);  
-		
-		
-		
-//		transaction.replace(R.id.simple_fragment, fragment);
-//		if (!init)
-//			transaction.addToBackStack(null);
+		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+		// transaction.replace(R.id.simple_fragment, fragment);
+		// if (!init)
+		// transaction.addToBackStack(null);
 		transaction.commitAllowingStateLoss();
 	}
 
@@ -258,8 +289,8 @@ public class CshFragmentActivity extends FragmentActivity {
 		getParent().onKeyDown(keyCode, event);
 		return false;
 	}
-	
-	public void onDes(){
+
+	public void onDes() {
 		FragmentManager manager = getSupportFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 		if (wdcActivity == null) {
@@ -275,10 +306,10 @@ public class CshFragmentActivity extends FragmentActivity {
 			transaction.remove(dhbGrzxActivity);
 		}
 	}
-	
+
 	public void reflesh() {
 		// TODO Auto-generated method stub
-		if(dhbGrzxActivity!=null){
+		if (dhbGrzxActivity != null) {
 			dhbGrzxActivity.reflesh();
 		}
 	}

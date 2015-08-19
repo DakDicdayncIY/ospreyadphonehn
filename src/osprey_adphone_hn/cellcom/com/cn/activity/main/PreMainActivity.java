@@ -110,7 +110,6 @@ public class PreMainActivity extends ActivityFrame {
 		getAdv();
 		getCompanyAdv();
 	}
-	
 
 	private void initUM() {
 		// TODO Auto-generated method stub
@@ -129,51 +128,64 @@ public class PreMainActivity extends ActivityFrame {
 				SharepreferenceUtil.fileName, "uid");
 		finalBitmap = FinalBitmap.create(PreMainActivity.this);
 		if (ContextUtil.getHeith(PreMainActivity.this) <= 480) {
-//			RelativeLayout.LayoutParams linearParams = (RelativeLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(PreMainActivity.this, 60);
-//			fl_ad.setLayoutParams(linearParams);
+			// RelativeLayout.LayoutParams linearParams =
+			// (RelativeLayout.LayoutParams) fl_ad
+			// .getLayoutParams();
+			// linearParams.height = ContextUtil.dip2px(PreMainActivity.this,
+			// 60);
+			// fl_ad.setLayoutParams(linearParams);
 			dpitype = "l";
 		} else if (ContextUtil.getHeith(PreMainActivity.this) <= 800) {
 			// if(ContextUtil.getWidth(this)<=480)
-//			RelativeLayout.LayoutParams linearParams = (RelativeLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(PreMainActivity.this, 140);
-//			fl_ad.setLayoutParams(linearParams);
+			// RelativeLayout.LayoutParams linearParams =
+			// (RelativeLayout.LayoutParams) fl_ad
+			// .getLayoutParams();
+			// linearParams.height = ContextUtil.dip2px(PreMainActivity.this,
+			// 140);
+			// fl_ad.setLayoutParams(linearParams);
 			dpitype = "l";
-		}else if (ContextUtil.getHeith(PreMainActivity.this) <= 860) {
+		} else if (ContextUtil.getHeith(PreMainActivity.this) <= 860) {
 			// if(ContextUtil.getWidth(this)<=480)
-//			RelativeLayout.LayoutParams linearParams = (RelativeLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(PreMainActivity.this, 150);
-//			fl_ad.setLayoutParams(linearParams);
+			// RelativeLayout.LayoutParams linearParams =
+			// (RelativeLayout.LayoutParams) fl_ad
+			// .getLayoutParams();
+			// linearParams.height = ContextUtil.dip2px(PreMainActivity.this,
+			// 150);
+			// fl_ad.setLayoutParams(linearParams);
 			dpitype = "l";
 		} else if (ContextUtil.getHeith(PreMainActivity.this) <= 960) {
 			// if(ContextUtil.getWidth(this)<=480)
-//			RelativeLayout.LayoutParams linearParams = (RelativeLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(PreMainActivity.this, 180);
-//			fl_ad.setLayoutParams(linearParams);
+			// RelativeLayout.LayoutParams linearParams =
+			// (RelativeLayout.LayoutParams) fl_ad
+			// .getLayoutParams();
+			// linearParams.height = ContextUtil.dip2px(PreMainActivity.this,
+			// 180);
+			// fl_ad.setLayoutParams(linearParams);
 			dpitype = "m";
 		} else if (ContextUtil.getHeith(PreMainActivity.this) <= 1280) {
-//			RelativeLayout.LayoutParams linearParams = (RelativeLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(PreMainActivity.this, 200);
-//			fl_ad.setLayoutParams(linearParams);
+			// RelativeLayout.LayoutParams linearParams =
+			// (RelativeLayout.LayoutParams) fl_ad
+			// .getLayoutParams();
+			// linearParams.height = ContextUtil.dip2px(PreMainActivity.this,
+			// 200);
+			// fl_ad.setLayoutParams(linearParams);
 			dpitype = "m";
 		} else {
-//			RelativeLayout.LayoutParams linearParams = (RelativeLayout.LayoutParams) fl_ad
-//					.getLayoutParams();
-//			linearParams.height = ContextUtil.dip2px(PreMainActivity.this, 210);
-//			fl_ad.setLayoutParams(linearParams);
+			// RelativeLayout.LayoutParams linearParams =
+			// (RelativeLayout.LayoutParams) fl_ad
+			// .getLayoutParams();
+			// linearParams.height = ContextUtil.dip2px(PreMainActivity.this,
+			// 210);
+			// fl_ad.setLayoutParams(linearParams);
 			dpitype = "h";
 		}
 		RelativeLayout.LayoutParams linearParams = (RelativeLayout.LayoutParams) fl_ad
-            .getLayoutParams();
-		linearParams.width=ContextUtil.getWidth(PreMainActivity.this);
-        linearParams.height = linearParams.width/2;
-        fl_ad.setLayoutParams(linearParams);
-		BitMapUtil.getImgOpt(PreMainActivity.this, finalBitmap, mJazzy, R.drawable.os_login_topicon);
+				.getLayoutParams();
+		linearParams.width = ContextUtil.getWidth(PreMainActivity.this);
+		linearParams.height = linearParams.width / 2;
+		fl_ad.setLayoutParams(linearParams);
+		BitMapUtil.getImgOpt(PreMainActivity.this, finalBitmap, mJazzy,
+				R.drawable.os_login_topicon);
 	}
 
 	private void initListener() {
@@ -769,7 +781,7 @@ public class PreMainActivity extends ActivityFrame {
 	 */
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
-		  mJazzy.setCurrentItem(currentItem);
+			mJazzy.setCurrentItem(currentItem);
 		};
 	};
 
@@ -802,8 +814,8 @@ public class PreMainActivity extends ActivityFrame {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		if (scheduledExecutor != null) {
-          scheduledExecutor.shutdown();
-        }
+			scheduledExecutor.shutdown();
+		}
 		if (finalBitmap != null) {
 			finalBitmap.onDestroy();
 		}
@@ -811,11 +823,11 @@ public class PreMainActivity extends ActivityFrame {
 			isRegFilter = false;
 			this.unregisterReceiver(mReceiver);
 		}
-		Account account = AccountPersist.getInstance()
-				.getActiveAccountInfo(PreMainActivity.this);
+		Account account = AccountPersist.getInstance().getActiveAccountInfo(
+				PreMainActivity.this);
 		exitConn(account);
-		AccountPersist.getInstance().setActiveAccount(
-				PreMainActivity.this, new Account());
+		AccountPersist.getInstance().setActiveAccount(PreMainActivity.this,
+				new Account());
 		NpcCommon.mThreeNum = "";
 		Intent i = new Intent(MyApp.MAIN_SERVICE_START);
 		stopService(i);

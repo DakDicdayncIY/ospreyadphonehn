@@ -50,7 +50,7 @@ public class CshFwxxActivity extends Fragment {
 	 * 初始化监听
 	 */
 	private void initListener() {
-	  
+
 	}
 
 	/**

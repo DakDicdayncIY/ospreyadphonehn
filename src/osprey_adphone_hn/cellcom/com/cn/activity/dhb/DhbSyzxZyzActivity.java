@@ -42,7 +42,7 @@ import cellcom.com.cn.net.base.CellComHttpInterface;
 
 public class DhbSyzxZyzActivity extends ActivityFrame implements
 		OnActionSheetSelected {
-	private TextView tv_name, tv_jf,tv_namedetail;
+	private TextView tv_name, tv_jf, tv_namedetail;
 	private ImageView iv_disc, iv_pointer, iv_start;
 	private boolean isPlaying = false;
 
@@ -68,7 +68,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 		initView();
 		initListener();
 		initData();
-//		getZyzInfo();
+		// getZyzInfo();
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 
 	private void initView() {
 		finalBitmap = FinalBitmap.create(this);
-		tv_namedetail=(TextView)findViewById(R.id.tv_namedetail);
+		tv_namedetail = (TextView) findViewById(R.id.tv_namedetail);
 		tv_name = (TextView) findViewById(R.id.tv_name);
 		tv_jf = (TextView) findViewById(R.id.tv_jf);
 		iv_disc = (ImageView) findViewById(R.id.iv_disc);
@@ -99,24 +99,37 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (!isPlaying && zyzPrizeNewListComm!=null) {
-				  if("1".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-				    AlertDialogPopupWindow.showSheet(DhbSyzxZyzActivity.this,
-                      DhbSyzxZyzActivity.this, "是否支付"+zyzPrizeNewListComm.getBody().getNeednum()+"积分转一转？", 1);
-				  }else if("2".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-				    AlertDialogPopupWindow.showSheet(DhbSyzxZyzActivity.this,
-                      DhbSyzxZyzActivity.this, "是否支付"+zyzPrizeNewListComm.getBody().getNeednum()+"亮币转一转？", 2);
-				  }else if("3".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-				    AlertDialogPopupWindow.showSheet(DhbSyzxZyzActivity.this,
-                      DhbSyzxZyzActivity.this, "是否支付"+zyzPrizeNewListComm.getBody().getNeednum()+"银币转一转？", 3);
-                  }
-				}else{
-				  Toast.makeText(DhbSyzxZyzActivity.this, "数据获取中,请稍后...", Toast.LENGTH_SHORT).show();
+				if (!isPlaying && zyzPrizeNewListComm != null) {
+					if ("1".equalsIgnoreCase(zyzPrizeNewListComm.getBody()
+							.getNeedtype())) {
+						AlertDialogPopupWindow.showSheet(
+								DhbSyzxZyzActivity.this,
+								DhbSyzxZyzActivity.this, "是否支付"
+										+ zyzPrizeNewListComm.getBody()
+												.getNeednum() + "积分转一转？", 1);
+					} else if ("2".equalsIgnoreCase(zyzPrizeNewListComm
+							.getBody().getNeedtype())) {
+						AlertDialogPopupWindow.showSheet(
+								DhbSyzxZyzActivity.this,
+								DhbSyzxZyzActivity.this, "是否支付"
+										+ zyzPrizeNewListComm.getBody()
+												.getNeednum() + "亮币转一转？", 2);
+					} else if ("3".equalsIgnoreCase(zyzPrizeNewListComm
+							.getBody().getNeedtype())) {
+						AlertDialogPopupWindow.showSheet(
+								DhbSyzxZyzActivity.this,
+								DhbSyzxZyzActivity.this, "是否支付"
+										+ zyzPrizeNewListComm.getBody()
+												.getNeednum() + "银币转一转？", 3);
+					}
+				} else {
+					Toast.makeText(DhbSyzxZyzActivity.this, "数据获取中,请稍后...",
+							Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
 	}
-	
+
 	private void initData() {
 		// TODO Auto-generated method stub
 		getGrzl();
@@ -140,7 +153,8 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 			public void onAnimationStart(Animation animation) {
 				// TODO Auto-generated method stub
 				isPlaying = true;
-				Toast.makeText(DhbSyzxZyzActivity.this, "开始抽奖~", Toast.LENGTH_SHORT).show();
+				Toast.makeText(DhbSyzxZyzActivity.this, "开始抽奖~",
+						Toast.LENGTH_SHORT).show();
 			}
 
 			@Override
@@ -159,10 +173,12 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 					}
 					// 播放动画，完毕后播放下一条广告
 					ll_money_anim.removeAllViews();
-					final FlakeView flakeView = new FlakeView(DhbSyzxZyzActivity.this);
+					final FlakeView flakeView = new FlakeView(
+							DhbSyzxZyzActivity.this);
 					ll_money_anim.addView(flakeView);
 					AnimationUtil.addScaleAnimation(tv_add_money_num, 1500);
-					AnimationUtil.fadeInAnimation(DhbSyzxZyzActivity.this,	iv_money_box);
+					AnimationUtil.fadeInAnimation(DhbSyzxZyzActivity.this,
+							iv_money_box);
 					startVibrato(R.raw.shake_match);
 					new Handler().postDelayed(new Runnable() {
 
@@ -176,7 +192,8 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 							ll_money_anim.removeAllViews();
 							AlertDialogPopupWindow.showSheet(
 									DhbSyzxZyzActivity.this,
-									DhbSyzxZyzActivity.this, "您本次转一转获得了" + prize, 4);
+									DhbSyzxZyzActivity.this, "您本次转一转获得了"
+											+ prize, 4);
 						}
 					}, 1500);
 				} else {
@@ -206,154 +223,205 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 	public void onClick(int whichButton) {
 		// TODO Auto-generated method stub
 		if (whichButton == 1) {
-		  if("1".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-		    if(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "jifen", "").equals("")){
-              ShowMsg("您的积分不足~");
-          }else{
-              if(Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "jifen"))
-                  >=zyzPrizeNewListComm.getBody().getNeednum()){
-                  getZyzPrizeNew();
-              }else{
-                  ShowMsg("您的积分不足~");
-              }
-          }
-          }
+			if ("1".equalsIgnoreCase(zyzPrizeNewListComm.getBody()
+					.getNeedtype())) {
+				if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this,
+						SharepreferenceUtil.fileName, "jifen", "").equals("")) {
+					ShowMsg("您的积分不足~");
+				} else {
+					if (Float.parseFloat(SharepreferenceUtil.readString(
+							DhbSyzxZyzActivity.this,
+							SharepreferenceUtil.fileName, "jifen")) >= zyzPrizeNewListComm
+							.getBody().getNeednum()) {
+						getZyzPrizeNew();
+					} else {
+						ShowMsg("您的积分不足~");
+					}
+				}
+			}
 		} else if (whichButton == 2) {
-		  if("2".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-            if(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-              "huafei", "").equals("")){
-              ShowMsg("您的亮币不足~");
-          }else{
-              if(Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                "huafei", ""))>=zyzPrizeNewListComm.getBody().getNeednum()){
-                  getZyzPrizeNew();
-              }else{
-                  ShowMsg("您的亮币不足~");
-              }
-          }
-          }
-		}else if(whichButton==3){
-		  if("3".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-            if(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-              "yinyuan", "").equals("")){
-              ShowMsg("您的银币不足~");
-          }else{
-              if(Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                "yinyuan", ""))>=zyzPrizeNewListComm.getBody().getNeednum()){
-                  getZyzPrizeNew();
-              }else{
-                  ShowMsg("您的银币不足~");
-              }
-          }
-          }
-		}else if(whichButton==4){
-		  getGrzl();
+			if ("2".equalsIgnoreCase(zyzPrizeNewListComm.getBody()
+					.getNeedtype())) {
+				if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this,
+						SharepreferenceUtil.fileName, "huafei", "").equals("")) {
+					ShowMsg("您的亮币不足~");
+				} else {
+					if (Float.parseFloat(SharepreferenceUtil.readString(
+							DhbSyzxZyzActivity.this,
+							SharepreferenceUtil.fileName, "huafei", "")) >= zyzPrizeNewListComm
+							.getBody().getNeednum()) {
+						getZyzPrizeNew();
+					} else {
+						ShowMsg("您的亮币不足~");
+					}
+				}
+			}
+		} else if (whichButton == 3) {
+			if ("3".equalsIgnoreCase(zyzPrizeNewListComm.getBody()
+					.getNeedtype())) {
+				if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this,
+						SharepreferenceUtil.fileName, "yinyuan", "").equals("")) {
+					ShowMsg("您的银币不足~");
+				} else {
+					if (Float.parseFloat(SharepreferenceUtil.readString(
+							DhbSyzxZyzActivity.this,
+							SharepreferenceUtil.fileName, "yinyuan", "")) >= zyzPrizeNewListComm
+							.getBody().getNeednum()) {
+						getZyzPrizeNew();
+					} else {
+						ShowMsg("您的银币不足~");
+					}
+				}
+			}
+		} else if (whichButton == 4) {
+			getGrzl();
 		}
 	}
-	
-	
-    protected void getGrzl() {
-        final String uid = SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName, "uid");
-        CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
-        cellComAjaxParams.put("uid", uid);
-        HttpHelper.getInstances(this).send(FlowConsts.YYW_USERINFO, cellComAjaxParams, CellComAjaxHttp.HttpWayMode.POST,
-                new CellComHttpInterface.NetCallBack<CellComAjaxResult>() {
 
-                    @Override
-                    public void onStart() {
-                        // TODO Auto-generated method stub
-                        super.onStart();
-                    }
+	protected void getGrzl() {
+		final String uid = SharepreferenceUtil.readString(this,
+				SharepreferenceUtil.fileName, "uid");
+		CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
+		cellComAjaxParams.put("uid", uid);
+		HttpHelper.getInstances(this).send(FlowConsts.YYW_USERINFO,
+				cellComAjaxParams, CellComAjaxHttp.HttpWayMode.POST,
+				new CellComHttpInterface.NetCallBack<CellComAjaxResult>() {
 
-                    @Override
-                    public void onFailure(Throwable t, String strMsg) {
-                        // TODO Auto-generated method stub
-                        super.onFailure(t, strMsg);
-                    }
+					@Override
+					public void onStart() {
+						// TODO Auto-generated method stub
+						super.onStart();
+					}
 
-                    @Override
-                    public void onSuccess(CellComAjaxResult arg0) {
-                        // TODO Auto-generated method stub
-                        UserInfoComm userInfoComm = arg0.read(UserInfoComm.class,
-                                CellComAjaxResult.ParseType.GSON);
-                        String state = userInfoComm.getReturnCode();
-                        String msg = userInfoComm.getReturnMessage();
-                        if (!FlowConsts.STATUE_1.equals(state)) {
-                            ShowMsg(msg);
-                            return;
-                        }
-                        initValue(userInfoComm.getBody(), uid);
-                        if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this,
-                                SharepreferenceUtil.fileName, "huafei", "").equals("")) {
-                            tv_kyhf.setText("0个");
-                        } else {
-                            tv_kyhf.setText(SharepreferenceUtil.readString(
-                                            DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "huafei", "")+"个");
-                        }
-                        if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this,
-                                SharepreferenceUtil.fileName, "username", "").equals("")) {
-                            tv_name.setText("客户");
-                        } else {
-                            tv_name.setText(SharepreferenceUtil.readString(
-                                            DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "username", ""));
-                        }
-                        if(zyzPrizeNewListComm!=null && "1".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-                          if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                            "jifen", "").equals("")) {
-                            tv_namedetail.setText("积分:");
-                              tv_jf.setText("0");
-                          } else {
-                            tv_namedetail.setText("积分:");
-                              tv_jf.setText(""+Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                                  "jifen", "")));
-                          }
-                        }else if(zyzPrizeNewListComm!=null && "2".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-                          if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                            "huafei", "").equals("")) {
-                            tv_namedetail.setText("亮币:");
-                              tv_jf.setText("0个");
-                          } else {
-                            tv_namedetail.setText("亮币:");
-                              tv_jf.setText(Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                                  "huafei", ""))+"个");
-                          }
-                        }else if(zyzPrizeNewListComm!=null && "3".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-                          if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                            "yinyuan", "").equals("")) {
-                            tv_namedetail.setText("银币:");
-                              tv_jf.setText("0");
-                          } else {
-                            tv_namedetail.setText("银币:");
-                              tv_jf.setText(""+Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                                  "yinyuan", "")));
-                          }
-                        }else{
-                          if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                            "huafei", "").equals("")) {
-                            tv_namedetail.setText("亮币:");
-                              tv_jf.setText("0个");
-                          } else {
-                            tv_namedetail.setText("亮币:");
-                              tv_jf.setText(Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName,
-                                  "huafei", ""))+"个");
-                          }
-                        }
-                    }
-                });
-    }
-    
-	
+					@Override
+					public void onFailure(Throwable t, String strMsg) {
+						// TODO Auto-generated method stub
+						super.onFailure(t, strMsg);
+					}
+
+					@Override
+					public void onSuccess(CellComAjaxResult arg0) {
+						// TODO Auto-generated method stub
+						UserInfoComm userInfoComm = arg0.read(
+								UserInfoComm.class,
+								CellComAjaxResult.ParseType.GSON);
+						String state = userInfoComm.getReturnCode();
+						String msg = userInfoComm.getReturnMessage();
+						if (!FlowConsts.STATUE_1.equals(state)) {
+							ShowMsg(msg);
+							return;
+						}
+						initValue(userInfoComm.getBody(), uid);
+						if (SharepreferenceUtil.readString(
+								DhbSyzxZyzActivity.this,
+								SharepreferenceUtil.fileName, "huafei", "")
+								.equals("")) {
+							tv_kyhf.setText("0个");
+						} else {
+							tv_kyhf.setText(SharepreferenceUtil.readString(
+									DhbSyzxZyzActivity.this,
+									SharepreferenceUtil.fileName, "huafei", "")
+									+ "个");
+						}
+						if (SharepreferenceUtil.readString(
+								DhbSyzxZyzActivity.this,
+								SharepreferenceUtil.fileName, "username", "")
+								.equals("")) {
+							tv_name.setText("客户");
+						} else {
+							tv_name.setText(SharepreferenceUtil.readString(
+									DhbSyzxZyzActivity.this,
+									SharepreferenceUtil.fileName, "username",
+									""));
+						}
+						if (zyzPrizeNewListComm != null
+								&& "1".equalsIgnoreCase(zyzPrizeNewListComm
+										.getBody().getNeedtype())) {
+							if (SharepreferenceUtil.readString(
+									DhbSyzxZyzActivity.this,
+									SharepreferenceUtil.fileName, "jifen", "")
+									.equals("")) {
+								tv_namedetail.setText("积分:");
+								tv_jf.setText("0");
+							} else {
+								tv_namedetail.setText("积分:");
+								tv_jf.setText(""
+										+ Float.parseFloat(SharepreferenceUtil
+												.readString(
+														DhbSyzxZyzActivity.this,
+														SharepreferenceUtil.fileName,
+														"jifen", "")));
+							}
+						} else if (zyzPrizeNewListComm != null
+								&& "2".equalsIgnoreCase(zyzPrizeNewListComm
+										.getBody().getNeedtype())) {
+							if (SharepreferenceUtil.readString(
+									DhbSyzxZyzActivity.this,
+									SharepreferenceUtil.fileName, "huafei", "")
+									.equals("")) {
+								tv_namedetail.setText("亮币:");
+								tv_jf.setText("0个");
+							} else {
+								tv_namedetail.setText("亮币:");
+								tv_jf.setText(Float.parseFloat(SharepreferenceUtil
+										.readString(DhbSyzxZyzActivity.this,
+												SharepreferenceUtil.fileName,
+												"huafei", ""))
+										+ "个");
+							}
+						} else if (zyzPrizeNewListComm != null
+								&& "3".equalsIgnoreCase(zyzPrizeNewListComm
+										.getBody().getNeedtype())) {
+							if (SharepreferenceUtil
+									.readString(DhbSyzxZyzActivity.this,
+											SharepreferenceUtil.fileName,
+											"yinyuan", "").equals("")) {
+								tv_namedetail.setText("银币:");
+								tv_jf.setText("0");
+							} else {
+								tv_namedetail.setText("银币:");
+								tv_jf.setText(""
+										+ Float.parseFloat(SharepreferenceUtil
+												.readString(
+														DhbSyzxZyzActivity.this,
+														SharepreferenceUtil.fileName,
+														"yinyuan", "")));
+							}
+						} else {
+							if (SharepreferenceUtil.readString(
+									DhbSyzxZyzActivity.this,
+									SharepreferenceUtil.fileName, "huafei", "")
+									.equals("")) {
+								tv_namedetail.setText("亮币:");
+								tv_jf.setText("0个");
+							} else {
+								tv_namedetail.setText("亮币:");
+								tv_jf.setText(Float.parseFloat(SharepreferenceUtil
+										.readString(DhbSyzxZyzActivity.this,
+												SharepreferenceUtil.fileName,
+												"huafei", ""))
+										+ "个");
+							}
+						}
+					}
+				});
+	}
+
 	/**
 	 * 转一转获取奖品信息列表
 	 */
 	private void getZyzInfoNew() {
-		if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "uid", "").equals("")) {
-			Intent loginintent = new Intent(DhbSyzxZyzActivity.this, LoginActivity.class);
+		if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this,
+				SharepreferenceUtil.fileName, "uid", "").equals("")) {
+			Intent loginintent = new Intent(DhbSyzxZyzActivity.this,
+					LoginActivity.class);
 			startActivity(loginintent);
 			return;
 		}
 		CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
-		cellComAjaxParams.put("uid", SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "uid", ""));
+		cellComAjaxParams.put("uid", SharepreferenceUtil.readString(
+				DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "uid",
+				""));
 		HttpHelper.getInstances(DhbSyzxZyzActivity.this).send(
 				FlowConsts.YYW_ZYZ_GETLIST, cellComAjaxParams,
 				CellComAjaxHttp.HttpWayMode.POST,
@@ -364,18 +432,23 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 						// TODO Auto-generated method stub
 						DismissProgressDialog();
 						zyzPrizeNewListComm = cellComAjaxResult.read(
-								ZyzPrizeNewListComm.class, CellComAjaxResult.ParseType.GSON);
-						if (!FlowConsts.STATUE_1.equals(zyzPrizeNewListComm.getReturnCode())) {
+								ZyzPrizeNewListComm.class,
+								CellComAjaxResult.ParseType.GSON);
+						if (!FlowConsts.STATUE_1.equals(zyzPrizeNewListComm
+								.getReturnCode())) {
 							ShowMsg(zyzPrizeNewListComm.getReturnMessage());
 							return;
 						}
-						if (zyzPrizeNewListComm.getBody().getImgurl() != null 
-								&& (zyzPrizeNewListComm.getBody().getImgurl().contains(".jpg") 
-										|| zyzPrizeNewListComm.getBody().getImgurl().contains(".png"))) {
-							finalBitmap.display(iv_disc, zyzPrizeNewListComm	.getBody().getImgurl());
+						if (zyzPrizeNewListComm.getBody().getImgurl() != null
+								&& (zyzPrizeNewListComm.getBody().getImgurl()
+										.contains(".jpg") || zyzPrizeNewListComm
+										.getBody().getImgurl().contains(".png"))) {
+							finalBitmap.display(iv_disc, zyzPrizeNewListComm
+									.getBody().getImgurl());
 						}
 						iv_start.setVisibility(View.VISIBLE);
-						zyzPrizeList.addAll(zyzPrizeNewListComm.getBody().getData());
+						zyzPrizeList.addAll(zyzPrizeNewListComm.getBody()
+								.getData());
 						Collections.sort(zyzPrizeList);
 					}
 
@@ -394,7 +467,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 					}
 				});
 	}
-	
+
 	/**
 	 * 转一转领取奖品
 	 */
@@ -408,7 +481,8 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 		}
 		CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
 		cellComAjaxParams.put("uid", SharepreferenceUtil.readString(
-				DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "uid",""));
+				DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "uid",
+				""));
 		HttpHelper.getInstances(DhbSyzxZyzActivity.this).send(
 				FlowConsts.YYW_ZYZ_GETWIN, cellComAjaxParams,
 				CellComAjaxHttp.HttpWayMode.POST,
@@ -416,55 +490,89 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 
 					@Override
 					public void onSuccess(CellComAjaxResult cellComAjaxResult) {
-						// TODO Auto-generated method stub						
+						// TODO Auto-generated method stub
 						DismissProgressDialog();
-						if("1".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-						  float jifen = Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "jifen")) - zyzPrizeNewListComm.getBody().getNeednum();
-	                        SharepreferenceUtil.write(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "jifen",   jifen+"");
-	                        tv_namedetail.setText("积分:");
-	                        tv_jf.setText(""+jifen);
-                        }else if("2".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-                          float jifen = Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "huafei")) - zyzPrizeNewListComm.getBody().getNeednum();
-                          SharepreferenceUtil.write(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "huafei",   jifen+"");
-                          tv_namedetail.setText("亮币:");
-                          tv_jf.setText(jifen+"个");
-                        }else if("3".equalsIgnoreCase(zyzPrizeNewListComm.getBody().getNeedtype())){
-                          float jifen = Float.parseFloat(SharepreferenceUtil.readString(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "yinyuan")) - zyzPrizeNewListComm.getBody().getNeednum();
-                          SharepreferenceUtil.write(DhbSyzxZyzActivity.this, SharepreferenceUtil.fileName, "yinyuan",   jifen+"");
-                          tv_namedetail.setText("银币:");
-                          tv_jf.setText(""+jifen);
-                        }
+						if ("1".equalsIgnoreCase(zyzPrizeNewListComm.getBody()
+								.getNeedtype())) {
+							float jifen = Float.parseFloat(SharepreferenceUtil
+									.readString(DhbSyzxZyzActivity.this,
+											SharepreferenceUtil.fileName,
+											"jifen"))
+									- zyzPrizeNewListComm.getBody()
+											.getNeednum();
+							SharepreferenceUtil.write(DhbSyzxZyzActivity.this,
+									SharepreferenceUtil.fileName, "jifen",
+									jifen + "");
+							tv_namedetail.setText("积分:");
+							tv_jf.setText("" + jifen);
+						} else if ("2".equalsIgnoreCase(zyzPrizeNewListComm
+								.getBody().getNeedtype())) {
+							float jifen = Float.parseFloat(SharepreferenceUtil
+									.readString(DhbSyzxZyzActivity.this,
+											SharepreferenceUtil.fileName,
+											"huafei"))
+									- zyzPrizeNewListComm.getBody()
+											.getNeednum();
+							SharepreferenceUtil.write(DhbSyzxZyzActivity.this,
+									SharepreferenceUtil.fileName, "huafei",
+									jifen + "");
+							tv_namedetail.setText("亮币:");
+							tv_jf.setText(jifen + "个");
+						} else if ("3".equalsIgnoreCase(zyzPrizeNewListComm
+								.getBody().getNeedtype())) {
+							float jifen = Float.parseFloat(SharepreferenceUtil
+									.readString(DhbSyzxZyzActivity.this,
+											SharepreferenceUtil.fileName,
+											"yinyuan"))
+									- zyzPrizeNewListComm.getBody()
+											.getNeednum();
+							SharepreferenceUtil.write(DhbSyzxZyzActivity.this,
+									SharepreferenceUtil.fileName, "yinyuan",
+									jifen + "");
+							tv_namedetail.setText("银币:");
+							tv_jf.setText("" + jifen);
+						}
 						final ZyzPrizeNewComm zyzPrizeNewComm = cellComAjaxResult
-								.read(ZyzPrizeNewComm.class, CellComAjaxResult.ParseType.GSON);
-						if (!FlowConsts.STATUE_1.equals(zyzPrizeNewComm.getReturnCode())) {
+								.read(ZyzPrizeNewComm.class,
+										CellComAjaxResult.ParseType.GSON);
+						if (!FlowConsts.STATUE_1.equals(zyzPrizeNewComm
+								.getReturnCode())) {
 							ShowMsg(zyzPrizeNewComm.getReturnMessage());
 							return;
 						}
 						int angle = 0;
 						String prize = "谢谢参与~";
 						boolean isWin = true;
-						LogMgr.showLog("zyzPrizeNewComm.getBody().getIdx()--------------->" + zyzPrizeNewComm.getBody().getIdx());
+						LogMgr.showLog("zyzPrizeNewComm.getBody().getIdx()--------------->"
+								+ zyzPrizeNewComm.getBody().getIdx());
 						for (int i = 0; i < zyzPrizeList.size(); i++) {
-							LogMgr.showLog("zyzPrizeList.get(" + i + ").getIdx()-------------->" + zyzPrizeList.get(i).getIdx());
-							if (zyzPrizeNewComm.getBody().getIdx()== zyzPrizeList.get(i).getIdx()) {
-								angle = angle + zyzPrizeList.get(i).getAngle() / 2;
+							LogMgr.showLog("zyzPrizeList.get(" + i
+									+ ").getIdx()-------------->"
+									+ zyzPrizeList.get(i).getIdx());
+							if (zyzPrizeNewComm.getBody().getIdx() == zyzPrizeList
+									.get(i).getIdx()) {
+								angle = angle + zyzPrizeList.get(i).getAngle()
+										/ 2;
 								LogMgr.showLog("angle--------------->" + angle);
-								if(zyzPrizeNewComm.getBody().getVerynum() == 0){
+								if (zyzPrizeNewComm.getBody().getVerynum() == 0) {
 									isWin = false;
-								}else if (zyzPrizeList.get(i).getVerytype() == 1) {
-									prize = zyzPrizeList.get(i).getVerynum() + "积分";
-								} else if (zyzPrizeList.get(i).getVerytype() ==2) {
-									prize = zyzPrizeList.get(i).getVerynum() + "亮币";
+								} else if (zyzPrizeList.get(i).getVerytype() == 1) {
+									prize = zyzPrizeList.get(i).getVerynum()
+											+ "积分";
+								} else if (zyzPrizeList.get(i).getVerytype() == 2) {
+									prize = zyzPrizeList.get(i).getVerynum()
+											+ "亮币";
 								} else if (zyzPrizeList.get(i).getVerytype() == 3) {
-									prize = zyzPrizeList.get(i).getVerynum() + "银币";
+									prize = zyzPrizeList.get(i).getVerynum()
+											+ "银币";
 								}
 								break;
-							}							
+							}
 							angle = angle + zyzPrizeList.get(i).getAngle();
 							LogMgr.showLog("angle--------------->" + angle);
 						}
 
-						//转动动画
+						// 转动动画
 						zyzAnim(isWin, angle, zyzPrizeNewComm, prize);
 					}
 

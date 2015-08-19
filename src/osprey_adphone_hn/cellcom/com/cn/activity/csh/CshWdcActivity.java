@@ -89,7 +89,6 @@ public class CshWdcActivity extends FragmentBase {
 
 	@Override
 	public void onAttach(Activity activity) {
-		// TODO Auto-generated method stub
 		act = (CshFragmentActivity) activity;
 		super.onAttach(activity);
 	}

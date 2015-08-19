@@ -1,7 +1,6 @@
 package osprey_adphone_hn.cellcom.com.cn.widget;
 
 import osprey_adphone_hn.cellcom.com.cn.R;
-import osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
@@ -9,7 +8,6 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;

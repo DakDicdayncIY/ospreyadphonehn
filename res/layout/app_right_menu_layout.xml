@@ -192,7 +192,9 @@
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                     >
 
                     <ImageView
                         android:id="@+id/iv_kyjf_icon"
@@ -246,6 +248,7 @@
                     android:id="@+id/rl_gwc"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:background="@drawable/os_view_selector1" >
 
                     <ImageView

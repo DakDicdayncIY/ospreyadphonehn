@@ -1,6 +1,7 @@
 package osprey_adphone_hn.cellcom.com.cn.net;
 
 public class FlowConsts {
+	public static String DES3_KEY = "cellcom2yuying@hunan@$^*";
 	public static String key = "aesaesaesaesaesa";
 	public static final String SERVICE_IP = "http://183.6.172.138:8081/yyw/";
 	// public static final String SERVICE_IP =
@@ -179,6 +180,9 @@ public class FlowConsts {
 	public static String CSH_DZWL_PATH = "http://open.api.dbscar.com/?";
 	// 个人中心的广告
 	public static String GRZX_GG_PATH = "http://183.6.172.138:8081/yywapp/yyw_getgg_new.flow?uid=40&pos=12";
+
+	// 特价产品
+	public static String DHB_SYZX_TJSP_PATH = "http://183.6.172.138:8081/yywapp/yyw_shangpin_discount_v2.flow?";
 
 	public static void refleshIp(String urlString) {
 		// // 获取系统参数

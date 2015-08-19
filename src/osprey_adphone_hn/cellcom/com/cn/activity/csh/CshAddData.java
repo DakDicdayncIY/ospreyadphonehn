@@ -13,7 +13,6 @@ import org.json.JSONObject;
 
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.base.ActivityFrame;
-import osprey_adphone_hn.cellcom.com.cn.activity.welcome.SolutionScrollviewListView;
 import osprey_adphone_hn.cellcom.com.cn.adapter.CshAddBaseAdapter;
 import osprey_adphone_hn.cellcom.com.cn.adapter.CshCarDisplacementAdapter;
 import osprey_adphone_hn.cellcom.com.cn.adapter.CshGridViewAdapter;
@@ -60,7 +59,7 @@ public class CshAddData extends ActivityFrame {
 	private RelativeLayout rlBrandOsCshAddData;
 	private ExpandableListView elvOsCshAddData;
 	private RelativeLayout rlShowListView;
-	private SolutionScrollviewListView rlListView;
+	private osprey_adphone_hn.cellcom.com.cn.widget.SolutionScrollviewListView rlListView;
 	private TextView mText;
 	private ImageView mImage;
 	private RelativeLayout mRlVindOsCshAddData;
@@ -486,7 +485,7 @@ public class CshAddData extends ActivityFrame {
 
 		rlShowListView = (RelativeLayout) findViewById(R.id.rl_brand_os_csh_pull_down);
 
-		rlListView = (SolutionScrollviewListView) findViewById(R.id.lv_brand_os_csh_add_data);
+		rlListView = (osprey_adphone_hn.cellcom.com.cn.widget.SolutionScrollviewListView) findViewById(R.id.lv_brand_os_csh_add_data);
 
 		rlListView.setTag(false);
 

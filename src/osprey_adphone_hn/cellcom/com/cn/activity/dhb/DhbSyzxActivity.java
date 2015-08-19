@@ -7,6 +7,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import net.tsz.afinal.FinalBitmap;
+import net.tsz.afinal.FinalHttp;
 import osprey_adphone_hn.cellcom.com.cn.R;
 import osprey_adphone_hn.cellcom.com.cn.activity.csh.CshFragmentActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshFragmentActivity;
@@ -52,6 +53,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,7 +79,6 @@ public class DhbSyzxActivity extends Fragment {
 	private ScheduledExecutorService scheduledExecutor;// 定时器，定时轮播广告图片
 	private FrameLayout fl_ad;
 	private List<Adv> advs = new ArrayList<Adv>();
-	private RadioButton rb_bs, rb_bshen, rb_qg;
 	// private RelativeLayout ll_kyk, ll_sys, ll_yyy, ll_zyz;
 
 	private FinalBitmap finalBitmap;
@@ -88,6 +89,8 @@ public class DhbSyzxActivity extends Fragment {
 	private int pageid = 1;
 	private int totalnum = 0;
 	private List<TjspInfo> list = new ArrayList<TjspInfo>();
+	private ViewPagerCompat vpc;
+	FinalHttp http;
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -105,6 +108,7 @@ public class DhbSyzxActivity extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		http = new FinalHttp();
 		View v = inflater.inflate(R.layout.os_dhb_syzx_activity, container,
 				false);
 		initView(v, savedInstanceState);
@@ -134,17 +138,22 @@ public class DhbSyzxActivity extends Fragment {
 		btn_cj = (Button) v.findViewById(R.id.btn_cj);
 		mJazzy = (JazzyViewPager) v.findViewById(R.id.jazzy_viewpager);
 		rg_group = (RadioGroup) v.findViewById(R.id.rg_dhb_syzx);
-		rb_bs = (RadioButton) v.findViewById(R.id.rb_bs_os_dhb_syzx);
-		rb_bshen = (RadioButton) v.findViewById(R.id.rb_bshen_os_dhb_syzx);
-		rb_qg = (RadioButton) v.findViewById(R.id.rb_qg_os_dhb_syzx);
-		setArMemuPosition();
-		// addPreDraw();
+		vpc = (ViewPagerCompat) v.findViewById(R.id.vp_os_dhb_syzx);
 
+		setArMemuPosition();
+		List<Fragment> list = new ArrayList<Fragment>();
+		list.add(new DhbSyzxBsFragment(http));
+		list.add(new DhbSyzxBShenFragment(http));
+		list.add(new DhbSyzxQGFragment(http));
+
+		vpc.setAdapter(new DhbSyzxFragmentPagerAdapter(DhbSyzxActivity.this
+				.getFragmentManager(), list));
+		// addPreDraw();
 		// loadingBitmap = BitmapFactory.decodeResource(getResources(),
 		// R.drawable.os_img_default_icon);
 		// // 看一看
 		// ll_kyk = (RelativeLayout) v.findViewById(R.id.ll_kyk);
-		// // 扫一扫
+		// // 扫一扫F
 		// ll_sys = (RelativeLayout) v.findViewById(R.id.ll_sys);
 		// // 摇一摇
 		// ll_yyy = (RelativeLayout) v.findViewById(R.id.ll_yyy);
@@ -263,6 +272,25 @@ public class DhbSyzxActivity extends Fragment {
 	 * 初始化监听
 	 */
 	private void initListener() {
+		rg_group.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup arg0, int arg1) {
+				switch (arg1) {
+				case R.id.rb_bs_os_dhb_syzx:
+					vpc.setCurrentItem(0);
+					break;
+				case R.id.rb_bshen_os_dhb_syzx:
+					vpc.setCurrentItem(1);
+					break;
+				case R.id.rb_qg_os_dhb_syzx:
+					vpc.setCurrentItem(2);
+					break;
+				default:
+					break;
+				}
+			}
+		});
+
 		// 赚钱
 		arcMenu.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
@@ -278,14 +306,6 @@ public class DhbSyzxActivity extends Fragment {
 				String title = "";
 				String typeid = "";
 				switch (pos) {
-				case 1:
-					title = "赚积分";
-					typeid = "1";
-					Intent intentZjf = new Intent(act, DhbSyzxKykActivity.class);
-					intentZjf.putExtra("title", title);
-					intentZjf.putExtra("typeid", typeid);
-					startActivity(intentZjf);
-					break;
 				case 2:
 					title = "抢红包";
 					typeid = "3";
@@ -294,6 +314,7 @@ public class DhbSyzxActivity extends Fragment {
 					intentQhb.putExtra("typeid", typeid);
 					startActivity(intentQhb);
 					break;
+
 				case 3:
 					title = "赚亮币";
 					typeid = "2";
@@ -305,7 +326,6 @@ public class DhbSyzxActivity extends Fragment {
 				default:
 					break;
 				}
-
 			}
 		});
 		arcMenu.setOnMenuButtonClickListener(new OnMenuButtonClickListener() {
@@ -321,6 +341,7 @@ public class DhbSyzxActivity extends Fragment {
 				}
 			}
 		});
+
 		iv_push.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -368,7 +389,7 @@ public class DhbSyzxActivity extends Fragment {
 		fl_ad.setLayoutParams(linearParams);
 		BitMapUtil.getImgOpt(act, finalBitmap, mJazzy,
 				R.drawable.os_login_topicon);
-		getTjspInfo();
+		// getTjspInfo();
 		getAdv();
 		// getKykType();
 	}
@@ -638,6 +659,7 @@ public class DhbSyzxActivity extends Fragment {
 									Toast.LENGTH_SHORT).show();
 							return;
 						}
+						int totalnum2 = tjspInfoComm.getBody().getTotalnum();
 						totalnum = tjspInfoComm.getBody().getTotalnum();
 						list.clear();
 						list.addAll(tjspInfoComm.getBody().getData());
@@ -647,7 +669,6 @@ public class DhbSyzxActivity extends Fragment {
 	}
 
 	private void initTjspView() {
-		// TODO Auto-generated method stub
 
 	}
 
