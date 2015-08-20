@@ -120,7 +120,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 								DhbSyzxZyzActivity.this,
 								DhbSyzxZyzActivity.this, "是否支付"
 										+ zyzPrizeNewListComm.getBody()
-												.getNeednum() + "银币转一转？", 3);
+												.getNeednum() + "金币转一转？", 3);
 					}
 				} else {
 					Toast.makeText(DhbSyzxZyzActivity.this, "数据获取中,请稍后...",
@@ -261,7 +261,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 					.getNeedtype())) {
 				if (SharepreferenceUtil.readString(DhbSyzxZyzActivity.this,
 						SharepreferenceUtil.fileName, "yinyuan", "").equals("")) {
-					ShowMsg("您的银币不足~");
+					ShowMsg("您的金币不足~");
 				} else {
 					if (Float.parseFloat(SharepreferenceUtil.readString(
 							DhbSyzxZyzActivity.this,
@@ -269,7 +269,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 							.getBody().getNeednum()) {
 						getZyzPrizeNew();
 					} else {
-						ShowMsg("您的银币不足~");
+						ShowMsg("您的金币不足~");
 					}
 				}
 			}
@@ -316,12 +316,12 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 								DhbSyzxZyzActivity.this,
 								SharepreferenceUtil.fileName, "huafei", "")
 								.equals("")) {
-							tv_kyhf.setText("0个");
+							tv_kyhf.setText("0亮币");
 						} else {
 							tv_kyhf.setText(SharepreferenceUtil.readString(
 									DhbSyzxZyzActivity.this,
 									SharepreferenceUtil.fileName, "huafei", "")
-									+ "个");
+									+ "亮币");
 						}
 						if (SharepreferenceUtil.readString(
 								DhbSyzxZyzActivity.this,
@@ -360,14 +360,14 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 									SharepreferenceUtil.fileName, "huafei", "")
 									.equals("")) {
 								tv_namedetail.setText("亮币:");
-								tv_jf.setText("0个");
+								tv_jf.setText("0亮币");
 							} else {
 								tv_namedetail.setText("亮币:");
 								tv_jf.setText(Float.parseFloat(SharepreferenceUtil
 										.readString(DhbSyzxZyzActivity.this,
 												SharepreferenceUtil.fileName,
 												"huafei", ""))
-										+ "个");
+										+ "亮币");
 							}
 						} else if (zyzPrizeNewListComm != null
 								&& "3".equalsIgnoreCase(zyzPrizeNewListComm
@@ -376,10 +376,10 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 									.readString(DhbSyzxZyzActivity.this,
 											SharepreferenceUtil.fileName,
 											"yinyuan", "").equals("")) {
-								tv_namedetail.setText("银币:");
+								tv_namedetail.setText("金币:");
 								tv_jf.setText("0");
 							} else {
-								tv_namedetail.setText("银币:");
+								tv_namedetail.setText("金币:");
 								tv_jf.setText(""
 										+ Float.parseFloat(SharepreferenceUtil
 												.readString(
@@ -393,14 +393,14 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 									SharepreferenceUtil.fileName, "huafei", "")
 									.equals("")) {
 								tv_namedetail.setText("亮币:");
-								tv_jf.setText("0个");
+								tv_jf.setText("0亮币");
 							} else {
 								tv_namedetail.setText("亮币:");
 								tv_jf.setText(Float.parseFloat(SharepreferenceUtil
 										.readString(DhbSyzxZyzActivity.this,
 												SharepreferenceUtil.fileName,
 												"huafei", ""))
-										+ "个");
+										+ "亮币");
 							}
 						}
 					}
@@ -517,7 +517,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 									SharepreferenceUtil.fileName, "huafei",
 									jifen + "");
 							tv_namedetail.setText("亮币:");
-							tv_jf.setText(jifen + "个");
+							tv_jf.setText(jifen + "亮币");
 						} else if ("3".equalsIgnoreCase(zyzPrizeNewListComm
 								.getBody().getNeedtype())) {
 							float jifen = Float.parseFloat(SharepreferenceUtil
@@ -529,7 +529,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 							SharepreferenceUtil.write(DhbSyzxZyzActivity.this,
 									SharepreferenceUtil.fileName, "yinyuan",
 									jifen + "");
-							tv_namedetail.setText("银币:");
+							tv_namedetail.setText("金币:");
 							tv_jf.setText("" + jifen);
 						}
 						final ZyzPrizeNewComm zyzPrizeNewComm = cellComAjaxResult
@@ -564,7 +564,7 @@ public class DhbSyzxZyzActivity extends ActivityFrame implements
 											+ "亮币";
 								} else if (zyzPrizeList.get(i).getVerytype() == 3) {
 									prize = zyzPrizeList.get(i).getVerynum()
-											+ "银币";
+											+ "金币";
 								}
 								break;
 							}

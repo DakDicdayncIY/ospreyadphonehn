@@ -141,7 +141,7 @@
                         android:layout_centerVertical="true"
                         android:layout_margin="5dp"
                         android:layout_toRightOf="@id/iv_kyhf_icon"
-                        android:text="可用亮币：" />
+                        android:text="可用话费：" />
 
                     <TextView
                         android:id="@+id/tv_kyhf"
@@ -151,7 +151,7 @@
                         android:layout_centerVertical="true"
                         android:layout_margin="5dp"
                         android:layout_toRightOf="@id/tv_hf"
-                        android:text="0"
+                        android:text="0亮币"
                         android:textColor="@color/green" />
                 </RelativeLayout>
 
@@ -176,7 +176,7 @@
                         android:layout_centerVertical="true"
                         android:layout_margin="5dp"
                         android:layout_toRightOf="@id/iv_kyyy_icon"
-                        android:text="可用银币：" />
+                        android:text="可用金币：" />
 
                     <TextView
                         android:id="@+id/tv_kyyy"
@@ -193,8 +193,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                     >
+                    android:visibility="gone" >
 
                     <ImageView
                         android:id="@+id/iv_kyjf_icon"
@@ -248,8 +247,8 @@
                     android:id="@+id/rl_gwc"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:background="@drawable/os_view_selector1" >
+                    android:background="@drawable/os_view_selector1"
+                    android:visibility="gone" >
 
                     <ImageView
                         android:id="@+id/iv_gwc_icon"

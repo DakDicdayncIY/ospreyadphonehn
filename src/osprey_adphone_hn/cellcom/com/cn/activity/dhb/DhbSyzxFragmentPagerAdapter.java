@@ -14,7 +14,7 @@ public class DhbSyzxFragmentPagerAdapter extends FragmentPagerAdapter {
 		super(fm);
 		this.mList = mList;
 	}
-
+	
 	@Override
 	public Fragment getItem(int arg0) {
 		Fragment fragment = mList.get(arg0);

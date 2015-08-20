@@ -123,7 +123,7 @@ public class RightSlidingMenu extends HorizontalScrollView {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
-		if(isSliding){
+		if (isSliding) {
 			int action = ev.getAction();
 			switch (action) {
 			// Up时，进行判断，如果显示区域大于菜单宽度一半则完全显示，否则隐藏
@@ -180,37 +180,37 @@ public class RightSlidingMenu extends HorizontalScrollView {
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
 		super.onScrollChanged(l, t, oldl, oldt);
-//		if(isSliding){
-			float scale = l * 1.0f / mMenuWidth;
-			System.out.println("scale--->" + scale);
-			float leftScale = 1 - 0.2f * scale;
-			float rightScale = 0.7f + scale * 0.3f;
-			
-			wrapper.getBackground().setAlpha((int) ((1 + scale) * 255 + 0.5));
-			
-			ViewHelper.setScaleX(mMenu, rightScale);
-			ViewHelper.setScaleY(mMenu, rightScale);
-			ViewHelper.setAlpha(mMenu, 0.1f + 0.9f * scale);
-			ViewHelper.setTranslationX(mMenu, 0);
-			
-			ViewHelper.setPivotX(mContent, mContent.getWidth() / 2);
-			ViewHelper.setPivotY(mContent, mContent.getHeight() / 2);
-			ViewHelper.setScaleX(mContent, leftScale);
-			// if(leftScale>=0.99999999){
-			// }else{
-			// ViewHelper.setScaleX(mContent, leftScale*1.15f);
-			// }
-			ViewHelper.setScaleY(mContent, leftScale);
-//		}
+		// if(isSliding){
+		float scale = l * 1.0f / mMenuWidth;
+		System.out.println("scale--->" + scale);
+		float leftScale = 1 - 0.2f * scale;
+		float rightScale = 0.7f + scale * 0.3f;
+
+		wrapper.getBackground().setAlpha((int) ((1 + scale) * 255 + 0.5));
+
+		ViewHelper.setScaleX(mMenu, rightScale);
+		ViewHelper.setScaleY(mMenu, rightScale);
+		ViewHelper.setAlpha(mMenu, 0.1f + 0.9f * scale);
+		ViewHelper.setTranslationX(mMenu, 0);
+
+		ViewHelper.setPivotX(mContent, mContent.getWidth() / 2);
+		ViewHelper.setPivotY(mContent, mContent.getHeight() / 2);
+		ViewHelper.setScaleX(mContent, leftScale);
+		// if(leftScale>=0.99999999){
+		// }else{
+		// ViewHelper.setScaleX(mContent, leftScale*1.15f);
+		// }
+		ViewHelper.setScaleY(mContent, leftScale);
+		// }
 
 	}
-	
+
 	@Override
 	protected int computeScrollDeltaToGetChildRectOnScreen(Rect rect) {
 		// TODO Auto-generated method stub
-		if(isSliding){
+		if (isSliding) {
 			return super.computeScrollDeltaToGetChildRectOnScreen(rect);
-		}else{
+		} else {
 			return 0;
 		}
 	}

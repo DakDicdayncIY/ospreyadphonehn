@@ -470,8 +470,8 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 								CommonUtils.refreshLocalCaichan( DhbSyzxShakeActivity.this, "2",
 										yyyPrizeNewComm.getBody().getVerynum() + "");
 							} else if (yyyPrizeNewComm.getBody().getVerytype() == 3) {
-								tv_add_money_num.setText("+" + yyyPrizeNewComm.getBody().getVerynum() + "银币");
-								// 刷新本地银币
+								tv_add_money_num.setText("+" + yyyPrizeNewComm.getBody().getVerynum() + "金币");
+								// 刷新本地金币
 								CommonUtils.refreshLocalCaichan(DhbSyzxShakeActivity.this, "3",
 										yyyPrizeNewComm.getBody().getVerynum() + "");
 							}
@@ -504,7 +504,7 @@ public class DhbSyzxShakeActivity extends ActivityFrame implements
 												"您本次摇一摇获得了" + yyyPrizeNewComm.getBody().getVerynum() + "亮币", 1);
 									} else if (yyyPrizeNewComm.getBody().getVerytype() == 3) {
 										AlertDialogPopupWindow.showSheet(DhbSyzxShakeActivity.this, DhbSyzxShakeActivity.this,
-												"您本次摇一摇获得了" + yyyPrizeNewComm.getBody().getVerynum()+ "银币", 1);
+												"您本次摇一摇获得了" + yyyPrizeNewComm.getBody().getVerynum()+ "金币", 1);
 									}
 								}
 							}, 1500);

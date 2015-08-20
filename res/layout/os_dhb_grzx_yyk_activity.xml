@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             style="@style/app_textStyle2"
             android:layout_margin="5dp"
-            android:text="可用银币："/>
+            android:text="可用金币："/>
         <TextView 
             android:id="@+id/tv_kyyy"
             android:layout_width="wrap_content"

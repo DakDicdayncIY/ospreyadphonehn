@@ -45,7 +45,6 @@ public class MainActivity extends ActivityFrame {
 	private TextView jshTabLabel;
 	private TextView cshTabLabel;
 
-	
 	private FinalBitmap finalBitmap;
 	private Dialog ad;
 	private MyCount myCount;
@@ -98,16 +97,16 @@ public class MainActivity extends ActivityFrame {
 							ShowMsg(msg);
 							return;
 						}
-						initValue(userInfoComm.getBody(),uid);
+						initValue(userInfoComm.getBody(), uid);
 						if (SharepreferenceUtil.readString(MainActivity.this,
 								SharepreferenceUtil.fileName, "huafei", "")
 								.equals("")) {
-							tv_kyhf.setText("0个");
+							tv_kyhf.setText("0亮币");
 						} else {
 							tv_kyhf.setText(SharepreferenceUtil.readString(
-											MainActivity.this,
-											SharepreferenceUtil.fileName,
-											"huafei", "")+"个");
+									MainActivity.this,
+									SharepreferenceUtil.fileName, "huafei", "")
+									+ "亮币");
 						}
 					}
 				});
@@ -123,22 +122,22 @@ public class MainActivity extends ActivityFrame {
 				.getActivity("jsh");
 		CshFragmentActivity cshactivit = (CshFragmentActivity) lam
 				.getActivity("csh");
-		if(dhbactivit!=null){
+		if (dhbactivit != null) {
 			dhbactivit.reflesh();
 		}
-		if(jshactivit!=null){
+		if (jshactivit != null) {
 			jshactivit.reflesh();
 		}
-		if(cshactivit!=null){
+		if (cshactivit != null) {
 			cshactivit.reflesh();
 		}
 		getGrzl();
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"huafei", "").equals("")) {
-			tv_kyhf.setText("0个");
+			tv_kyhf.setText("0亮币");
 		} else {
 			tv_kyhf.setText(SharepreferenceUtil.readString(this,
-							SharepreferenceUtil.fileName, "huafei", "")+"个");
+					SharepreferenceUtil.fileName, "huafei", "") + "亮币");
 		}
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"yinyuan", "").equals("")) {
@@ -197,63 +196,66 @@ public class MainActivity extends ActivityFrame {
 				.setIndicator(cshTab)
 				.setContent(
 						new Intent(MainActivity.this, CshFragmentActivity.class)));
-		String tag=getIntent().getStringExtra("tag");
-		if("dhb".equals(tag)){
+		String tag = getIntent().getStringExtra("tag");
+		if ("dhb".equals(tag)) {
 			mHost.setCurrentTab(0);
-//			dhbTab.setBackgroundResource(R.color.blue);
-//			jshTab.setBackgroundResource(R.color.transparent);
-//			cshTab.setBackgroundResource(R.color.transparent);
-			
-			Drawable drawable= getResources().getDrawable(R.drawable.os_topbar_nav_selected);  
-			/// 这一步必须要做,否则不会显示.  
-			drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());  
-			dhbTabLabel.setCompoundDrawables(null,null,null,drawable);  
-			jshTabLabel.setCompoundDrawables(null,null,null,null); 
-			cshTabLabel.setCompoundDrawables(null,null,null,null);
+			// dhbTab.setBackgroundResource(R.color.blue);
+			// jshTab.setBackgroundResource(R.color.transparent);
+			// cshTab.setBackgroundResource(R.color.transparent);
 
-			dhbTabLabel
-					.setTextColor(getResources().getColor(R.color.orange));
+			Drawable drawable = getResources().getDrawable(
+					R.drawable.os_topbar_nav_selected);
+			// / 这一步必须要做,否则不会显示.
+			drawable.setBounds(0, 0, drawable.getMinimumWidth(),
+					drawable.getMinimumHeight());
+			dhbTabLabel.setCompoundDrawables(null, null, null, drawable);
+			jshTabLabel.setCompoundDrawables(null, null, null, null);
+			cshTabLabel.setCompoundDrawables(null, null, null, null);
+
+			dhbTabLabel.setTextColor(getResources().getColor(R.color.orange));
 			jshTabLabel.setTextColor(getResources().getColor(R.color.gray));
 			cshTabLabel.setTextColor(getResources().getColor(R.color.gray));
-		}else if("jsh".equals(tag)){
+		} else if ("jsh".equals(tag)) {
 			mHost.setCurrentTab(1);
-//			dhbTab.setBackgroundResource(R.color.transparent);
-//			jshTab.setBackgroundResource(R.color.blue);
-//			cshTab.setBackgroundResource(R.color.transparent);
+			// dhbTab.setBackgroundResource(R.color.transparent);
+			// jshTab.setBackgroundResource(R.color.blue);
+			// cshTab.setBackgroundResource(R.color.transparent);
 
-			Drawable drawable= getResources().getDrawable(R.drawable.os_topbar_nav_selected);  
-			/// 这一步必须要做,否则不会显示.  
-			drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-			dhbTabLabel.setCompoundDrawables(null,null,null,null);
-			jshTabLabel.setCompoundDrawables(null,null,null,drawable);
-			cshTabLabel.setCompoundDrawables(null,null,null,null);
-			
+			Drawable drawable = getResources().getDrawable(
+					R.drawable.os_topbar_nav_selected);
+			// / 这一步必须要做,否则不会显示.
+			drawable.setBounds(0, 0, drawable.getMinimumWidth(),
+					drawable.getMinimumHeight());
+			dhbTabLabel.setCompoundDrawables(null, null, null, null);
+			jshTabLabel.setCompoundDrawables(null, null, null, drawable);
+			cshTabLabel.setCompoundDrawables(null, null, null, null);
+
 			dhbTabLabel.setTextColor(getResources().getColor(R.color.gray));
-			jshTabLabel
-					.setTextColor(getResources().getColor(R.color.orange));
+			jshTabLabel.setTextColor(getResources().getColor(R.color.orange));
 			cshTabLabel.setTextColor(getResources().getColor(R.color.gray));
-		}else if("csh".equals(tag)){
+		} else if ("csh".equals(tag)) {
 			mHost.setCurrentTab(2);
-//			dhbTab.setBackgroundResource(R.color.transparent);
-//			jshTab.setBackgroundResource(R.color.transparent);
-//			cshTab.setBackgroundResource(R.color.blue);
+			// dhbTab.setBackgroundResource(R.color.transparent);
+			// jshTab.setBackgroundResource(R.color.transparent);
+			// cshTab.setBackgroundResource(R.color.blue);
 
-			Drawable drawable= getResources().getDrawable(R.drawable.os_topbar_nav_selected);  
-			/// 这一步必须要做,否则不会显示.  
-			drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-			dhbTabLabel.setCompoundDrawables(null,null,null,null);
-			jshTabLabel.setCompoundDrawables(null,null,null,null);
-			cshTabLabel.setCompoundDrawables(null,null,null,drawable);
-			
+			Drawable drawable = getResources().getDrawable(
+					R.drawable.os_topbar_nav_selected);
+			// / 这一步必须要做,否则不会显示.
+			drawable.setBounds(0, 0, drawable.getMinimumWidth(),
+					drawable.getMinimumHeight());
+			dhbTabLabel.setCompoundDrawables(null, null, null, null);
+			jshTabLabel.setCompoundDrawables(null, null, null, null);
+			cshTabLabel.setCompoundDrawables(null, null, null, drawable);
+
 			dhbTabLabel.setTextColor(getResources().getColor(R.color.gray));
 			jshTabLabel.setTextColor(getResources().getColor(R.color.gray));
-			cshTabLabel
-					.setTextColor(getResources().getColor(R.color.orange));
+			cshTabLabel.setTextColor(getResources().getColor(R.color.orange));
 		}
-//		dhbTabLabel.setTextColor(getResources().getColor(R.color.white));
-//		dhbTab.setBackgroundResource(R.color.blue);
-//		jshTab.setBackgroundResource(R.color.transparent);
-//		cshTab.setBackgroundResource(R.color.transparent);
+		// dhbTabLabel.setTextColor(getResources().getColor(R.color.white));
+		// dhbTab.setBackgroundResource(R.color.blue);
+		// jshTab.setBackgroundResource(R.color.transparent);
+		// cshTab.setBackgroundResource(R.color.transparent);
 	}
 
 	/**
@@ -266,21 +268,24 @@ public class MainActivity extends ActivityFrame {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String uid=SharepreferenceUtil.readString(MainActivity.this, SharepreferenceUtil.fileName, "uid");
-				playAdv(uid,"1");
+				String uid = SharepreferenceUtil.readString(MainActivity.this,
+						SharepreferenceUtil.fileName, "uid");
+				playAdv(uid, "1");
 				mHost.setCurrentTab(0);
-				Drawable drawable= getResources().getDrawable(R.drawable.os_topbar_nav_selected);  
-				/// 这一步必须要做,否则不会显示.  
-				drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());  
-				dhbTabLabel.setCompoundDrawables(null,null,null,drawable);  
-				jshTabLabel.setCompoundDrawables(null,null,null,null); 
-				cshTabLabel.setCompoundDrawables(null,null,null,null);
-//				dhbTab.setBackgroundResource(R.color.blue);
-//				jshTab.setBackgroundResource(R.color.transparent);
-//				cshTab.setBackgroundResource(R.color.transparent);
+				Drawable drawable = getResources().getDrawable(
+						R.drawable.os_topbar_nav_selected);
+				// / 这一步必须要做,否则不会显示.
+				drawable.setBounds(0, 0, drawable.getMinimumWidth(),
+						drawable.getMinimumHeight());
+				dhbTabLabel.setCompoundDrawables(null, null, null, drawable);
+				jshTabLabel.setCompoundDrawables(null, null, null, null);
+				cshTabLabel.setCompoundDrawables(null, null, null, null);
+				// dhbTab.setBackgroundResource(R.color.blue);
+				// jshTab.setBackgroundResource(R.color.transparent);
+				// cshTab.setBackgroundResource(R.color.transparent);
 
-				dhbTabLabel
-						.setTextColor(getResources().getColor(R.color.orange));
+				dhbTabLabel.setTextColor(getResources()
+						.getColor(R.color.orange));
 				jshTabLabel.setTextColor(getResources().getColor(R.color.gray));
 				cshTabLabel.setTextColor(getResources().getColor(R.color.gray));
 			}
@@ -291,23 +296,26 @@ public class MainActivity extends ActivityFrame {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String uid=SharepreferenceUtil.readString(MainActivity.this, SharepreferenceUtil.fileName, "uid");
-				playAdv(uid,"2");
+				String uid = SharepreferenceUtil.readString(MainActivity.this,
+						SharepreferenceUtil.fileName, "uid");
+				playAdv(uid, "2");
 				mHost.setCurrentTab(1);
-//				dhbTab.setBackgroundResource(R.color.transparent);
-//				jshTab.setBackgroundResource(R.color.blue);
-//				cshTab.setBackgroundResource(R.color.transparent);
-				
-				Drawable drawable= getResources().getDrawable(R.drawable.os_topbar_nav_selected);  
-				/// 这一步必须要做,否则不会显示.  
-				drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-				dhbTabLabel.setCompoundDrawables(null,null,null,null);
-				jshTabLabel.setCompoundDrawables(null,null,null,drawable);
-				cshTabLabel.setCompoundDrawables(null,null,null,null);
-				
+				// dhbTab.setBackgroundResource(R.color.transparent);
+				// jshTab.setBackgroundResource(R.color.blue);
+				// cshTab.setBackgroundResource(R.color.transparent);
+
+				Drawable drawable = getResources().getDrawable(
+						R.drawable.os_topbar_nav_selected);
+				// / 这一步必须要做,否则不会显示.
+				drawable.setBounds(0, 0, drawable.getMinimumWidth(),
+						drawable.getMinimumHeight());
+				dhbTabLabel.setCompoundDrawables(null, null, null, null);
+				jshTabLabel.setCompoundDrawables(null, null, null, drawable);
+				cshTabLabel.setCompoundDrawables(null, null, null, null);
+
 				dhbTabLabel.setTextColor(getResources().getColor(R.color.gray));
-				jshTabLabel
-						.setTextColor(getResources().getColor(R.color.orange));
+				jshTabLabel.setTextColor(getResources()
+						.getColor(R.color.orange));
 				cshTabLabel.setTextColor(getResources().getColor(R.color.gray));
 			}
 		});
@@ -317,24 +325,27 @@ public class MainActivity extends ActivityFrame {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String uid=SharepreferenceUtil.readString(MainActivity.this, SharepreferenceUtil.fileName, "uid");
-				playAdv(uid,"3");
+				String uid = SharepreferenceUtil.readString(MainActivity.this,
+						SharepreferenceUtil.fileName, "uid");
+				playAdv(uid, "3");
 				mHost.setCurrentTab(2);
-//				dhbTab.setBackgroundResource(R.color.transparent);
-//				jshTab.setBackgroundResource(R.color.transparent);
-//				cshTab.setBackgroundResource(R.color.blue);
+				// dhbTab.setBackgroundResource(R.color.transparent);
+				// jshTab.setBackgroundResource(R.color.transparent);
+				// cshTab.setBackgroundResource(R.color.blue);
 
-				Drawable drawable= getResources().getDrawable(R.drawable.os_topbar_nav_selected);  
-				/// 这一步必须要做,否则不会显示.  
-				drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-				dhbTabLabel.setCompoundDrawables(null,null,null,null);
-				jshTabLabel.setCompoundDrawables(null,null,null,null);
-				cshTabLabel.setCompoundDrawables(null,null,null,drawable);
-				
+				Drawable drawable = getResources().getDrawable(
+						R.drawable.os_topbar_nav_selected);
+				// / 这一步必须要做,否则不会显示.
+				drawable.setBounds(0, 0, drawable.getMinimumWidth(),
+						drawable.getMinimumHeight());
+				dhbTabLabel.setCompoundDrawables(null, null, null, null);
+				jshTabLabel.setCompoundDrawables(null, null, null, null);
+				cshTabLabel.setCompoundDrawables(null, null, null, drawable);
+
 				dhbTabLabel.setTextColor(getResources().getColor(R.color.gray));
 				jshTabLabel.setTextColor(getResources().getColor(R.color.gray));
-				cshTabLabel
-						.setTextColor(getResources().getColor(R.color.orange));
+				cshTabLabel.setTextColor(getResources()
+						.getColor(R.color.orange));
 			}
 		});
 	}
@@ -345,19 +356,19 @@ public class MainActivity extends ActivityFrame {
 		View v = LayoutInflater.from(this).inflate(R.layout.mainplan, null);
 		final ImageView iv = (ImageView) v.findViewById(R.id.iv);
 		finalBitmap.display(iv, url);
-//		iv.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				ad.cancel();
-//			}
-//		});
+		// iv.setOnClickListener(new OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// // TODO Auto-generated method stub
+		// ad.cancel();
+		// }
+		// });
 		ad.setContentView(v);
 		ad.show();
 	}
 
 	// 播放广告
-	private void playAdv(final String account,String type) {
+	private void playAdv(final String account, String type) {
 		// 无网络拨打系统电话
 		if (NetUtils.isConnected(MainActivity.this)) {
 			CellComAjaxParams cellComAjaxParams = new CellComAjaxParams();
@@ -371,7 +382,8 @@ public class MainActivity extends ActivityFrame {
 						@Override
 						public void onSuccess(CellComAjaxResult arg0) {
 							// TODO Auto-generated method stub
-							AdvShowComm advShowComm = arg0.read(AdvShowComm.class,
+							AdvShowComm advShowComm = arg0.read(
+									AdvShowComm.class,
 									CellComAjaxResult.ParseType.GSON);
 							String state = advShowComm.getReturnCode();
 							String msg = advShowComm.getReturnMessage();
@@ -381,10 +393,11 @@ public class MainActivity extends ActivityFrame {
 								return;
 							}
 							myCount.start();
-							if("Y".equalsIgnoreCase(advShowComm.getBody().getIfshow())){							
+							if ("Y".equalsIgnoreCase(advShowComm.getBody()
+									.getIfshow())) {
 								initAdv(advShowComm.getBody().getImgurl());
 							}
-//							initAdv(advShowComm.getBody().getImgurl());
+							// initAdv(advShowComm.getBody().getImgurl());
 						}
 					});
 		}
@@ -405,8 +418,8 @@ public class MainActivity extends ActivityFrame {
 	private void initData() {
 		finalBitmap = FinalBitmap.create(MainActivity.this);
 		myCount = new MyCount(3000, 1000);
-		
-//		String channel=ChannelUtil.getChannel(MainActivity.this);
+
+		// String channel=ChannelUtil.getChannel(MainActivity.this);
 	}
 
 	public class MyCount extends CountDownTimer {
@@ -417,8 +430,8 @@ public class MainActivity extends ActivityFrame {
 
 		@Override
 		public void onFinish() {
-			
-			if(ad!=null ){
+
+			if (ad != null) {
 				ad.cancel();
 			}
 		}
@@ -433,26 +446,26 @@ public class MainActivity extends ActivityFrame {
 		// TODO Auto-generated method stub
 		JshFragmentActivity jshactivit = (JshFragmentActivity) lam
 				.getActivity("jsh");
-		if(jshactivit!=null){
+		if (jshactivit != null) {
 			jshactivit.onDes();
 		}
 		DhbFragmentActivity dhbactivit = (DhbFragmentActivity) lam
 				.getActivity("dhb");
-		if(dhbactivit!=null){
+		if (dhbactivit != null) {
 			dhbactivit.onDes();
 		}
 		CshFragmentActivity cshactivit = (CshFragmentActivity) lam
 				.getActivity("csh");
-		if(cshactivit!=null){
+		if (cshactivit != null) {
 			cshactivit.onDes();
 		}
 		super.onDestroy();
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
-		if(keyCode==KeyEvent.KEYCODE_BACK){
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			MainActivity.this.finish();
 		}
 		return super.onKeyDown(keyCode, event);

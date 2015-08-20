@@ -91,7 +91,7 @@
                 <TextView
                     style="@style/app_big_textStyle"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1.0"
                     android:text="@string/os_dhb_syzx_tjsp"
                     android:textSize="20sp" />
@@ -99,7 +99,7 @@
                 <RadioGroup
                     android:id="@+id/rg_dhb_syzx"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="2.0"
                     android:orientation="horizontal" >
 
@@ -107,7 +107,7 @@
                         android:id="@+id/rb_bs_os_dhb_syzx"
                         style="@style/app_medium_textStyle2"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/app_dhb_syzx_textview_selector"
                         android:button="@null"
@@ -120,7 +120,7 @@
                         android:id="@+id/rb_bshen_os_dhb_syzx"
                         style="@style/app_medium_textStyle2"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/app_dhb_syzx_textview_selector"
                         android:button="@null"
@@ -132,7 +132,7 @@
                         android:id="@+id/rb_qg_os_dhb_syzx"
                         style="@style/app_medium_textStyle2"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/app_dhb_syzx_textview_selector"
                         android:button="@null"
@@ -186,7 +186,7 @@
                 android:tag="ZJF"
                 android:text="@string/os_dhb_syzx_zjf"
                 android:visibility="gone" />
-           <!-- android:background="@drawable/os_dhb_syzx_item_bg_selector" -->
+            <!-- android:background="@drawable/os_dhb_syzx_item_bg_selector" -->
 
             <Button
                 android:id="@+id/btn_qhb"

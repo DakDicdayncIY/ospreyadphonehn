@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="可用亮币：" />
+            android:text="可用话费：" />
 
         <TextView
             android:id="@+id/tv_kyhf"
@@ -38,7 +38,7 @@
             style="@style/app_textStyle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="个" />
+            android:text="亮币" />
     </LinearLayout>
 
     <LinearLayout

@@ -154,7 +154,7 @@ public class AdShowActivity extends ActivityFrame implements OnActionSheetSelect
 				tv_add_money_num.setText("+" + kykadresult.getMoney2() + "亮币");
 			} else if (kykadresult.getMoneytype().equals("3")) {
 			  iv_money_box.setBackgroundResource(R.drawable.os_hb_box);
-				tv_add_money_num.setText("+" + kykadresult.getMoney2() + "银币");
+				tv_add_money_num.setText("+" + kykadresult.getMoney2() + "金币");
 			}
 		}
 	}
@@ -346,7 +346,7 @@ public class AdShowActivity extends ActivityFrame implements OnActionSheetSelect
 											AdShowActivity.this,
 											AdShowActivity.this, "您本次看一看获得"
 													+ kykadresult.getMoney2()
-													+ "银币", 1);
+													+ "金币", 1);
 								}
 							}
 						}, 1500);

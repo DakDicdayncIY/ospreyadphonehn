@@ -52,8 +52,8 @@
     <string name="os_dhb_syzx_zq">赚钱</string>
     <string name="os_dhb_syzx_yq">摇钱</string>
     <string name="os_dhb_syzx_cj">抽奖</string>
-    <string name="os_dhb_syzx_zhf">赚亮币</string>
-    <string name="os_dhb_syzx_zjf">赚积分</string>
+    <string name="os_dhb_syzx_zhf">赚话费</string>
+    <string name="os_dhb_syzx_zjf"></string>
     <string name="os_dhb_syzx_qhb">抢红包</string>
     <string name="os_dhb_syzx_cj_qad">亲爱的 </string>
     <string name="os_dhb_syzx_cj_ndjf">，您的</string>
@@ -86,9 +86,9 @@
     <string name="os_dhb_grzx_jfsc">积分商城</string>
     <string name="os_dhb_grzx_gwc1">购物车</string>
     <string name="os_dhb_grzx_wddd">我的订单</string>
-    <string name="os_dhb_grzx_yyk">银币库</string>
+    <string name="os_dhb_grzx_yyk">金币库</string>
     <string name="os_dhb_grzx_jfk">积分库</string>
-    <string name="os_dhb_grzx_hfk">亮币库</string>
+    <string name="os_dhb_grzx_hfk">话费库</string>
     <string name="os_dhb_grzx_zhcz">账号充值</string>
     <string name="os_dhb_grzx_cxzs">商家优惠</string>
     <string name="os_dhb_grzx_zbsh">周边生活</string>

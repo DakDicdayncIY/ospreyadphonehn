@@ -171,19 +171,19 @@ public class DhbGrzxHfkActivity extends ActivityFrame {
 										DhbGrzxHfkActivity.this,
 										SharepreferenceUtil.fileName, "huafei",
 										grzxCaichanComm.getBody().getMoney());
-							}else{
+							} else {
 								tv_kyhf.setText("0");
 							}
 							if (grzxCaichanComm.getBody().getLeijimoney() != null) {
 								tv_hfzs.setText(grzxCaichanComm.getBody()
-										.getLeijimoney() + "个");
-							}else{
-								tv_hfzs.setText(0 + "个");
+										.getLeijimoney() + "亮币");
+							} else {
+								tv_hfzs.setText(0 + "亮币");
 							}
 							if (grzxCaichanComm.getBody().getLeijimoney() != null) {
 								tv_dhcs.setText(grzxCaichanComm.getBody()
 										.getDuihuantimes());
-							}else{
+							} else {
 								tv_dhcs.setText("0");
 							}
 							grzxCaichan.addAll(grzxCaichanComm.getBody()

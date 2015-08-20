@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.FinalHttp;
 import osprey_adphone_hn.cellcom.com.cn.R;
+import osprey_adphone_hn.cellcom.com.cn.activity.base.ActivityFrame;
 import osprey_adphone_hn.cellcom.com.cn.activity.csh.CshFragmentActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.jsh.JshFragmentActivity;
 import osprey_adphone_hn.cellcom.com.cn.activity.main.WebViewActivity;
@@ -113,6 +114,7 @@ public class DhbSyzxActivity extends Fragment {
 				false);
 		initView(v, savedInstanceState);
 		initAd(v);
+
 		return v;
 	}
 
@@ -316,7 +318,7 @@ public class DhbSyzxActivity extends Fragment {
 					break;
 
 				case 3:
-					title = "赚亮币";
+					title = "赚话费";
 					typeid = "2";
 					Intent intentZhf = new Intent(act, DhbSyzxKykActivity.class);
 					intentZhf.putExtra("title", title);

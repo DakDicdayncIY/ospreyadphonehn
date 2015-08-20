@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <!--
     <osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager>
+    -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -131,6 +133,11 @@
                 android:gravity="center"
                 android:text="安全报警" />
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
     </LinearLayout>
 
 </LinearLayout>

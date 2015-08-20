@@ -11,105 +11,16 @@
         android:layout_weight="5" >
     </osprey_adphone_hn.cellcom.com.cn.widget.jazzyviewpager.JazzyViewPager>
 
-    <RelativeLayout
-        android:id="@+id/toprl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/app_base_selector1" >
-
-        <osprey_adphone_hn.cellcom.com.cn.widget.RoundImageView
-            android:id="@+id/video_img"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter"
-            android:src="@drawable/os_dhb_itempic" />
-
-        <TextView
-            android:id="@+id/nametv"
-            style="@style/app_textStyle2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/video_img"
-            android:layout_toRightOf="@id/video_img" />
-
-        <TextView
-            android:id="@+id/idtv"
-            style="@style/app_textStyle2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/nametv"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_toEndOf="@id/video_img"
-            android:layout_toRightOf="@id/video_img" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical" >
-
-            <TextView
-                style="@style/app_textStyle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:text="VIP等级：" />
-
-            <TextView
-                android:id="@+id/tv_no_level"
-                style="@style/app_textStyle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:text="暂无等级" />
-
-            <LinearLayout
-                android:id="@+id/levelll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/tv_level"
-                    style="@style/app_textStyle3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:id="@+id/leveliv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@null"
-                    android:src="@drawable/os_level_full_icon" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingTop="15dp" >
 
         <LinearLayout
             android:id="@+id/ll_zhcz"
@@ -175,7 +86,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
-            android:visibility="invisible" >
+            android:visibility="gone" >
 
             <ImageView
                 android:id="@+id/iv_jfk"
@@ -301,7 +212,7 @@
             android:background="@color/white"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="invisible" >
+            android:visibility="gone" >
 
             <ImageView
                 android:id="@+id/iv_fgg"
@@ -310,7 +221,7 @@
                 android:background="@drawable/os_dhb_grzx_fgg_selector"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter" />
-
+.
             <TextView
                 style="@style/app_medium_textStyle2"
                 android:layout_width="wrap_content"

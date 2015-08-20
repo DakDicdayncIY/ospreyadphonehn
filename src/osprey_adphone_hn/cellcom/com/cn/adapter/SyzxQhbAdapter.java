@@ -103,7 +103,7 @@ public class SyzxQhbAdapter extends BaseAdapter {
             //已结束
             if("Y".equalsIgnoreCase(infos.get(position).getIfwin())){
               //是否抢到红包
-              viewHolder.tv_describe.setText("您获得红包:"+infos.get(position).getRobsum()+"银币");
+              viewHolder.tv_describe.setText("您获得红包:"+infos.get(position).getRobsum()+"金币");
             }else{
               viewHolder.tv_describe.setText("您未抢到任何红包");
             }
@@ -133,7 +133,7 @@ public class SyzxQhbAdapter extends BaseAdapter {
 		    if("Y".equalsIgnoreCase(infos.get(position).getIfwin())){
               //是否抢到红包
 		      viewHolder.qhbtv.setBackgroundResource(R.drawable.os_dhb_syzx_qhb_yjs);
-              viewHolder.tv_describe.setText("您获得红包:"+infos.get(position).getRobsum()+"银币");
+              viewHolder.tv_describe.setText("您获得红包:"+infos.get(position).getRobsum()+"金币");
               viewHolder.tv_time.setVisibility(View.GONE);
             }else{
               viewHolder.qhbtv.setBackgroundResource(R.drawable.os_dhb_syzx_qhb);
@@ -148,7 +148,7 @@ public class SyzxQhbAdapter extends BaseAdapter {
             viewHolder.tv_describe.setTextColor(Color.parseColor("#8E8E8E"));
             if("Y".equalsIgnoreCase(infos.get(position).getIfwin())){
               //是否抢到红包
-              viewHolder.tv_describe.setText("您获得红包:"+infos.get(position).getRobsum()+"银币");
+              viewHolder.tv_describe.setText("您获得红包:"+infos.get(position).getRobsum()+"金币");
             }else{
               viewHolder.tv_describe.setText("您未抢到任何红包");
             }

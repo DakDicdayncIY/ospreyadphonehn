@@ -134,8 +134,9 @@ public class WelcomeActivity extends Activity {
 				WelcomeActivity.this, SharepreferenceUtil.fileName,
 				"picWelcomepath");
 		if (TextUtils.isEmpty(picWelcomepath)) {
-			BitMapUtil.getImgOpt(WelcomeActivity.this, finalBitmap, welcomell, R.drawable.app_welcome);
-//			welcomell.setBackgroundResource(R.drawable.app_welcome);
+			BitMapUtil.getImgOpt(WelcomeActivity.this, finalBitmap, welcomell,
+					R.drawable.app_welcome);
+			// welcomell.setBackgroundResource(R.drawable.app_welcome);
 		} else {
 			finalBitmap.display(welcomell, picWelcomepath);
 		}

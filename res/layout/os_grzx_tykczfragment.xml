@@ -9,14 +9,11 @@
     <TextView
         android:id="@+id/titletv"
         style="@style/app_big_textStyle2"
-        android:text="体验卡串码"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:paddingStart="10dp"
-         />
+        android:minHeight="50dp"
+        android:text="充值卡串码" />
 
     <EditText
         android:id="@+id/tyket"
@@ -27,9 +24,7 @@
         android:background="@drawable/app_register_input"
         android:hint="请输入串码"
         android:inputType="number"
-        android:minHeight="45dp"
-        android:paddingLeft="10dp"
-        android:paddingStart="10dp" />
+        android:minHeight="45dp" />
 
     <Button
         android:id="@+id/czbtn"

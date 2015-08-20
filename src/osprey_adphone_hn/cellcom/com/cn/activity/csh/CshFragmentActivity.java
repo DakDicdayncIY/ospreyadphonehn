@@ -148,8 +148,7 @@ public class CshFragmentActivity extends FragmentActivity {
 						.setTextColor(getResources().getColor(R.color.gray));
 				grzxTabLabel
 						.setTextColor(getResources().getColor(R.color.gray));
-				Toast.makeText(CshFragmentActivity.this, "功能正在开发中...",
-						Toast.LENGTH_SHORT).show();
+
 			}
 		});
 		// 商业中心

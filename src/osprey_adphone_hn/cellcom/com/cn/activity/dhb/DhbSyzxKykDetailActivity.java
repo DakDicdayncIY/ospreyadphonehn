@@ -388,33 +388,29 @@ public class DhbSyzxKykDetailActivity extends Activity {
 
 		if (money1 != null && !money1.trim().equals("")) {
 			if (moneytype.equals("1")) {
-				ljlqbtn.setText("立即领取积分  +" + money1);
-				tv_add_money_num.setText("+" + money1 + "积分");
+//				ljlqbtn.setText("立即领取积分  +" + money1);
+//				tv_add_money_num.setText("+" + money1 + "积分");
 			} else if (moneytype.equals("2")) {
-				ljlqbtn.setText("立即领取亮币  +" + money1);
+				ljlqbtn.setText("立即领取话费  +" + money1);
 				tv_add_money_num.setText("+" + money1 + "亮币");
 			} else if (moneytype.equals("3")) {
-				ljlqbtn.setText("立即领取银币  +" + money1);
-				tv_add_money_num.setText("+" + money1 + "银币");
+				ljlqbtn.setText("立即领取金币  +" + money1);
+				tv_add_money_num.setText("+" + money1 + "金币");
 			}
 		} else {
-			if (moneytype.equals("1")) {
-				ljlqbtn.setText("当前广告没有积分领取");
-			} else if (moneytype.equals("2")) {
+		 if (moneytype.equals("2")) {
 				ljlqbtn.setText("当前广告没有亮币领取");
 			} else if (moneytype.equals("3")) {
-				ljlqbtn.setText("当前广告没有银币领取");
+				ljlqbtn.setText("当前广告没有金币领取");
 			}
 		}
 
 		if (money2 != null && !money2.trim().equals("")) {
 			zqgdbtn.setEnabled(true);
-			if (moneytype.equals("1")) {
-				zqgdbtn.setText("赚取更多积分  +" + money2);
-			} else if (moneytype.equals("2")) {
-				zqgdbtn.setText("赚取更多亮币  +" + money2);
+			 if (moneytype.equals("2")) {
+				zqgdbtn.setText("赚取更多话费  +" + money2);
 			} else if (moneytype.equals("3")) {
-				zqgdbtn.setText("赚取更多银币  +" + money2);
+				zqgdbtn.setText("赚取更多金币  +" + money2);
 			}
 		} else {
 			zqgdbtn.setEnabled(false);

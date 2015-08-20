@@ -49,12 +49,12 @@ public class DhzxActivity extends ActivityFrame {
 	private EditText et_num3;
 	private FButton btn_dh3;
 
-	private String yongyou_yy = "0";// 拥有银币
+	private String yongyou_yy = "0";// 拥有金币
 	private String yongyou_hf = "0";// 拥有亮币
 	private String yongyou_jf = "0";// 拥有积分
 
-	private String rate1 = "";// 银币兑换亮币 兑换率
-	private String rate2 = "";// 银币兑换积分 兑换率
+	private String rate1 = "";// 金币兑换亮币 兑换率
+	private String rate2 = "";// 金币兑换积分 兑换率
 	private String rate3 = "";// 积分兑换亮币 兑换率
 	private String[] ratestr1;
 	private String[] ratestr2;
@@ -126,7 +126,7 @@ public class DhzxActivity extends ActivityFrame {
 			}
 		});
 
-		// 银币-亮币 确认兑换
+		// 金币-亮币 确认兑换
 		btn_dh1.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -137,7 +137,7 @@ public class DhzxActivity extends ActivityFrame {
 				} else {
 					if (Float.parseFloat(et_num1.getText().toString()) > Float
 							.parseFloat(yongyou_yy)) {
-						ShowMsg("您的银币不足以兑换"
+						ShowMsg("您的金币不足以兑换"
 								+ tv_yy1.getText()
 										.toString()
 										.substring(
@@ -157,7 +157,7 @@ public class DhzxActivity extends ActivityFrame {
 			}
 		});
 
-		// 银币-积分 确认兑换
+		// 金币-积分 确认兑换
 		btn_dh2.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -168,7 +168,7 @@ public class DhzxActivity extends ActivityFrame {
 				} else {
 					if (Float.parseFloat(et_num2.getText().toString()) > Float
 							.parseFloat(yongyou_yy)) {
-						ShowMsg("您的银币不足以兑换"
+						ShowMsg("您的金币不足以兑换"
 								+ tv_yy2.getText()
 										.toString()
 										.substring(
@@ -243,7 +243,7 @@ public class DhzxActivity extends ActivityFrame {
 					tv_yy1.setText("0个");
 				} else {
 					if (Float.parseFloat(text) > Float.parseFloat(yongyou_yy)) {
-						ShowMsg("您的银币不足~");
+						ShowMsg("您的金币不足~");
 						tv_yongyou1.setText(yongyou_yy + "个");
 						tv_yy1.setText(((Float.parseFloat(text) / Float
 								.parseFloat(ratestr1[0].trim())) * Float
@@ -290,7 +290,7 @@ public class DhzxActivity extends ActivityFrame {
 					tv_yy2.setText("0分");
 				} else {
 					if (Float.parseFloat(text) > Float.parseFloat(yongyou_yy)) {
-						ShowMsg("您的银币不足~");
+						ShowMsg("您的金币不足~");
 						tv_yongyou2.setText(yongyou_yy + "个");
 						tv_yy2.setText(((Float.parseFloat(text) / Float
 								.parseFloat(ratestr2[0].trim())) * Float

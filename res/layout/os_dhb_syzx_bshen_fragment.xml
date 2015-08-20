@@ -5,11 +5,6 @@
     android:background="@color/white"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="省会" />
-
     <GridView
         android:id="@+id/gv_bshen_os_dhb_syzx_fragment"
         android:layout_width="match_parent"

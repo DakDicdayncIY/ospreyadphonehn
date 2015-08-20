@@ -39,7 +39,8 @@ public class DhbSyzxBsFragment extends Fragment {
 	public DhbSyzxBsFragment(FinalHttp http) {
 		this.mHttp = http;
 	}
-
+	
+	
 	FlowConsts fc;
 
 	@Override

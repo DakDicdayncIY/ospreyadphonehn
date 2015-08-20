@@ -124,7 +124,7 @@ public class SysAdShowActivity extends ActivityFrame implements
 							+ "亮币");
 				} else if (grzxCz.getVerytype().equals("3")) {
 					tv_add_money_num.setText("+" + grzxCz.getVerynum()
-							+ "银币");
+							+ "金币");
 				}
 	}
 
@@ -265,7 +265,7 @@ public class SysAdShowActivity extends ActivityFrame implements
 				} else if (grzxCz.getVerytype().equals("3")) {
 					AlertDialogPopupWindow.showSheet(SysAdShowActivity.this,
 							SysAdShowActivity.this,
-							"恭喜您获得由" +grzxCz.getCompanyname()+"提供的"+ grzxCz.getVerynum() + "银币", 1);
+							"恭喜您获得由" +grzxCz.getCompanyname()+"提供的"+ grzxCz.getVerynum() + "金币", 1);
 				}
 				isLj = true;
 			}

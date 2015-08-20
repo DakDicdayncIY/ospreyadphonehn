@@ -54,14 +54,11 @@ import cellcom.com.cn.util.Des3;
 public class DhbGrzxActivity extends Fragment {
 	private Activity act;
 	private ImageView video_img;
-	private TextView nametv;
-	private TextView idtv;
-	private RelativeLayout toprl;
 	private FinalBitmap finalBitmap;
 	private TextView tv_fgg, tv_yyk, tv_jfk, tv_hfk, tv_cxzs, tv_zbsh, tv_shjf,
-			tv_zxgw, tv_no_level, tv_level;
+			tv_zxgw;
 	private LinearLayout ll_zhcz, ll_fgg, ll_yyk, ll_jfk, ll_hfk, ll_cxzs,
-			ll_zbsh, ll_gwc, levelll;
+			ll_zbsh, ll_gwc;
 	FinalBitmap bitmap;
 	JazzyViewPager jvp;
 
@@ -96,23 +93,13 @@ public class DhbGrzxActivity extends Fragment {
 		String viplevel = SharepreferenceUtil.readString(act,
 				SharepreferenceUtil.fileName, "viplevel" + uid, "");
 		if (TextUtils.isEmpty(viplevel)) {
-			tv_no_level.setVisibility(View.VISIBLE);
-			levelll.setVisibility(View.GONE);
 		} else {
-			tv_no_level.setVisibility(View.GONE);
-			levelll.setVisibility(View.VISIBLE);
 			if ((Float.parseFloat(viplevel) + "").contains(".0")) {
 				viplevel = Integer.parseInt(viplevel) + "";
 			} else {
 				viplevel = Float.parseFloat(viplevel) + "";
 			}
-			tv_level.setText(viplevel);
 		}
-		// 账号
-		nametv.setText(SharepreferenceUtil.readString(act,
-				SharepreferenceUtil.fileName, "username", ""));
-		idtv.setText(SharepreferenceUtil.readString(act,
-				SharepreferenceUtil.fileName, "account", ""));
 	}
 
 	@Override
@@ -138,9 +125,6 @@ public class DhbGrzxActivity extends Fragment {
 	}
 
 	private void initView1(View v, Bundle savedInstanceState) {
-		levelll = (LinearLayout) v.findViewById(R.id.levelll);
-		tv_level = (TextView) v.findViewById(R.id.tv_level);
-		toprl = (RelativeLayout) v.findViewById(R.id.toprl);
 		video_img = (ImageView) v.findViewById(R.id.video_img);
 		ll_zhcz = (LinearLayout) v.findViewById(R.id.ll_zhcz);
 		ll_fgg = (LinearLayout) v.findViewById(R.id.ll_fgg);
@@ -150,9 +134,6 @@ public class DhbGrzxActivity extends Fragment {
 		ll_cxzs = (LinearLayout) v.findViewById(R.id.ll_cxzs);
 		ll_zbsh = (LinearLayout) v.findViewById(R.id.ll_zbsh);
 		ll_gwc = (LinearLayout) v.findViewById(R.id.ll_gwc);
-		nametv = (TextView) v.findViewById(R.id.nametv);
-		idtv = (TextView) v.findViewById(R.id.idtv);
-		tv_no_level = (TextView) v.findViewById(R.id.tv_no_level);
 		jvp = (JazzyViewPager) v.findViewById(R.id.jazzy_viewpager_os_dhb_grzx);
 		new Handler().postDelayed(new Runnable() {
 
@@ -189,7 +170,7 @@ public class DhbGrzxActivity extends Fragment {
 				rotation_jfk.setDuration(500);
 				rotation_jfk.setFillAfter(true);
 				ll_jfk.startAnimation(rotation_jfk);
-				ll_jfk.setVisibility(View.VISIBLE);
+				ll_jfk.setVisibility(View.GONE);
 
 				rotation_jfk.setInterpolator(new AccelerateInterpolator());
 				// 设置监听
@@ -217,7 +198,7 @@ public class DhbGrzxActivity extends Fragment {
 						rotation_fgg.setDuration(500);
 						rotation_fgg.setFillAfter(true);
 						ll_fgg.startAnimation(rotation_fgg);
-						ll_fgg.setVisibility(View.VISIBLE);
+						ll_fgg.setVisibility(View.GONE);
 
 						Rotate3DAnimation rotation_cxzs = new Rotate3DAnimation(
 								-90, 0, ll_cxzs.getWidth() / 2, ll_cxzs
@@ -338,16 +319,6 @@ public class DhbGrzxActivity extends Fragment {
 	}
 
 	private void initListener1() {
-		// 个人资料
-		toprl.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(act, GrzlActivity.class);
-				startActivity(intent);
-			}
-		});
 		// 购物车
 		ll_gwc.setOnClickListener(new OnClickListener() {
 
@@ -527,11 +498,6 @@ public class DhbGrzxActivity extends Fragment {
 			SharepreferenceUtil.write(act, SharepreferenceUtil.fileName,
 					"viplevel" + uid, userInfo.getViplevel());
 		}
-		// 账号
-		nametv.setText(SharepreferenceUtil.readString(act,
-				SharepreferenceUtil.fileName, "username", ""));
-		idtv.setText(SharepreferenceUtil.readString(act,
-				SharepreferenceUtil.fileName, "account", ""));
 
 		bitmap.display(new ImageView(DhbGrzxActivity.this.getActivity()),
 				CshFragmentActivity.meiti);

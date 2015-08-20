@@ -1,5 +1,7 @@
 package osprey_adphone_hn.cellcom.com.cn.activity.dhb;
 
+import osprey_adphone_hn.cellcom.com.cn.activity.base.ActivityFrame;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -36,22 +38,22 @@ public class ViewPagerCompat extends ViewPager {
 	 */
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
-		if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-			this.requestDisallowInterceptTouchEvent(true);
-		}
-		if (ev.getAction() == MotionEvent.ACTION_CANCEL) {
-			this.requestDisallowInterceptTouchEvent(false);
-		}
-		return super.onInterceptTouchEvent(ev);
+		getParent().requestDisallowInterceptTouchEvent(true);
+		return false;
 	}
 
+	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
-		try {
-			return super.onTouchEvent(ev);
-		} catch (Exception e) {
-			return false;
+
+		if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+
+			this.requestDisallowInterceptTouchEvent(false);
 		}
+		if (ev.getAction() == MotionEvent.ACTION_CANCEL) {
+			this.requestDisallowInterceptTouchEvent(true);
+		}
+		return super.onTouchEvent(ev);
 	}
 
 	/**

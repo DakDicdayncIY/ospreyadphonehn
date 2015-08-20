@@ -31,7 +31,7 @@ import osprey_adphone_hn.cellcom.com.cn.widget.jazzylistview.JazzyHelper;
 import osprey_adphone_hn.cellcom.com.cn.widget.jazzylistview.JazzyListView;
 
 /**
- * 个人中心银币库界面
+ * 个人中心金币库界面
  * 
  * @author Administrator
  * 
@@ -118,7 +118,7 @@ public class DhbGrzxYykActivity extends ActivityFrame {
 	}
 
 	/**
-	 * 获取银币库数据
+	 * 获取金币库数据
 	 */
 	private void getYingyuanInfos() {
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
@@ -179,19 +179,19 @@ public class DhbGrzxYykActivity extends ActivityFrame {
 										SharepreferenceUtil.fileName,
 										"yinyuan", grzxCaichanComm.getBody()
 												.getMoney());
-							}else{
+							} else {
 								tv_kyyy.setText("0");
 							}
 							if (grzxCaichanComm.getBody().getLeijimoney() != null) {
 								tv_yyzs.setText(grzxCaichanComm.getBody()
 										.getLeijimoney() + "个");
-							}else{
+							} else {
 								tv_yyzs.setText(0 + "个");
 							}
 							if (grzxCaichanComm.getBody().getLeijimoney() != null) {
 								tv_dhcs.setText(grzxCaichanComm.getBody()
 										.getDuihuantimes());
-							}else{
+							} else {
 								tv_dhcs.setText("0");
 							}
 							grzxCaichan.addAll(grzxCaichanComm.getBody()

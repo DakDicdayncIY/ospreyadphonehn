@@ -50,7 +50,7 @@ public class CommonUtils {
 									"huafei")) + Float.parseFloat(num))
 									+ "");
 				}
-			} else if (type.equals("3")) {// 刷新本地银币
+			} else if (type.equals("3")) {// 刷新本地金币
 				if (SharepreferenceUtil.readString(context,
 						SharepreferenceUtil.fileName, "yinyuan", "").equals("")) {
 					SharepreferenceUtil.write(context,
