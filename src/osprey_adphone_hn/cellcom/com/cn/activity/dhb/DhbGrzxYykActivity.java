@@ -184,9 +184,9 @@ public class DhbGrzxYykActivity extends ActivityFrame {
 							}
 							if (grzxCaichanComm.getBody().getLeijimoney() != null) {
 								tv_yyzs.setText(grzxCaichanComm.getBody()
-										.getLeijimoney() + "个");
+										.getLeijimoney() + "金币");
 							} else {
-								tv_yyzs.setText(0 + "个");
+								tv_yyzs.setText(0 + "金币");
 							}
 							if (grzxCaichanComm.getBody().getLeijimoney() != null) {
 								tv_dhcs.setText(grzxCaichanComm.getBody()

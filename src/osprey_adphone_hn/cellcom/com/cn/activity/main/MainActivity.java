@@ -141,10 +141,10 @@ public class MainActivity extends ActivityFrame {
 		}
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"yinyuan", "").equals("")) {
-			tv_kyyy.setText("0个");
+			tv_kyyy.setText("0金币");
 		} else {
 			tv_kyyy.setText(SharepreferenceUtil.readString(this,
-					SharepreferenceUtil.fileName, "yinyuan", "") + "个");
+					SharepreferenceUtil.fileName, "yinyuan", "") + "金币");
 		}
 		if (SharepreferenceUtil.readString(this, SharepreferenceUtil.fileName,
 				"jifen", "").equals("")) {
